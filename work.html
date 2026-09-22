@@ -37,6 +37,8 @@
   .lib-card h3{ font-family: var(--serif-display); font-size: 1.2rem; margin:0; }
   .status{ font-size: 0.7rem; text-transform: none; color: var(--ink-muted); border: 1px solid var(--line); padding: 0.2rem 0.55rem; border-radius: 999px; white-space:nowrap; }
   .status.featured{ color: var(--accent-dim); border-color: var(--accent-dim); }
+  .lib-card-image{ height: 170px; border: 1px solid var(--line); overflow: hidden; margin-bottom: 1rem; background: var(--bg-raised); }
+  .lib-card-image img{ width: 100%; height: 100%; object-fit: cover; display: block; }
   .lib-card p{ color: var(--ink-muted); font-size: 0.92rem; margin: 0 0 0.9rem; }
   .lib-meta{ font-size: 0.82rem; color: var(--ink-muted); display:flex; flex-wrap:wrap; gap: 0.4rem 1rem; }
   .lib-meta strong{ color: var(--ink); }
@@ -73,11 +75,11 @@
   // Living project data — add a new object here to extend the library.
   // status: "Featured" | "Supporting" | "Archive" | "Do Not Feature" (Do Not Feature is hidden)
   const projects = [
-    { id:"tugo", title:"Tugo", category:"Product", status:"Featured",
+    { id:"tugo", title:"Tugo", category:"Product", status:"Featured", image:"tugo-hero.jpg",
       summary:"End-to-end product design for children with chronic illnesses and their families.",
       role:"Research, UX, design system, implementation", metric:"34 components", href:"tugo.html" },
 
-    { id:"exxonmobil", title:"ExxonMobil Design System", category:"Design Systems", status:"Supporting",
+    { id:"exxonmobil", title:"ExxonMobil Design System", category:"Design Systems", status:"Supporting", image:"Standard-Design-System-hero.jpg",
       summary:"Standardized components, guidelines and patterns for internal digital platforms.",
       role:"UX/UI designer", metric:"11 components · 23 landing pages", href:"standard.html" },
 
@@ -85,11 +87,11 @@
       summary:"Component system and interface covering the complete plant-buying user flow.",
       role:"UX/UI designer", metric:"31 components · 8 screens", href:"marea-verde.html" },
 
-    { id:"volkswagen", title:"Volkswagen", category:"Large-scale / Enterprise", status:"Featured",
+    { id:"volkswagen", title:"Volkswagen", category:"Large-scale / Enterprise", status:"Featured", image:"volkswagen-hero.jpeg",
       summary:"Scalable landing-page design system for ongoing campaigns.",
       role:"UX/UI designer", metric:"10 templates · 16 pages · +12% engagement", href:"volkswagen.html" },
 
-    { id:"froya", title:"Frøya", category:"Ecommerce", status:"Featured",
+    { id:"froya", title:"Frøya", category:"Ecommerce", status:"Featured", image:"froya-hero.webp",
       summary:"Ecommerce strategy and product-page optimisation.",
       role:"UX/UI & ecommerce strategy", metric:"+18% sales", href:"froya.html" },
 
@@ -97,7 +99,7 @@
       summary:"UX, accessibility and purchase-journey work.",
       role:"UX/UI designer", metric:"32%→19% users lost", href:"null-wines.html" },
 
-    { id:"froken-dianas", title:"Fröken Dianas Salonger", category:"Ecommerce", status:"Supporting",
+    { id:"froken-dianas", title:"Fröken Dianas Salonger", category:"Ecommerce", status:"Supporting", image:"froken-dianas-solanger-hero.png",
       summary:"Landing pages, email marketing and content — an ongoing relationship.",
       role:"UX/UI & email strategy", metric:"Up to +36% email-driven sales", href:"froken-dianas-salonger.html" },
 
@@ -129,6 +131,7 @@
       }
       const statusClass = p.status === 'Featured' ? 'status featured' : 'status';
       return `<a class="lib-card" href="${p.href}">
+        ${p.image ? `<div class="lib-card-image"><img src="${p.image}" alt="${p.title} preview" loading="lazy"></div>` : ""}
         <div class="lib-top"><h3>${p.title}</h3><span class="${statusClass}">${p.status}</span></div>
         <p>${p.summary}</p>
         <div class="lib-meta">${p.role ? `<span><strong>Role:</strong> ${p.role}</span>` : ''}${p.metric ? `<span><strong>${p.metric}</strong></span>` : ''}</div>

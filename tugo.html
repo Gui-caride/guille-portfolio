@@ -84,6 +84,13 @@
   }
   .hero-visual svg{ width: 60%; max-width: 520px; }
 
+  .hero-visual img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+  .case-study-figure{ margin: -3rem 0 2rem; }
+  .case-study-figure img{ width: 100%; height: auto; display: block; border: 1px solid var(--line); }
+  .case-study-figure figcaption{ color: var(--ink-muted); font-size: 0.8rem; margin-top: 0.6rem; }
+  .external-links{ display:flex; flex-wrap:wrap; gap: 0.8rem; margin: 0 0 2.2rem; }
+  .external-link{ display:inline-flex; align-items:center; min-height: 2.7rem; padding: 0.65rem 1rem; border: 1px solid var(--line); color: var(--ink); font-size: 0.88rem; font-weight: 600; transition: border-color .2s ease, color .2s ease; }
+  .external-link:hover{ border-color: var(--accent); color: var(--accent); }
   section{ padding: 3.4rem 0; border-bottom: 1px solid var(--line); }
   section:last-of-type{ border-bottom:none; }
   .label{ font-family: var(--serif-display); font-weight: 700; font-size: 1.5rem; margin: 0 0 1.4rem; }
@@ -184,12 +191,14 @@
       <div><span>Recognition</span><strong>ELISAVA Master Awards 2025</strong></div>
     </div>
     <div class="hero-visual">
-      <svg viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polyline points="0,110 60,110 85,55 115,145 145,75 175,110 400,110" stroke="#c6ff4d" stroke-width="2.5" fill="none"/>
-        <circle cx="85" cy="55" r="4" fill="#f2f1ea"/>
-        <circle cx="115" cy="145" r="4" fill="#f2f1ea"/>
-        <circle cx="145" cy="75" r="4" fill="#f2f1ea"/>
-      </svg>
+      <img src="tugo-hero.jpg" alt="Tugo product design hero image" loading="eager">
+    </div>
+    <figure class="case-study-figure">
+      <img src="tugo-screen-01.jpg" alt="Tugo product interface screen" loading="lazy">
+      <figcaption>Tugo interface detail</figcaption>
+    </figure>
+    <div class="external-links">
+      <a class="external-link" href="https://youtu.be/PQZ5hxGQR54" target="_blank" rel="noreferrer noopener">Watch project video ↗</a>
     </div>
   </div>
 

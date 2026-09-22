@@ -44,6 +44,10 @@
   @media (max-width: 700px){ .meta-grid{ grid-template-columns: repeat(2,1fr); } }
   .hero-visual{ aspect-ratio: 21/9; border: 1px solid var(--line); background: var(--bg-raised); display:flex; align-items:center; justify-content:center; margin-bottom: 5rem; }
   .hero-visual svg{ width: 40%; max-width: 340px; }
+  .hero-visual img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+  .external-links{ display:flex; flex-wrap:wrap; gap: 0.8rem; margin: 0 0 2.2rem; }
+  .external-link{ display:inline-flex; align-items:center; min-height: 2.7rem; padding: 0.65rem 1rem; border: 1px solid var(--line); color: var(--ink); font-size: 0.88rem; font-weight: 600; transition: border-color .2s ease, color .2s ease; }
+  .external-link:hover{ border-color: var(--accent); color: var(--accent); }
   section{ padding: 3.4rem 0; border-bottom: 1px solid var(--line); }
   section:last-of-type{ border-bottom:none; }
   .label{ font-family: var(--serif-display); font-weight: 700; font-size: 1.5rem; margin: 0 0 1.4rem; }
@@ -102,12 +106,10 @@
       <div><span>Status</span><strong>Active</strong></div>
     </div>
     <div class="hero-visual">
-      <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="70" cy="110" r="18" stroke="#c6ff4d" stroke-width="2"/>
-        <circle cx="140" cy="110" r="18" stroke="#c6ff4d" stroke-width="2"/>
-        <path d="M40 100 L60 60 H130 L160 100" stroke="#f2f1ea" stroke-width="2" fill="none"/>
-        <path d="M40 100 H160" stroke="#f2f1ea" stroke-width="2"/>
-      </svg>
+      <img src="volkswagen-hero.jpeg" alt="Volkswagen campaign design hero image" loading="eager">
+    </div>
+    <div class="external-links">
+      <a class="external-link" href="https://www.volkswagen.es/es.html?campaign=20094093_AWON26&cpid=24210326316%7C205594756011&country=ES&adchan=SEAH&adplt=PSEAC&publisher=GOGL&adpl=20168380&adcr=Marca_Exact_2024&format=NU&language=ES&adpay=pd&adver=volkswagen&gclsrc=aw.ds&gad_source=1&gad_campaignid=24210326316&gbraid=0AAAAADNshBXkd0YGTGF4iP0vkdgjanfx4&gclid=Cj0KCQjwzsjVBhC3ARIsALnMv4mVWPdmS0FKjoGTFxKvkU6xQDB9OIpV_iQAU7tV22FfCqNynraXsDYaAvHAEALw_wcB" target="_blank" rel="noreferrer noopener">Visit Volkswagen experience ↗</a>
     </div>
   </div>
 

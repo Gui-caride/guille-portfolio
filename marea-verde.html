@@ -43,6 +43,9 @@
   @media (max-width: 700px){ .meta-grid{ grid-template-columns: repeat(2,1fr); } }
   .hero-visual{ aspect-ratio: 21/9; border: 1px solid var(--line); background: var(--bg-raised); display:flex; align-items:center; justify-content:center; margin-bottom: 5rem; }
   .hero-visual svg{ width: 30%; max-width: 260px; }
+  .external-links{ display:flex; flex-wrap:wrap; gap: 0.8rem; margin: 0 0 2.2rem; }
+  .external-link{ display:inline-flex; align-items:center; min-height: 2.7rem; padding: 0.65rem 1rem; border: 1px solid var(--line); color: var(--ink); font-size: 0.88rem; font-weight: 600; transition: border-color .2s ease, color .2s ease; }
+  .external-link:hover{ border-color: var(--accent); color: var(--accent); }
   section{ padding: 3.4rem 0; border-bottom: 1px solid var(--line); }
   section:last-of-type{ border-bottom:none; }
   .label{ font-family: var(--serif-display); font-weight: 700; font-size: 1.5rem; margin: 0 0 1.4rem; }
@@ -132,6 +135,9 @@
         <path d="M100 66 C93 48, 74 40, 60 45" stroke="#f2f1ea" stroke-width="1.8" fill="none"/>
         <ellipse cx="100" cy="153" rx="38" ry="6" stroke="#f2f1ea" stroke-width="1.8"/>
       </svg>
+    </div>
+    <div class="external-links">
+      <a class="external-link" href="https://youtu.be/dEZcieTOKY4" target="_blank" rel="noreferrer noopener">Watch project video ↗</a>
     </div>
   </div>
 
