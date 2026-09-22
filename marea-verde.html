@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marea Verde — Guille</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0c0d0a; --bg-raised: #121309; --ink: #f2f1ea; --ink-muted: #9a9a8e; --line: #232419;
+    --accent: #c6ff4d; --accent-dim: #8fbf2f;
+    --serif-display: 'Syne', sans-serif; --sans: 'Inter', sans-serif;
+    --max: 1180px; --max-article: 780px; --gap: clamp(1.25rem, 3vw, 2.5rem);
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{ margin:0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a{ color: inherit; text-decoration: none; }
+  img{ max-width: 100%; display:block; }
+  ::selection{ background: var(--accent); color: #0c0d0a; }
+  .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 var(--gap); }
+  .article{ max-width: var(--max-article); margin: 0 auto; padding: 0 var(--gap); }
+  .cursor{ position: fixed; top:0; left:0; width: 10px; height:10px; border-radius: 50%; background: var(--accent); pointer-events: none; z-index: 999; transform: translate(-50%,-50%); transition: width .25s ease, height .25s ease, background .25s ease; mix-blend-mode: difference; }
+  .cursor.hovering{ width: 44px; height:44px; background: var(--ink); }
+  @media (hover:none), (pointer:coarse){ .cursor{ display:none; } }
+  @media (prefers-reduced-motion: reduce){ .cursor{ display:none; } }
+  header{ position: fixed; top:0; left:0; right:0; z-index: 50; padding: 1rem 0; background: rgba(12,13,10,0.86); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  nav{ display:flex; align-items:center; justify-content: space-between; }
+  .wordmark{ font-family: var(--serif-display); font-weight: 700; font-size: 1.15rem; }
+  .back-link{ font-size: 0.88rem; color: var(--ink-muted); }
+  .back-link:hover{ color: var(--accent); }
+  .hero{ padding: 8.5rem 0 3rem; }
+  .cat{ font-size: 0.92rem; color: var(--accent); font-weight: 500; margin: 0 0 1rem; }
+  h1{ font-family: var(--serif-display); font-weight: 800; font-size: clamp(2.4rem, 6vw, 4.4rem); line-height: 1.03; letter-spacing: -0.015em; margin: 0 0 1.4rem; max-width: 16ch; }
+  .hero-desc{ max-width: 60ch; font-size: 1.15rem; color: var(--ink-muted); margin: 0 0 2rem; }
+  .tags{ display:flex; gap: 0.6rem; flex-wrap:wrap; margin-bottom: 2.4rem; }
+  .tag{ font-size: 0.8rem; border: 1px solid var(--line); padding: 0.3rem 0.7rem; border-radius: 999px; color: var(--ink-muted); }
+  .meta-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 1.6rem 0; margin: 0 0 4rem; }
+  .meta-grid div span{ display:block; color: var(--ink-muted); font-size: 0.78rem; margin-bottom: .35rem; }
+  .meta-grid div strong{ font-family: var(--serif-display); font-weight: 700; font-size: 1rem; }
+  @media (max-width: 700px){ .meta-grid{ grid-template-columns: repeat(2,1fr); } }
+  .hero-visual{ aspect-ratio: 21/9; border: 1px solid var(--line); background: var(--bg-raised); display:flex; align-items:center; justify-content:center; margin-bottom: 5rem; }
+  .hero-visual svg{ width: 30%; max-width: 260px; }
+  section{ padding: 3.4rem 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  .label{ font-family: var(--serif-display); font-weight: 700; font-size: 1.5rem; margin: 0 0 1.4rem; }
+  .article p{ font-size: 1.05rem; color: var(--ink-muted); margin: 0 0 1.2rem; }
+  .article p strong{ color: var(--ink); font-weight: 600; }
+  .persona-card{ display:grid; grid-template-columns: 200px 1fr; gap: 2.4rem; align-items:start; border: 1px solid var(--line); padding: 2rem; background: var(--bg-raised); }
+  .persona-avatar{ aspect-ratio: 1; border: 1px solid var(--line); display:flex; align-items:center; justify-content:center; }
+  .persona-avatar svg{ width: 60%; }
+  .persona-card h3{ font-family: var(--serif-display); font-size: 1.4rem; margin: 0 0 0.3rem; }
+  .persona-role{ color: var(--accent-dim); font-size: 0.9rem; margin-bottom: 1rem; }
+  .persona-quote{ font-style: italic; color: var(--ink); font-size: 1rem; margin-bottom: 1.2rem; max-width: 46ch; }
+  .persona-facts{ display:flex; gap: 1.6rem; flex-wrap:wrap; font-size: 0.85rem; color: var(--ink-muted); margin-bottom: 1.4rem; }
+  .persona-facts strong{ color: var(--ink); }
+  .persona-col-head{ font-size: 0.85rem; color: var(--ink); font-weight: 600; margin: 0.9rem 0 0.4rem; }
+  .persona-list{ margin:0; padding-left: 1.1rem; color: var(--ink-muted); font-size: 0.95rem; }
+  .persona-list li{ margin-bottom: 0.3rem; }
+  @media (max-width: 700px){ .persona-card{ grid-template-columns: 1fr; } .persona-avatar{ width: 120px; } }
+  .process-step{ display:grid; grid-template-columns: 70px 1fr; gap: 1.6rem; margin-bottom: 2.2rem; }
+  .process-step .step-num{ font-family: var(--serif-display); font-size: 1.6rem; font-weight: 700; color: var(--ink-muted); }
+  .process-step h4{ font-family: var(--serif-display); font-size: 1.15rem; margin: 0 0 0.5rem; }
+  .process-step p{ margin:0; font-size: 0.98rem; color: var(--ink-muted); }
+  .bm-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap: 1.2rem; margin-top: 1rem; }
+  .bm-card{ border: 1px solid var(--line); padding: 1.2rem; }
+  .bm-card h5{ font-family: var(--serif-display); font-size: 0.98rem; margin: 0 0 .5rem; }
+  .bm-card p{ font-size: 0.9rem; margin:0; }
+  @media (max-width:700px){ .bm-grid{ grid-template-columns: 1fr; } }
+  .insight-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap: 1.6rem; }
+  .insight-card{ border: 1px solid var(--line); padding: 1.5rem; }
+  .insight-card h4{ font-family: var(--serif-display); font-size: 1.05rem; margin: 0 0 0.7rem; }
+  .insight-card p{ font-size: 0.92rem; margin:0; color: var(--ink-muted); }
+  @media (max-width: 760px){ .insight-grid{ grid-template-columns: 1fr; } }
+  .impact-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 1.8rem; }
+  .impact-grid.cols-3{ grid-template-columns: repeat(3, 1fr); }
+  .impact-card{ border-top: 1px solid var(--line); padding-top: 1.3rem; }
+  .impact-card .metric{ font-family: var(--serif-display); font-weight: 800; font-size: clamp(2rem, 4.6vw, 2.8rem); color: var(--accent); line-height: 1.05; margin-bottom: .7rem; letter-spacing: -0.01em; }
+  .impact-card p{ margin:0; font-size: 0.92rem; color: var(--ink-muted); max-width: 26ch; }
+  @media (max-width: 900px){ .impact-grid, .impact-grid.cols-3{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 560px){ .impact-grid, .impact-grid.cols-3{ grid-template-columns: 1fr; } }
+  .next-project{ display:flex; justify-content:space-between; align-items:center; padding: 3rem 0; flex-wrap: wrap; gap: 1rem; }
+  .next-project .label-sm{ font-size: 0.85rem; color: var(--ink-muted); margin-bottom: .4rem; }
+  .next-project h3{ font-family: var(--serif-display); font-size: 1.6rem; margin:0; }
+  footer{ border-top: 1px solid var(--line); padding: clamp(3rem, 6vw, 5rem) 0 2.4rem; }
+  .contact-head{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap: 1.5rem; margin-bottom: 2.5rem; }
+  .contact-head h2{ font-family: var(--serif-display); font-size: clamp(1.8rem, 4vw, 2.8rem); margin:0; max-width: 14ch; font-weight: 800; }
+  .contact-cta{ font-size: 1rem; border-bottom: 1px solid var(--accent); padding-bottom: 3px; white-space: nowrap; }
+  .foot-bottom{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap: 1rem; font-size: 0.85rem; color: var(--ink-muted); border-top: 1px solid var(--line); padding-top: 1.6rem; }
+  .foot-bottom .social{ display:flex; gap:1.4rem; }
+  .foot-bottom a:hover{ color: var(--ink); }
+  :focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="index.html" class="wordmark">Guille</a>
+      <div class="navlinks"><a href="index.html#work" class="back-link">← All work</a></div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero wrap">
+    <p class="cat">Ecommerce · Digital platform</p>
+    <h1>Marea Verde</h1>
+    <p class="hero-desc">A digital platform for Marea Verde that supports the full plant-buying journey — before and after purchase — for plants, bouquets and related products, matched to each customer's botanical questions and care needs.</p>
+    <div class="tags">
+      <span class="tag">Visual design</span>
+      <span class="tag">Product design</span>
+      <span class="tag">UX/UI</span>
+      <span class="tag">UI</span>
+    </div>
+    <div class="meta-grid">
+      <div><span>Role</span><strong>UX/UI designer</strong></div>
+      <div><span>Platforms</span><strong>Desktop, mobile</strong></div>
+      <div><span>Timeline</span><strong>Oct 2024 – Feb 2025</strong></div>
+      <div><span>Focus</span><strong>Pre/post-purchase journey</strong></div>
+    </div>
+    <div class="hero-visual">
+      <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 150 V70" stroke="#c6ff4d" stroke-width="2.5"/>
+        <path d="M100 100 C78 88, 66 58, 84 34" stroke="#c6ff4d" stroke-width="2.5" fill="none"/>
+        <path d="M100 84 C124 72, 136 42, 118 18" stroke="#c6ff4d" stroke-width="2.5" fill="none"/>
+        <path d="M100 66 C93 48, 74 40, 60 45" stroke="#f2f1ea" stroke-width="1.8" fill="none"/>
+        <ellipse cx="100" cy="153" rx="38" ry="6" stroke="#f2f1ea" stroke-width="1.8"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="article">
+    <section>
+      <h2 class="label">Overview</h2>
+      <p>The brief was to build a digital platform for Marea Verde that goes beyond the transaction — supporting the pre- and post-purchase process for plants, bouquets and related services, while growing users' botanical knowledge and curiosity. Guidance, personalization and accessible content were the levers for simplifying purchasing, lowering entry barriers and building the kind of enthusiasm that drives repeat engagement.</p>
+      <p>The harder design problem was translating something people already love about buying plants in person — the sensory, visual and olfactory experience of choosing directly — into a digital context that still feels personal and supportive rather than transactional.</p>
+    </section>
+
+    <section>
+      <h2 class="label">The problem</h2>
+      <p>People want reliable information about the plants they already own, or are thinking about buying — but the sheer variety of products and the scattered state of information online leaves them intimidated rather than informed. On top of that, there was no easy way for someone to track the plants they already had, or save ideas for a future purchase.</p>
+    </section>
+
+    <section>
+      <h2 class="label">Persona</h2>
+      <div class="persona-card">
+        <div class="persona-avatar">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="38" r="18" stroke="#c6ff4d" stroke-width="2"/>
+            <path d="M18 88c4-20 20-30 32-30s28 10 32 30" stroke="#c6ff4d" stroke-width="2"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Luis</h3>
+          <p class="persona-role">Engineer, age 31</p>
+          <p class="persona-quote">"Choosing where to live and work from anywhere is a privilege, but finding peace and balance in each space is the true goal."</p>
+          <div class="persona-facts">
+            <span><strong>Tech comfort:</strong> Moderate</span>
+            <span><strong>Gender:</strong> Male</span>
+          </div>
+          <p class="persona-col-head">Goals</p>
+          <ul class="persona-list">
+            <li>Decorate his home and balcony into a cozy space for friends</li>
+            <li>Disconnect from the digital world through a relaxing, hands-on activity</li>
+            <li>Reflect his ecological awareness and focus on well-being through his hobbies</li>
+          </ul>
+          <p class="persona-col-head">Frustrations</p>
+          <ul class="persona-list">
+            <li>Wants to decorate with plants but worries he won't know how to care for them</li>
+            <li>Feels overwhelmed by the volume of information out there</li>
+            <li>Doesn't love the idea of visiting a specialized store to get answers</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="label">Process</h2>
+      <div class="process-step">
+        <span class="step-num">01</span>
+        <div>
+          <h4>Benchmark</h4>
+          <p>Looked at four angles across the category:</p>
+          <div class="bm-grid">
+            <div class="bm-card"><h5>Educational content</h5><p>How platforms surface care guides, articles and multimedia content like videos or infographics.</p></div>
+            <div class="bm-card"><h5>Personalization</h5><p>Tools like watering calendars, plant identifiers and personalized reminders.</p></div>
+            <div class="bm-card"><h5>Information architecture</h5><p>Menu structure, label clarity, content hierarchy and how easily each guides a user to their goal.</p></div>
+            <div class="bm-card"><h5>Branding</h5><p>How visual identity and tone of voice carry a brand's value proposition through every interaction.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="step-num">02</span>
+        <div>
+          <h4>User research</h4>
+          <p>Ran a mystery-shopper exercise, 30+ online surveys, and 5 in-depth interviews.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="step-num">03</span>
+        <div>
+          <h4>Insights</h4>
+          <p>Two findings shaped the direction most:</p>
+        </div>
+      </div>
+      <div class="insight-grid">
+        <div class="insight-card">
+          <h4>Shopping in person is sensory, not just transactional</h4>
+          <p>People connect with plants directly — the visual appeal, the smell, choosing by feel. That process is meaningful and enjoyable in itself, beyond the purchase.</p>
+        </div>
+        <div class="insight-card">
+          <h4>Plant care changes how people feel</h4>
+          <p>Choosing, buying and caring for plants brings calm and well-being — a pause that lets people focus on something simpler and more natural than their routine.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="label">Impact</h2>
+      <div class="impact-grid cols-3">
+        <div class="impact-card">
+          <div class="metric">31</div>
+          <p>Created a reusable component system to support the product experience.</p>
+        </div>
+        <div class="impact-card">
+          <div class="metric">8</div>
+          <p>Designed a consistent experience across the complete user flow.</p>
+        </div>
+        <div class="impact-card">
+          <div class="metric">End-to-end</div>
+          <p>Built the system around the complete user journey, creating a consistent foundation for the product.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <a href="index.html#work" class="next-project">
+      <div><p class="label-sm">Back to</p><h3>All work</h3></div>
+      <span class="project-link" style="border-bottom:1px solid var(--accent); padding-bottom:2px;">View selected work →</span>
+    </a>
+  </div>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="contact-head">
+      <h2>Let's talk about what you're building.</h2>
+      <a href="mailto:guillerminacaride@gmail.com" class="contact-cta">guillerminacaride@gmail.com</a>
+    </div>
+    <div class="foot-bottom">
+      <span>Guille — Product &amp; UX/UI Designer, Barcelona</span>
+      <div class="social"><a href="https://linkedin.com/in/guillermina-caride-urruty">LinkedIn</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) {
+    window.addEventListener('mousemove', (e) => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+    document.querySelectorAll('a').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+    });
+  }
+</script>
+
+</body>
+</html>

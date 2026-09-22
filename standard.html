@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExxonMobil Design System — Guille</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0c0d0a; --bg-raised: #121309; --ink: #f2f1ea; --ink-muted: #9a9a8e; --line: #232419;
+    --accent: #c6ff4d; --accent-dim: #8fbf2f;
+    --serif-display: 'Syne', sans-serif; --sans: 'Inter', sans-serif;
+    --max: 1180px; --max-article: 780px; --gap: clamp(1.25rem, 3vw, 2.5rem);
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{ margin:0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a{ color: inherit; text-decoration: none; }
+  img{ max-width: 100%; display:block; }
+  ::selection{ background: var(--accent); color: #0c0d0a; }
+  .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 var(--gap); }
+  .article{ max-width: var(--max-article); margin: 0 auto; padding: 0 var(--gap); }
+  .cursor{ position: fixed; top:0; left:0; width: 10px; height:10px; border-radius: 50%; background: var(--accent); pointer-events: none; z-index: 999; transform: translate(-50%,-50%); transition: width .25s ease, height .25s ease, background .25s ease; mix-blend-mode: difference; }
+  .cursor.hovering{ width: 44px; height:44px; background: var(--ink); }
+  @media (hover:none), (pointer:coarse){ .cursor{ display:none; } }
+  @media (prefers-reduced-motion: reduce){ .cursor{ display:none; } }
+  header{ position: fixed; top:0; left:0; right:0; z-index: 50; padding: 1rem 0; background: rgba(12,13,10,0.86); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  nav{ display:flex; align-items:center; justify-content: space-between; }
+  .wordmark{ font-family: var(--serif-display); font-weight: 700; font-size: 1.15rem; }
+  .back-link{ font-size: 0.88rem; color: var(--ink-muted); }
+  .back-link:hover{ color: var(--accent); }
+  .hero{ padding: 8.5rem 0 3rem; }
+  .cat{ font-size: 0.92rem; color: var(--accent); font-weight: 500; margin: 0 0 1rem; }
+  h1{ font-family: var(--serif-display); font-weight: 800; font-size: clamp(2.2rem, 5.4vw, 4rem); line-height: 1.05; letter-spacing: -0.015em; margin: 0 0 1.4rem; max-width: 18ch; }
+  .hero-desc{ max-width: 62ch; font-size: 1.15rem; color: var(--ink-muted); margin: 0 0 2rem; }
+  .tags{ display:flex; gap: 0.6rem; flex-wrap:wrap; margin-bottom: 2.4rem; }
+  .tag{ font-size: 0.8rem; border: 1px solid var(--line); padding: 0.3rem 0.7rem; border-radius: 999px; color: var(--ink-muted); }
+  .meta-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 1.6rem 0; margin: 0 0 4rem; }
+  .meta-grid div span{ display:block; color: var(--ink-muted); font-size: 0.78rem; margin-bottom: .35rem; }
+  .meta-grid div strong{ font-family: var(--serif-display); font-weight: 700; font-size: 1rem; }
+  @media (max-width: 700px){ .meta-grid{ grid-template-columns: repeat(2,1fr); } }
+  .hero-visual{ aspect-ratio: 21/9; border: 1px solid var(--line); background: var(--bg-raised); display:flex; align-items:center; justify-content:center; margin-bottom: 5rem; }
+  .hero-visual svg{ width: 46%; max-width: 420px; }
+  section{ padding: 3.4rem 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  .label{ font-family: var(--serif-display); font-weight: 700; font-size: 1.5rem; margin: 0 0 1.4rem; }
+  .article p{ font-size: 1.05rem; color: var(--ink-muted); margin: 0 0 1.2rem; }
+  .article p strong{ color: var(--ink); font-weight: 600; }
+  .process-step{ display:grid; grid-template-columns: 70px 1fr; gap: 1.6rem; margin-bottom: 2.2rem; }
+  .process-step .step-num{ font-family: var(--serif-display); font-size: 1.6rem; font-weight: 700; color: var(--ink-muted); }
+  .process-step h4{ font-family: var(--serif-display); font-size: 1.15rem; margin: 0 0 0.5rem; }
+  .process-step p{ margin:0 0 0.6rem; font-size: 0.98rem; color: var(--ink-muted); }
+  .sub-block{ margin-bottom: 0.8rem; }
+  .sub-block h5{ font-family: var(--serif-display); font-size: 0.95rem; margin: 0 0 0.3rem; color: var(--ink); }
+  .sub-block p{ margin:0; font-size: 0.95rem; }
+  .bm-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-top: 1rem; }
+  .bm-card{ border: 1px solid var(--line); padding: 1.2rem; }
+  .bm-card h5{ font-family: var(--serif-display); font-size: 0.95rem; margin: 0 0 .5rem; }
+  .bm-card p{ font-size: 0.88rem; margin:0; }
+  @media (max-width:760px){ .bm-grid{ grid-template-columns: 1fr; } }
+  .insight-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: 1.6rem; }
+  .insight-card{ border: 1px solid var(--line); padding: 1.5rem; }
+  .insight-card h4{ font-family: var(--serif-display); font-size: 1.0rem; margin: 0 0 0.7rem; }
+  .insight-card p{ font-size: 0.9rem; margin:0; color: var(--ink-muted); }
+  @media (max-width: 760px){ .insight-grid{ grid-template-columns: 1fr; } }
+  .impact-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 1.8rem; }
+  .impact-grid.cols-3{ grid-template-columns: repeat(3, 1fr); }
+  .impact-card{ border-top: 1px solid var(--line); padding-top: 1.3rem; }
+  .impact-card .metric{ font-family: var(--serif-display); font-weight: 800; font-size: clamp(2rem, 4.6vw, 2.8rem); color: var(--accent); line-height: 1.05; margin-bottom: .7rem; letter-spacing: -0.01em; }
+  .impact-card p{ margin:0; font-size: 0.92rem; color: var(--ink-muted); max-width: 26ch; }
+  @media (max-width: 900px){ .impact-grid, .impact-grid.cols-3{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 560px){ .impact-grid, .impact-grid.cols-3{ grid-template-columns: 1fr; } }
+  .next-project{ display:flex; justify-content:space-between; align-items:center; padding: 3rem 0; flex-wrap: wrap; gap: 1rem; }
+  .next-project .label-sm{ font-size: 0.85rem; color: var(--ink-muted); margin-bottom: .4rem; }
+  .next-project h3{ font-family: var(--serif-display); font-size: 1.6rem; margin:0; }
+  footer{ border-top: 1px solid var(--line); padding: clamp(3rem, 6vw, 5rem) 0 2.4rem; }
+  .contact-head{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap: 1.5rem; margin-bottom: 2.5rem; }
+  .contact-head h2{ font-family: var(--serif-display); font-size: clamp(1.8rem, 4vw, 2.8rem); margin:0; max-width: 14ch; font-weight: 800; }
+  .contact-cta{ font-size: 1rem; border-bottom: 1px solid var(--accent); padding-bottom: 3px; white-space: nowrap; }
+  .foot-bottom{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap: 1rem; font-size: 0.85rem; color: var(--ink-muted); border-top: 1px solid var(--line); padding-top: 1.6rem; }
+  .foot-bottom .social{ display:flex; gap:1.4rem; }
+  .foot-bottom a:hover{ color: var(--ink); }
+  :focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="index.html" class="wordmark">Guille</a>
+      <div class="navlinks"><a href="index.html#work" class="back-link">← All work</a></div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero wrap">
+    <p class="cat">Design systems · Enterprise</p>
+    <h1>ExxonMobil Design System</h1>
+    <p class="hero-desc">A standardized set of reusable components, guidelines and patterns for ExxonMobil's internal digital platforms — built for consistency, accessibility and efficiency across applications used by employees worldwide.</p>
+    <div class="tags">
+      <span class="tag">Product design</span>
+      <span class="tag">UX/UI</span>
+      <span class="tag">UI</span>
+    </div>
+    <div class="meta-grid">
+      <div><span>Role</span><strong>UX/UI designer</strong></div>
+      <div><span>Platforms</span><strong>Desktop, tablet, mobile</strong></div>
+      <div><span>Timeline</span><strong>May 2022 – Mar 2023</strong></div>
+      <div><span>Scale</span><strong>Global, thousands of employees</strong></div>
+    </div>
+    <div class="hero-visual">
+      <svg viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="30" y="24" width="90" height="42" rx="4" stroke="#c6ff4d" stroke-width="2"/>
+        <rect x="140" y="24" width="140" height="18" rx="4" stroke="#f2f1ea" stroke-width="2"/>
+        <rect x="140" y="54" width="90" height="18" rx="4" stroke="#f2f1ea" stroke-width="2"/>
+        <rect x="30" y="90" width="250" height="18" rx="9" stroke="#c6ff4d" stroke-width="2"/>
+        <rect x="30" y="122" width="110" height="30" rx="4" stroke="#f2f1ea" stroke-width="2"/>
+        <rect x="155" y="122" width="125" height="30" rx="4" stroke="#f2f1ea" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="article">
+    <section>
+      <h2 class="label">Overview</h2>
+      <p>I was part of the team migrating ExxonMobil's design tooling from Adobe XD to Figma, which meant streamlining collaboration between designers and developers from the ground up. To make the migration actually stick, I built a comprehensive guide that unified workflows and served as a single source of truth for design standards.</p>
+      <p>Working inside Agile squads, I partnered directly with developers, product owners and stakeholders to validate feasibility and keep the system consistent. I also ran user and stakeholder interviews, plus usability testing, to catch gaps and refine components against real-world use.</p>
+    </section>
+
+    <section>
+      <h2 class="label">The problem</h2>
+      <p>ExxonMobil ran on multiple internal digital platforms, but with no unified design system behind them — which meant inconsistencies, duplicated design and engineering effort, and accessibility gaps. The design team needed something scalable: a system that could improve collaboration, hold visual consistency, and streamline workflows across global teams.</p>
+    </section>
+
+    <section>
+      <h2 class="label">Process</h2>
+      <div class="process-step">
+        <span class="step-num">01</span>
+        <div>
+          <h4>Benchmark</h4>
+          <div class="bm-grid">
+            <div class="bm-card"><h5>Direct competitors</h5><p>Reviewed whether other global oil &amp; gas companies had public or internal design guidelines, with an eye on consistency, accessibility and tone.</p></div>
+            <div class="bm-card"><h5>Best-in-class systems</h5><p>Studied mature systems like IBM Carbon, Google Material, Atlassian and Microsoft Fluent for documentation style, governance models, accessibility standards and component scalability.</p></div>
+            <div class="bm-card"><h5>Approach comparison</h5><p>Weighed rigid, brand-driven consistency against systems that leave room for local or product-specific adaptation.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="step-num">02</span>
+        <div>
+          <h4>Execution</h4>
+          <div class="sub-block">
+            <h5>Audit &amp; migration</h5>
+            <p>Reviewed the existing Adobe XD components, flagged inconsistencies, and rebuilt them as scalable, reusable Figma components backed by design tokens for color, grid and typography.</p>
+          </div>
+          <div class="sub-block">
+            <h5>Collaboration &amp; documentation</h5>
+            <p>Wrote a comprehensive guide covering usage, accessibility rules and best practices, so designers and developers were finally working from a shared language.</p>
+          </div>
+          <div class="sub-block">
+            <h5>Validation</h5>
+            <p>Ran usability testing and stakeholder interviews to validate components, and worked with developers throughout to keep everything feasible and aligned with the code libraries.</p>
+          </div>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="step-num">03</span>
+        <div>
+          <h4>Insights</h4>
+          <p>The work improved cross-team efficiency, cut down inconsistencies, and raised the accessibility and usability bar across ExxonMobil's internal applications — directly supporting thousands of employees worldwide.</p>
+        </div>
+      </div>
+      <div class="insight-grid">
+        <div class="insight-card">
+          <h4>Document the "what" and the "how"</h4>
+          <p>Designers, developers and stakeholders only stay aligned when documentation covers both what a component is and how to actually use it.</p>
+        </div>
+        <div class="insight-card">
+          <h4>Tokens over fixed values</h4>
+          <p>Figma variables for color, typography and spacing gave the system the flexibility to iterate fast without breaking consistency.</p>
+        </div>
+        <div class="insight-card">
+          <h4>Responsive by default</h4>
+          <p>Every component needed to hold up across screen sizes and devices without a separate design pass each time.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="label">Impact</h2>
+      <div class="impact-grid">
+        <div class="impact-card">
+          <div class="metric">11</div>
+          <p>New reusable components as the foundation of the design system.</p>
+        </div>
+        <div class="impact-card">
+          <div class="metric">5</div>
+          <p>Reusable templates that made future landing-page design faster and more consistent.</p>
+        </div>
+        <div class="impact-card">
+          <div class="metric">23</div>
+          <p>New landing pages built on the system, across teams in Buenos Aires, Canada and the US.</p>
+        </div>
+        <div class="impact-card">
+          <div class="metric">AAA</div>
+          <p>Accessibility standard the system was tested against, while improving consistency and reducing errors.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <a href="index.html#work" class="next-project">
+      <div><p class="label-sm">Back to</p><h3>All work</h3></div>
+      <span class="project-link" style="border-bottom:1px solid var(--accent); padding-bottom:2px;">View selected work →</span>
+    </a>
+  </div>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="contact-head">
+      <h2>Let's talk about what you're building.</h2>
+      <a href="mailto:guillerminacaride@gmail.com" class="contact-cta">guillerminacaride@gmail.com</a>
+    </div>
+    <div class="foot-bottom">
+      <span>Guille — Product &amp; UX/UI Designer, Barcelona</span>
+      <div class="social"><a href="https://linkedin.com/in/guillermina-caride-urruty">LinkedIn</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) {
+    window.addEventListener('mousemove', (e) => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+    document.querySelectorAll('a').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+    });
+  }
+</script>
+
+</body>
+</html>

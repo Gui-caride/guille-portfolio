@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guille — Product &amp; UX/UI Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0c0d0a;
+    --bg-raised: #121309;
+    --ink: #f2f1ea;
+    --ink-muted: #9a9a8e;
+    --line: #232419;
+    --accent: #c6ff4d;
+    --accent-dim: #8fbf2f;
+    --serif-display: 'Syne', sans-serif;
+    --sans: 'Inter', sans-serif;
+    --max: 1180px;
+    --gap: clamp(1.25rem, 3vw, 2.5rem);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+  img{ max-width: 100%; display:block; }
+
+  ::selection{ background: var(--accent); color: #0c0d0a; }
+
+  .wrap{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--gap);
+  }
+
+  /* Cursor */
+  .cursor{
+    position: fixed;
+    top:0; left:0;
+    width: 10px; height:10px;
+    border-radius: 50%;
+    background: var(--accent);
+    pointer-events: none;
+    z-index: 999;
+    transform: translate(-50%,-50%);
+    transition: width .25s ease, height .25s ease, background .25s ease, opacity .2s ease;
+    mix-blend-mode: difference;
+  }
+  .cursor.hovering{
+    width: 44px; height:44px;
+    background: var(--ink);
+  }
+  @media (hover:none), (pointer:coarse){ .cursor{ display:none; } }
+  @media (prefers-reduced-motion: reduce){ .cursor{ display:none; } }
+
+  /* Nav */
+  header{
+    position: fixed;
+    top:0; left:0; right:0;
+    z-index: 50;
+    padding: 1.4rem 0;
+    transition: background .35s ease, border-color .35s ease, padding .35s ease;
+    border-bottom: 1px solid transparent;
+  }
+  header.scrolled{
+    background: rgba(12,13,10,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    padding: 1rem 0;
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+  }
+  .wordmark{
+    font-family: var(--serif-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+  }
+  .navlinks{
+    display:flex;
+    gap: clamp(1.2rem, 2vw, 2.2rem);
+    font-size: 0.92rem;
+    color: var(--ink-muted);
+  }
+  .navlinks a{ position:relative; padding: 0.2rem 0; }
+  .navlinks a:hover{ color: var(--ink); }
+  .navlinks a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:-2px;
+    width:0; height:1px;
+    background: var(--accent);
+    transition: width .25s ease;
+  }
+  .navlinks a:hover::after{ width:100%; }
+
+  /* Hero */
+  .hero{
+    min-height: 100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+  }
+  .eyebrow{
+    font-size: 0.92rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin: 0 0 1.4rem;
+    letter-spacing: 0.01em;
+  }
+  h1{
+    font-family: var(--serif-display);
+    font-weight: 800;
+    font-size: clamp(2.6rem, 6.4vw, 5.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    margin: 0 0 1.8rem;
+    max-width: 15ch;
+  }
+  .hero-line{
+    overflow: hidden;
+  }
+  .hero-line span{
+    display:block;
+    transform: translateY(115%);
+    animation: rise 0.9s cubic-bezier(.22,1,.36,1) forwards;
+  }
+  .hero-line:nth-child(1) span{ animation-delay: .05s; }
+  .hero-line:nth-child(2) span{ animation-delay: .18s; }
+  @keyframes rise{ to{ transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce){
+    .hero-line span{ animation:none; transform:none; }
+  }
+
+  .hero-sub{
+    max-width: 46ch;
+    font-size: 1.15rem;
+    color: var(--ink-muted);
+    margin: 0 0 2.4rem;
+  }
+  .hero-meta{
+    display:flex;
+    gap: 2.4rem;
+    flex-wrap: wrap;
+    font-size: 0.88rem;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--line);
+    padding-top: 1.4rem;
+    max-width: 640px;
+  }
+  .hero-meta div span{ display:block; color: var(--ink); font-family: var(--serif-display); font-size:1rem; margin-bottom: .2rem; }
+
+  /* Section shared */
+  section{ padding: clamp(4rem, 8vw, 7rem) 0; }
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap: 1.5rem;
+    margin-bottom: clamp(2rem, 4vw, 3.2rem);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1.4rem;
+  }
+  .section-head h2{
+    font-family: var(--serif-display);
+    font-weight: 700;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin:0;
+  }
+  .section-head p{
+    color: var(--ink-muted);
+    margin:0;
+    max-width: 34ch;
+    font-size: 0.95rem;
+  }
+
+  /* Project cards */
+  .work-list{ display:flex; flex-direction:column; }
+  .project{
+    display:grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items:center;
+    padding: clamp(2rem, 4vw, 3rem) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .project:first-child{ padding-top:0; }
+  .project-info .cat{
+    font-size: 0.82rem;
+    color: var(--accent-dim);
+    margin: 0 0 0.8rem;
+    font-weight: 500;
+  }
+  .project-info h3{
+    font-family: var(--serif-display);
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    margin: 0 0 0.9rem;
+    font-weight: 700;
+  }
+  .project-info p{
+    color: var(--ink-muted);
+    max-width: 46ch;
+    margin: 0 0 1.2rem;
+    font-size: 0.98rem;
+  }
+  .badge{
+    display:inline-block;
+    font-size: 0.78rem;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    margin-bottom: 1.2rem;
+  }
+  .project-link{
+    font-size: 0.92rem;
+    color: var(--ink);
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px;
+    display:inline-block;
+  }
+  .project-visual{
+    aspect-ratio: 4/3;
+    border: 1px solid var(--line);
+    background: var(--bg-raised);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    position:relative;
+  }
+  .project-visual svg{ width:78%; height:78%; }
+  .project:hover .project-visual{ border-color: var(--accent-dim); }
+  .project-visual{ transition: border-color .3s ease; }
+
+  @media (max-width: 760px){
+    .project{ grid-template-columns: 1fr; }
+    .project-visual{ order:-1; }
+  }
+
+  /* About */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+  .about-grid p{
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    max-width: 52ch;
+    margin: 0 0 1.2rem;
+  }
+  .about-grid p:first-child{ color: var(--ink); font-size: 1.2rem; }
+
+  /* Contact / footer */
+  footer{
+    border-top: 1px solid var(--line);
+    padding: clamp(3rem, 6vw, 5rem) 0 2.4rem;
+  }
+  .contact-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .contact-head h2{
+    font-family: var(--serif-display);
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    margin:0;
+    max-width: 14ch;
+    font-weight: 800;
+  }
+  .contact-cta{
+    font-size: 1rem;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 3px;
+    white-space: nowrap;
+  }
+  .foot-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--line);
+    padding-top: 1.6rem;
+  }
+  .foot-bottom .social{ display:flex; gap:1.4rem; }
+  .foot-bottom a:hover{ color: var(--ink); }
+
+  :focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<header id="siteHeader">
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="wordmark">Guille</a>
+      <div class="navlinks">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <p class="eyebrow">Questions before solutions</p>
+    <h1>
+      <span class="hero-line"><span>Most problems</span></span>
+      <span class="hero-line"><span>aren't UI problems.</span></span>
+    </h1>
+    <p class="hero-sub">I'm Guille — a UX/UI Designer at DDB in Barcelona, six years in, now moving toward Product Design: earlier involvement, better questions, and staying close to how something actually gets built.</p>
+    <div class="hero-meta">
+      <div><span>Currently</span>DDB, Barcelona</div>
+      <div><span>Focus</span>Product design, systems, ecommerce</div>
+      <div><span>Moving toward</span>End-to-end product work</div>
+    </div>
+  </section>
+
+  <section id="work" class="wrap">
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <p>A curated set — the full project library has more.</p>
+    </div>
+
+    <div class="work-list">
+
+      <article class="project">
+        <div class="project-info">
+          <p class="cat">Product</p>
+          <h3>Tugo</h3>
+          <span class="badge">ELISAVA Master Awards 2025</span>
+          <p>End-to-end product design for children with chronic illnesses, like type 1 diabetes, and their families — usable at home or on the go.</p>
+          <p class="card-meta"><strong>Role:</strong> Research, UX, design system, implementation &nbsp;·&nbsp; <strong>34</strong> components</p>
+          <a href="tugo.html" class="project-link">View case study</a>
+        </div>
+        <div class="project-visual">
+          <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="0,80 30,80 42,40 55,110 68,60 80,80 200,80" stroke="#c6ff4d" stroke-width="2" fill="none"/>
+            <circle cx="42" cy="40" r="3" fill="#f2f1ea"/>
+            <circle cx="55" cy="110" r="3" fill="#f2f1ea"/>
+          </svg>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-info">
+          <p class="cat">Design Systems · Large-scale</p>
+          <h3>Volkswagen</h3>
+          <span class="badge">Ongoing — Feb 2026</span>
+          <p>A scalable landing-page system for ongoing Volkswagen campaigns — built so each campaign keeps its own approach without repeating design work.</p>
+          <p class="card-meta"><strong>Role:</strong> UX/UI designer &nbsp;·&nbsp; <strong>10</strong> templates · <strong>16</strong> pages · <strong>+12%</strong> engagement</p>
+          <a href="volkswagen.html" class="project-link">View case study</a>
+        </div>
+        <div class="project-visual">
+          <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="65" cy="95" r="16" stroke="#c6ff4d" stroke-width="2"/>
+            <circle cx="135" cy="95" r="16" stroke="#c6ff4d" stroke-width="2"/>
+            <path d="M38 87 L56 52 H144 L162 87" stroke="#f2f1ea" stroke-width="2" fill="none"/>
+            <path d="M38 87 H162" stroke="#f2f1ea" stroke-width="2"/>
+          </svg>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-info">
+          <p class="cat">Ecommerce · Strategy &amp; experimentation</p>
+          <h3>Frøya</h3>
+          <p>Ecommerce strategy and product-page optimisation for Frøya Organics — journey analysis and A/B testing informing every decision.</p>
+          <p class="card-meta"><strong>Role:</strong> UX/UI &amp; ecommerce strategy &nbsp;·&nbsp; <strong>+18%</strong> sales</p>
+          <a href="froya.html" class="project-link">View case study</a>
+        </div>
+        <div class="project-visual">
+          <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 120 H180" stroke="#f2f1ea" stroke-width="1.5"/>
+            <path d="M20 120 L55 60 L90 95 L125 40 L160 120" stroke="#c6ff4d" stroke-width="2.5" fill="none"/>
+            <circle cx="55" cy="60" r="4" fill="#f2f1ea"/>
+            <circle cx="125" cy="40" r="4" fill="#f2f1ea"/>
+          </svg>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-info">
+          <p class="cat">Ecommerce · UX &amp; purchase journey</p>
+          <h3>Null Wines</h3>
+          <p>UX, accessibility and purchase-journey work across Null Wines' landing experience, search and product discovery.</p>
+          <p class="card-meta"><strong>Role:</strong> UX/UI designer &nbsp;·&nbsp; <strong>32%→19%</strong> users lost</p>
+          <a href="null-wines.html" class="project-link">View case study</a>
+        </div>
+        <div class="project-visual">
+          <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M60 20 L60 80 Q60 105 80 105 H120 Q140 105 140 80 V20" stroke="#c6ff4d" stroke-width="2.5" fill="none"/>
+            <path d="M60 20 H140" stroke="#c6ff4d" stroke-width="2.5"/>
+            <path d="M100 105 V125" stroke="#f2f1ea" stroke-width="2"/>
+            <path d="M78 125 H122" stroke="#f2f1ea" stroke-width="2"/>
+          </svg>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="library-cta">
+      <a href="work.html" class="project-link">View the full project library →</a>
+    </div>
+  </section>
+
+  <section id="about" class="wrap">
+    <div class="section-head">
+      <h2>About</h2>
+      <p>&nbsp;</p>
+    </div>
+    <div class="about-grid">
+      <p>Six years into agency work, I'm moving toward strategic, end-to-end product design — the kind where I stay involved past the handoff to see how something actually gets built and used.</p>
+      <p>My work spans product, ecommerce, email marketing strategy and design systems. What stays consistent is the instinct to question the problem before jumping to a solution, and an interest in working closely with the people who build what I design.</p>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="contact-head">
+      <h2>Let's talk about what you're building.</h2>
+      <a href="mailto:guillerminacaride@gmail.com" class="contact-cta">guillerminacaride@gmail.com</a>
+    </div>
+    <div class="foot-bottom">
+      <span>Guille — Product &amp; UX/UI Designer, Barcelona</span>
+      <div class="social">
+        <a href="https://linkedin.com/in/guillermina-caride-urruty">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) {
+    window.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, .project').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+    });
+  }
+
+  // Header scroll state
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+</script>
+
+</body>
+</html>
