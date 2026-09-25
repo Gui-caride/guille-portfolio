@@ -1,0 +1,162 @@
+/*
+ * Portfolio design system
+ * Source: 01 — DESIGN SYSTEM in the Portfolio Figma file.
+ */
+:root {
+  --color-background: #0c0d0a;
+  --color-surface: #121309;
+  --color-text-primary: #f2f1ea;
+  --color-text-secondary: #9a9a8e;
+  --color-border: #232419;
+  --color-accent: #c6ff4d;
+  --color-accent-muted: #8fbf2f;
+  --color-focus: #c6ff4d;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  --radius-card: 0;
+  --radius-pill: 999px;
+  --border-default: 1px solid var(--color-border);
+  --content-max: 1180px;
+  --article-max: 780px;
+  --content-gutter: clamp(1.25rem, 3vw, 2.5rem);
+  --motion-standard: 250ms ease;
+
+  /* Backwards-compatible aliases used by the existing pages. */
+  --bg: var(--color-background);
+  --bg-raised: var(--color-surface);
+  --ink: var(--color-text-primary);
+  --ink-muted: var(--color-text-secondary);
+  --muted: var(--color-text-secondary);
+  --line: var(--color-border);
+  --accent: var(--color-accent);
+  --accent-dim: var(--color-accent-muted);
+  --serif-display: var(--font-display);
+  --sans: var(--font-body);
+  --max: var(--content-max);
+  --max-article: var(--article-max);
+  --article: var(--article-max);
+  --gap: var(--content-gutter);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--motion-standard);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-background);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--content-gutter);
+}
+
+.article {
+  max-width: var(--article-max);
+  margin-inline: auto;
+  padding-inline: var(--content-gutter);
+}
+
+header {
+  border-bottom-color: var(--color-border);
+}
+
+.wordmark,
+h1,
+h2,
+h3,
+h4,
+.label,
+.metric,
+.step-num,
+.flow {
+  font-family: var(--font-display);
+}
+
+.navlinks a:hover,
+.back-link:hover,
+.external-link:hover,
+.project-link:hover {
+  color: var(--color-accent);
+}
+
+.tag,
+.status {
+  border-radius: var(--radius-pill);
+}
+
+.external-link,
+.lib-card,
+.persona-card,
+.recommendation,
+.impact-card,
+.bring-card,
+.trait,
+.note {
+  border-color: var(--color-border);
+  background: var(--color-surface);
+}
+
+.external-link,
+.project-link,
+.contact-cta,
+.cta {
+  transition: color var(--motion-standard), border-color var(--motion-standard);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .wrap,
+  .article {
+    padding-inline: 1.25rem;
+  }
+}

@@ -1,6 +1,18 @@
 # Guille — Portfolio
 
-Static multi-page portfolio site. No build step — every page is a self-contained HTML file (inline CSS/JS, Google Fonts only external dependency).
+Static multi-page portfolio site. No build step — every page is a self-contained HTML file with a shared design-system stylesheet and page-specific CSS. Google Fonts is the only external dependency.
+
+## Design system
+
+The shared visual foundation lives in [`styles/design-system.css`](./styles/design-system.css). It is based on the `01 — DESIGN SYSTEM` page in the Portfolio Figma file and defines:
+
+- Syne display typography and Inter body typography
+- Background, surface, text, border and lime accent tokens
+- 4px-based spacing tokens from 4px through 96px
+- Content and article widths, responsive gutters and pill/card radii
+- Shared focus, selection, motion and reduced-motion behaviour
+
+Page-specific styles can still extend the shared primitives, but should use these tokens instead of introducing new colours or typography values.
 
 ## Pages
 - `index.html` — homepage, curated selection of 3 projects
