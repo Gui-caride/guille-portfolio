@@ -5,7 +5,7 @@ Static multi-page portfolio site. No build step — every page is a self-contain
 ## Pages
 - `index.html` — homepage, curated selection of 4 projects
 - `work.html` — full project library (all projects, grouped by category, data-driven from a JS array at the top of the file)
-- `tugo.html`, `standard.html`, `marea-verde.html`, `volkswagen.html`, `froya.html`, `null-wines.html`, `froken-dianas-salonger.html` — case studies
+- `tugo.html`, `standard.html`, `marea-verde.html`, `volkswagen.html`, `froya.html`, `null-wines.html`, `froken-dianas-salonger.html`, `goodlight.html` — case studies
 
 ## Adding a new project
 1. Add a new case-study HTML file (copy an existing one as a starting template — they all share the same CSS tokens).
