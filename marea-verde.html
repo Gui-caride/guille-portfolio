@@ -43,6 +43,12 @@
   @media (max-width: 700px){ .meta-grid{ grid-template-columns: repeat(2,1fr); } }
   .hero-visual{ aspect-ratio: 21/9; border: 1px solid var(--line); background: var(--bg-raised); display:flex; align-items:center; justify-content:center; margin-bottom: 5rem; }
   .hero-visual svg{ width: 30%; max-width: 260px; }
+  .hero-visual img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+  .case-study-gallery{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: -2rem 0 3rem; }
+  .case-study-gallery figure{ margin:0; }
+  .case-study-gallery img{ width:100%; aspect-ratio: 16/10; object-fit:cover; display:block; border:1px solid var(--line); }
+  .case-study-gallery figcaption{ color: var(--ink-muted); font-size:.8rem; margin-top:.5rem; }
+  @media (max-width: 700px){ .case-study-gallery{ grid-template-columns:1fr; } }
   .external-links{ display:flex; flex-wrap:wrap; gap: 0.8rem; margin: 0 0 2.2rem; }
   .external-link{ display:inline-flex; align-items:center; min-height: 2.7rem; padding: 0.65rem 1rem; border: 1px solid var(--line); color: var(--ink); font-size: 0.88rem; font-weight: 600; transition: border-color .2s ease, color .2s ease; }
   .external-link:hover{ border-color: var(--accent); color: var(--accent); }
@@ -128,16 +134,17 @@
       <div><span>Focus</span><strong>Pre/post-purchase journey</strong></div>
     </div>
     <div class="hero-visual">
-      <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M100 150 V70" stroke="#c6ff4d" stroke-width="2.5"/>
-        <path d="M100 100 C78 88, 66 58, 84 34" stroke="#c6ff4d" stroke-width="2.5" fill="none"/>
-        <path d="M100 84 C124 72, 136 42, 118 18" stroke="#c6ff4d" stroke-width="2.5" fill="none"/>
-        <path d="M100 66 C93 48, 74 40, 60 45" stroke="#f2f1ea" stroke-width="1.8" fill="none"/>
-        <ellipse cx="100" cy="153" rx="38" ry="6" stroke="#f2f1ea" stroke-width="1.8"/>
-      </svg>
+      <img src="img/marea-verde/mare-verde.jpg" alt="Marea Verde digital plant platform hero image" loading="eager">
     </div>
     <div class="external-links">
       <a class="external-link" href="https://youtu.be/dEZcieTOKY4" target="_blank" rel="noreferrer noopener">Watch project video ↗</a>
+    </div>
+    <div class="case-study-gallery">
+      <figure><img src="img/marea-verde/mare-verde-1.jpg" alt="Marea Verde mobile and desktop interfaces" loading="lazy"><figcaption>Mobile and desktop platform views</figcaption></figure>
+      <figure><img src="img/marea-verde/mare-verde-2.jpg" alt="Marea Verde plant care mobile interface" loading="lazy"><figcaption>Plant care interface</figcaption></figure>
+      <figure><img src="img/marea-verde/mare-verde-3.jpg" alt="Marea Verde plant catalogue on a laptop" loading="lazy"><figcaption>Plant catalogue experience</figcaption></figure>
+      <figure><img src="img/marea-verde/mare-verde-4.jpg" alt="Marea Verde responsive plant shopping experience" loading="lazy"><figcaption>Responsive shopping experience</figcaption></figure>
+      <figure><img src="img/marea-verde/mockup-marea-verde-2.jpg" alt="Marea Verde plant detail page mockup" loading="lazy"><figcaption>Plant detail page mockup</figcaption></figure>
     </div>
   </div>
 

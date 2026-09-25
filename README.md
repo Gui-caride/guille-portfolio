@@ -24,4 +24,4 @@ Any static host works (GitHub Pages, Netlify, Vercel). For GitHub Pages: push th
 
 ## Adding case-study images and links
 
-Keep project assets in the repository root with a project-specific name, such as `tugo-hero.jpg` or `tugo-screen-01.jpg`. Reference local assets from the relevant case-study HTML with a relative path. Prototype and video buttons should only be added once the final URLs are available.
+Keep project assets in the `img/` directory, inside a folder named for the relevant case study. Files without a number are hero images, such as `img/tugo/tugo-hero.jpg`; numbered files are supporting images, such as `img/tugo/tugo-screen-01.jpg`. Reference local assets from the relevant case-study HTML with a relative path. Prototype and video buttons should only be added once the final URLs are available.
