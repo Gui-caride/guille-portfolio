@@ -43,6 +43,7 @@
   @media (max-width: 700px){ .meta-grid{ grid-template-columns: repeat(2,1fr); } }
   .hero-visual{ aspect-ratio: 21/9; border: 1px solid var(--line); background: var(--bg-raised); display:flex; align-items:center; justify-content:center; margin-bottom: 5rem; }
   .hero-visual svg{ width: 30%; max-width: 240px; }
+  .hero-visual img{ width: 100%; height: 100%; object-fit: cover; display: block; }
   section{ padding: 3.4rem 0; border-bottom: 1px solid var(--line); }
   section:last-of-type{ border-bottom:none; }
   .label{ font-family: var(--serif-display); font-weight: 700; font-size: 1.5rem; margin: 0 0 1.4rem; }
@@ -100,12 +101,7 @@
       <div><span>Client</span><strong>Null Wines</strong></div>
     </div>
     <div class="hero-visual">
-      <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M60 30 L60 90 Q60 115 80 115 H120 Q140 115 140 90 V30" stroke="#c6ff4d" stroke-width="2.5" fill="none"/>
-        <path d="M60 30 H140" stroke="#c6ff4d" stroke-width="2.5"/>
-        <path d="M100 115 V140" stroke="#f2f1ea" stroke-width="2"/>
-        <path d="M78 140 H122" stroke="#f2f1ea" stroke-width="2"/>
-      </svg>
+      <img src="img/null-wines/null.jpg" alt="Null Wines bottle hero image" loading="eager">
     </div>
   </div>
 
