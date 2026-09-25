@@ -63,7 +63,7 @@
 <div class="wrap hero">
   <p class="eyebrow">Project library</p>
   <h1>Everything I've worked on, organized by type.</h1>
-  <p>The homepage shows a curated selection. This is the full list — new projects get added here first, categorized and marked by status, before some of them ever make it to the homepage.</p>
+  <p>The homepage is a curated selection. This library contains the broader range of projects, organised by product type and discipline.</p>
 </div>
 
 <div class="wrap" id="lib-root"></div>
@@ -88,9 +88,9 @@
       summary:"Component system and interface covering the complete plant-buying user flow.",
       role:"UX/UI designer", metric:"31 components · 8 screens", href:"marea-verde.html" },
 
-    { id:"volkswagen", title:"Volkswagen", category:"Large-scale / Enterprise", status:"Featured", image:"img/volkswagen/volkswagen-hero.jpeg",
+    { id:"volkswagen", title:"Volkswagen", category:"UX/UI · Automotive", status:"Featured", image:"img/volkswagen/volkswagen-hero.jpeg",
       summary:"Scalable landing-page design system for ongoing campaigns.",
-      role:"UX/UI designer", metric:"10 templates · 16 pages · +12% engagement", href:"volkswagen.html" },
+      role:"UX/UI designer", metric:"10 templates · 16 pages", href:"volkswagen.html" },
 
     { id:"froya", title:"Frøya", category:"Ecommerce", status:"Featured", image:"img/froya/froya-hero.webp",
       summary:"Ecommerce strategy and product-page optimisation.",
@@ -98,7 +98,7 @@
 
     { id:"null-wines", title:"Null Wines", category:"Ecommerce", status:"Featured", image:"img/null-wines/null.jpg",
       summary:"UX, accessibility and purchase-journey work.",
-      role:"UX/UI designer", metric:"32%→19% users lost", href:"null-wines.html" },
+      role:"UX/UI designer",       metric:"32%→19% purchase drop-off", href:"null-wines.html" },
 
     { id:"froken-dianas", title:"Fröken Dianas Salonger", category:"Ecommerce", status:"Supporting", image:"img/froken-dianas-salonger/froken-dianas-solanger-hero.png",
       summary:"Landing pages, email marketing and content — an ongoing relationship.",
@@ -109,7 +109,7 @@
       role:"UX/UI designer", metric:"Ecommerce experience", href:"goodlight.html" },
   ];
 
-  const categoryOrder = ["Product", "Design Systems", "Large-scale / Enterprise", "Ecommerce", "Personal"];
+  const categoryOrder = ["Product", "Design Systems", "UX/UI · Automotive", "Ecommerce", "Personal"];
 
   const root = document.getElementById('lib-root');
   categoryOrder.forEach(cat => {
