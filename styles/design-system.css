@@ -1,18 +1,33 @@
 /*
  * Portfolio design system
- * Source: 01 — DESIGN SYSTEM in the Portfolio Figma file.
+ * Experimental palette supplied for the portfolio color exploration.
  */
 :root {
-  --color-background: #0c0d0a;
-  --color-surface: #121309;
-  --color-text-primary: #f2f1ea;
-  --color-text-secondary: #9a9a8e;
-  --color-border: #232419;
-  --color-accent: #c6ff4d;
-  --color-accent-muted: #8fbf2f;
-  --color-focus: #c6ff4d;
+  --color-background: #ffffff;
+  --color-surface: #f7f9fb;
+  --color-text-primary: #1e3d59;
+  --color-text-secondary: #48749e;
+  --color-border: #e8ebef;
+  --color-accent: #cd4900;
+  --color-accent-muted: #cd4900;
+  --color-orange: #fa9819;
+  --color-focus: #48749e;
+  --color-blue-tint: #b6c9cf;
+  --color-baby-blue: #c6ebf7;
+  --color-sky-blue: #deeeFE;
+  --color-off-blue: #e8ebef;
+  --color-dark-grey: #a3a3a3;
+  --color-grey: #e5e5e5;
 
-  --font-display: 'Syne', sans-serif;
+  --gradient-warm: linear-gradient(120deg, #b6c9cf 0%, #ffbd55 48%, #fa9819 100%);
+  --gradient-sunset: linear-gradient(145deg, #ff7130 0%, #cd4900 54%, #ffbd55 100%);
+  --gradient-sky: radial-gradient(ellipse at 50% 15%, #c6ebf7 0%, #8db9d2 52%, #1e3d59 100%);
+  --gradient-page:
+    radial-gradient(ellipse at 90% 4%, rgb(198 235 247 / 62%), transparent 38%),
+    radial-gradient(ellipse at 8% 16%, rgb(250 152 25 / 16%), transparent 35%),
+    var(--color-background);
+
+  --font-display: 'Rethink Sans', sans-serif;
   --font-body: 'Inter', sans-serif;
 
   --space-1: 0.25rem;
@@ -25,7 +40,8 @@
   --space-16: 4rem;
   --space-24: 6rem;
 
-  --radius-card: 0;
+  --radius-card: 1rem;
+  --radius-image: 0.75rem;
   --radius-pill: 999px;
   --border-default: 1px solid var(--color-border);
   --content-max: 1180px;
@@ -43,6 +59,7 @@
   --accent: var(--color-accent);
   --accent-dim: var(--color-accent-muted);
   --serif-display: var(--font-display);
+  --display: var(--font-display);
   --sans: var(--font-body);
   --max: var(--content-max);
   --max-article: var(--article-max);
@@ -55,9 +72,15 @@ html {
 }
 
 body {
-  background: var(--color-background);
+  background: var(--gradient-page);
+  background-attachment: fixed;
   color: var(--color-text-primary);
   font-family: var(--font-body);
+}
+
+header {
+  background-color: rgb(255 255 255 / 88%);
+  border-bottom-color: var(--color-border);
 }
 
 a {
@@ -69,11 +92,12 @@ a {
 img {
   max-width: 100%;
   display: block;
+  border-radius: var(--radius-image);
 }
 
 ::selection {
   background: var(--color-accent);
-  color: var(--color-background);
+  color: #ffffff;
 }
 
 :focus-visible {
@@ -128,16 +152,67 @@ h4,
 .impact-card,
 .bring-card,
 .trait,
-.note {
+.note,
+.bm-card,
+.insight-card {
   border-color: var(--color-border);
   background: var(--color-surface);
+}
+
+.project,
+.hero,
+header,
+section,
+footer,
+.foot-bottom,
+.principle,
+.person,
+.meta-grid,
+.category-block,
+.focus-list li,
+.lib-card,
+.persona-card,
+.recommendation,
+.impact-card,
+.bring-card,
+.trait,
+.note,
+.bm-card,
+.insight-card {
+  border-radius: var(--radius-card);
+}
+
+.project-visual,
+.hero-visual,
+.lib-card-image {
+  border-radius: var(--radius-card);
+  overflow: hidden;
 }
 
 .external-link,
 .project-link,
 .contact-cta,
-.cta {
+.cta,
+.lib-card .goto {
   transition: color var(--motion-standard), border-color var(--motion-standard);
+}
+
+.button,
+button,
+[role="button"],
+.project-link,
+.contact-cta,
+.cta,
+.lib-card .goto {
+  border: 1px solid currentColor;
+  border-radius: var(--radius-pill);
+  padding: 0.55rem 0.9rem;
+}
+
+.button,
+button,
+[role="button"] {
+  cursor: pointer;
 }
 
 @media (prefers-reduced-motion: reduce) {
