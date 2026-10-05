@@ -19,13 +19,145 @@
   .closing{padding-bottom:1rem}.closing h2{max-width:18ch;margin:0 0 1.5rem;font:800 clamp(1.8rem,4vw,3rem)/1.05 var(--display)}.cta{display:inline-block;margin-top:1rem;border-bottom:1px solid var(--accent);padding-bottom:3px;color:var(--ink)}
   footer{margin-top:3rem;padding:3rem 0 2.4rem;border-top:1px solid var(--line)}.footer-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.85rem}.footer-row a:hover{color:var(--ink)}
   @media(max-width:700px){.navlinks{gap:.8rem}.trait-grid,.bring-grid{grid-template-columns:1fr}.recommendation{padding:1.4rem}.recommendation blockquote{padding-right:0}}
+  .about-hero{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(20rem,.9fr);
+    align-items:center;
+    column-gap:clamp(2rem,6vw,6rem);
+    row-gap:1.5rem;
+    padding-top:clamp(5rem,10vw,8rem);
+    padding-bottom:3rem;
+    border-bottom:0;
+  }
+  .about-hero-copy{position:relative;z-index:2}
+  .about-mark{display:block;width:3.4rem;height:3.4rem;margin:0 0 .5rem}
+  .about-mark path{fill:url(#about-mark-gradient)}
+  .about-hero h1{
+    max-width:none;
+    margin:0 0 1.5rem;
+    color:#0f1110;
+    font-size:clamp(3.5rem,6vw,5.7rem);
+    letter-spacing:-.045em;
+  }
+  .about-hero .hero-intro{
+    max-width:49ch;
+    margin:0 0 1rem;
+    color:#0f1110;
+    font-size:clamp(.95rem,1.05vw,1.05rem);
+    line-height:1.52;
+  }
+  .about-hero-visual{
+    position:relative;
+    min-height:clamp(29rem,43vw,39rem);
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .about-visual-orbit{
+    position:absolute;
+    top:-13%;
+    right:-36%;
+    width:130%;
+    height:114%;
+    border:1px dashed rgb(15 17 16 / 38%);
+    border-radius:50%;
+    transform:rotate(-19deg);
+  }
+  .about-visual-orbit::after{
+    position:absolute;
+    inset:1rem;
+    border:1px dashed rgb(15 17 16 / 30%);
+    border-radius:50%;
+    content:"";
+  }
+  .about-visual-ring{
+    position:absolute;
+    z-index:-1;
+    right:-8%;
+    bottom:1%;
+    width:min(87%,31rem);
+    aspect-ratio:1;
+    border-radius:50%;
+    background:conic-gradient(from 30deg,#48c6ef,#c887e7,#ed9bd4,#65c5ef,#48c6ef);
+  }
+  .about-visual-ring::after{
+    position:absolute;
+    inset:29%;
+    border-radius:50%;
+    background:#fdfbfb;
+    content:"";
+  }
+  .about-portrait{
+    position:absolute;
+    z-index:1;
+    right:2%;
+    bottom:0;
+    width:94%;
+    height:96%;
+    object-fit:contain;
+    object-position:bottom center;
+    border-radius:0;
+  }
+  .about-visual-bar{
+    position:absolute;
+    z-index:2;
+    top:61%;
+    left:0;
+    width:112%;
+    height:1.5rem;
+    background:linear-gradient(90deg,#eca8df,#f28c61);
+    animation:about-bar-float 9s ease-in-out infinite alternate;
+  }
+  .about-principle{
+    grid-column:1/-1;
+    margin:0;
+    padding:1.2rem 0;
+    border:0;
+    color:transparent;
+    background:linear-gradient(90deg,#eca8df,#f28c61);
+    background-clip:text;
+    -webkit-background-clip:text;
+    text-align:center;
+    font-size:clamp(1.35rem,3vw,2.4rem);
+  }
+  @keyframes about-bar-float{
+    from{translate:-1% 0}
+    to{translate:1% 0}
+  }
+  @media(max-width:700px){
+    .about-hero{grid-template-columns:1fr;padding-top:5rem;row-gap:1rem}
+    .about-hero h1{font-size:clamp(3.25rem,14vw,5rem)}
+    .about-hero-visual{min-height:24rem;margin-top:.5rem}
+    .about-visual-ring{right:0;width:min(82%,22rem)}
+    .about-visual-bar{top:64%;height:1.1rem}
+    .about-principle{padding:1rem 0;text-align:left}
+  }
 </style>
 <link rel="stylesheet" href="styles/design-system.css">
 </head>
 <body>
 <header class="site-header"><div class="wrap"><nav><a href="index.html" class="wordmark">gc.</a><div class="navlinks"><a href="index.html#work">Work</a><a href="about.html">About</a><a href="index.html#contact">Contact</a></div></nav></div></header>
 <main>
-  <div class="hero wrap"><p class="eyebrow">About me</p><h1>My story.</h1><p class="hero-intro">I'm a Product Designer with 6 years of experience working across different clients, industries and digital products. Working in an agency environment has given me the opportunity to work across ecommerce, product experiences, design systems and large-scale digital ecosystems. It's taught me to adapt quickly, understand unfamiliar problems and balance user needs with business and technical constraints.</p><p class="hero-intro">I approach design as more than an interface. I like being involved from the beginning — understanding the problem, asking the right questions, exploring possibilities, designing the experience and working closely with developers to turn it into something real.</p><p class="principle">Good design starts with a better question.</p></div>
+  <section class="about-hero wrap">
+    <div class="about-hero-copy">
+      <svg class="about-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <defs><linearGradient id="about-mark-gradient" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#eaa2df"></stop><stop offset="1" stop-color="#f58a36"></stop></linearGradient></defs>
+        <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z"></path>
+        <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(90 50 50)"></path>
+        <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(180 50 50)"></path>
+        <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(270 50 50)"></path>
+      </svg>
+      <h1>My story.</h1>
+      <p class="hero-intro">I'm a Product Designer with 6 years of experience working across different clients, industries and digital products. Working in an agency environment has given me the opportunity to work across ecommerce, product experiences, design systems and large-scale digital ecosystems. It's taught me to adapt quickly, understand unfamiliar problems and balance user needs with business and technical constraints.</p>
+      <p class="hero-intro">I approach design as more than an interface. I like being involved from the beginning — understanding the problem, asking the right questions, exploring possibilities, designing the experience and working closely with developers to turn it into something real.</p>
+    </div>
+    <div class="about-hero-visual">
+      <div class="about-visual-orbit" aria-hidden="true"></div>
+      <div class="about-visual-ring" aria-hidden="true"></div>
+      <img class="about-portrait" src="img/guille-about.png" alt="Guille smiling in sunglasses">
+      <div class="about-visual-bar" aria-hidden="true"></div>
+    </div>
+    <p class="principle about-principle">Good design starts with a better question.</p>
+  </section>
   <div class="article">
     <section><h2 class="label">What I bring</h2><div class="bring-grid"><div class="bring-card"><strong>STRATEGY</strong><p>I start by understanding the problem, the context and what we're trying to achieve before jumping into solutions.</p></div><div class="bring-card"><strong>RESEARCH &amp; UX</strong><p>I look at the full experience — user needs, journeys, behaviours and pain points — and turn complexity into clearer flows and decisions.</p></div><div class="bring-card"><strong>UI</strong><p>I care about hierarchy, interaction and the details that make a product feel clear, coherent and considered.</p></div><div class="bring-card"><strong>SYSTEMS</strong><p>I enjoy creating structure that scales, from reusable components and patterns to design systems that make products easier to evolve.</p></div><div class="bring-card"><strong>COLLABORATION</strong><p>I work closely with different disciplines and like understanding the technical reality behind what I'm designing.</p></div><div class="bring-card"><strong>IMPLEMENTATION</strong><p>I'm interested in what happens after the design file. I like staying close to development, seeing how ideas translate into the final product and learning from what gets built.</p></div></div></section>
     <section><h2 class="label">What people I've worked with say</h2><article class="recommendation"><span class="quote-mark">“</span><blockquote>"Guille is a committed and proactive professional. During our year of working together, she demonstrated her curiosity, ability to learn, and capacity to develop great projects.
