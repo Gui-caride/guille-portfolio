@@ -131,6 +131,150 @@
   }
   .hero-meta div:last-child{ padding-left: .25rem; }
 
+  .home-intro{
+    position:relative;
+    height:190svh;
+    padding:0;
+    overflow:clip;
+    background:#fdfbfb;
+    color:#0f1110;
+  }
+  .home-intro-frame{
+    position:sticky;
+    top:0;
+    height:100svh;
+    min-height:38rem;
+    overflow:hidden;
+    isolation:isolate;
+    background:#fdfbfb;
+  }
+  .home-intro-scene{
+    position:relative;
+    width:min(100%, 1440px);
+    height:100%;
+    margin-inline:auto;
+  }
+  .home-intro .eyebrow{
+    position:absolute;
+    z-index:2;
+    top:31%;
+    left:4%;
+    margin:0;
+    color:#0f1110;
+    font-size:.78rem;
+    letter-spacing:.045em;
+    text-transform:uppercase;
+  }
+  .home-intro-title{
+    position:absolute;
+    z-index:2;
+    top:var(--intro-title-y, 49vh);
+    left:var(--intro-title-x, 17vw);
+    margin:0;
+    max-width:none;
+    font-size:var(--intro-title-size, clamp(3.25rem, 11vw, 10rem));
+    line-height:.94;
+    letter-spacing:-.025em;
+    white-space:nowrap;
+    color:#0f1110;
+    transform:translateY(-50%);
+    transform-origin:left center;
+    will-change:top,left,font-size;
+  }
+  .home-intro-copy{
+    position:absolute;
+    z-index:2;
+    top:54%;
+    left:35.5%;
+    width:min(31rem, 39%);
+    margin:0;
+    color:#0f1110;
+    font-size:clamp(.95rem, 1.25vw, 1.15rem);
+    line-height:1.52;
+    opacity:var(--intro-copy-opacity, 0);
+    transform:translate3d(0,var(--intro-copy-y, 1.25rem),0);
+    will-change:opacity,transform;
+  }
+  .home-intro-copy p{margin:0 0 .8rem}
+  .home-intro-copy strong{font-weight:700}
+  .intro-highlight{
+    background:linear-gradient(transparent 20%, #f3b8e7 20%, #f3b8e7 88%, transparent 88%);
+    box-decoration-break:clone;
+    -webkit-box-decoration-break:clone;
+  }
+  .intro-current{font-size:.9em}
+  .intro-flower{
+    position:absolute;
+    z-index:1;
+    width:clamp(6.5rem, 12vw, 10.5rem);
+    aspect-ratio:1;
+    left:4%;
+    top:49%;
+    color:#f17b32;
+    transform:translate3d(var(--flower-x,0),var(--flower-y,0),0) rotate(var(--flower-rotation,0deg));
+    will-change:transform;
+  }
+  .intro-flower svg{display:block;width:100%;height:100%;overflow:visible}
+  .intro-flower path{fill:url(#petal-gradient)}
+  .intro-flower-small{
+    width:clamp(2.8rem, 5.5vw, 4.6rem);
+    left:82%;
+    top:36%;
+    animation:flower-float 7s ease-in-out infinite;
+  }
+  .intro-ring{
+    position:absolute;
+    z-index:0;
+    width:clamp(7rem, 12vw, 11rem);
+    aspect-ratio:1;
+    left:84%;
+    top:72%;
+    border-radius:50%;
+    background:conic-gradient(from 35deg,#53c3ef,#dc9dec,#efa4da,#51bce9,#53c3ef);
+    box-shadow:inset 0 0 1.2rem rgb(255 255 255 / 35%),0 .4rem 1.5rem rgb(48 120 174 / 12%);
+    transform:translate3d(var(--ring-x,0),var(--ring-y,0),0) rotate(var(--ring-rotation,0deg));
+    will-change:transform;
+  }
+  .intro-ring::after{
+    position:absolute;
+    inset:27%;
+    border-radius:50%;
+    background:#fdfbfb;
+    content:"";
+  }
+  .intro-orbit{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    overflow:visible;
+    pointer-events:none;
+  }
+  .intro-orbit circle{
+    fill:none;
+    stroke:#77786f;
+    stroke-width:1;
+    stroke-dasharray:3 6;
+    opacity:.55;
+    vector-effect:non-scaling-stroke;
+  }
+  .intro-scroll-hint{
+    position:absolute;
+    z-index:3;
+    right:4%;
+    bottom:3.2rem;
+    color:#77786f;
+    font-size:.72rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    opacity:var(--intro-hint-opacity,1);
+    transition:opacity .15s linear;
+  }
+  @keyframes flower-float{
+    0%,100%{translate:0 0;rotate:-5deg}
+    50%{translate:0 -12px;rotate:7deg}
+  }
+
   /* Section shared */
   section{ padding: clamp(4rem, 8vw, 7rem) 0; }
   .section-head{
@@ -197,7 +341,7 @@
     padding: .55rem .9rem;
     display:inline-block;
   }
-  #work .section-head .project-link{ background: var(--color-sky-blue, #deeeFE); }
+  #work .section-head .project-link{ background: var(--color-card-background); }
   .project-visual{
     aspect-ratio: 1/1;
     border: 1px solid var(--line);
@@ -219,6 +363,39 @@
   }
 
   /* About */
+  .home-about{
+    position:relative;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:start;
+    gap:clamp(1.5rem,4vw,4rem);
+    width:min(100%,1440px);
+    margin-inline:auto;
+    min-height:0;
+    padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4.5rem);
+    overflow:hidden;
+    background:#fdfbfb;
+    color:#0f1110;
+  }
+  .home-about .section-head{
+    grid-column:1/-1;
+    margin:0;
+    padding:0 0 1rem;
+    border-bottom:1px solid var(--color-border);
+    border-radius:0;
+  }
+  .home-about .section-head h2{
+    margin:0;
+    color:#0f1110;
+    font-size:clamp(1.5rem,2.5vw,2rem);
+  }
+  .home-about p{
+    max-width:54ch;
+    margin:0;
+    color:#0f1110;
+    font-size:clamp(.9rem,1vw,1rem);
+    line-height:1.5;
+  }
   .about-grid{
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -286,6 +463,24 @@
       border-bottom: 1px solid var(--color-blue-tint, #b6c9cf);
     }
     .hero-meta div:last-child{ padding-left: 0; }
+    .home-intro{height:170svh}
+    .home-intro-frame{min-height:36rem}
+    .home-intro .eyebrow{top:25%;left:7%}
+    .home-intro-title{left:var(--intro-title-x,5vw);top:var(--intro-title-y,39vh);font-size:var(--intro-title-size,12vw);letter-spacing:-.025em}
+    .home-intro-copy{left:8%;top:55%;width:84%;font-size:.92rem}
+    .intro-flower:not(.intro-flower-small){left:78%;top:47%;width:3.5rem}
+    .intro-flower-small{left:78%;top:26%;width:3rem}
+    .intro-ring{left:78%;top:auto;bottom:6%;width:5.5rem}
+    .intro-scroll-hint{right:7%;bottom:1.5rem;font-size:.62rem}
+    .home-about{grid-template-columns:1fr;gap:1.5rem;padding:4rem 1.5rem 3rem}
+    .home-about .section-head{margin-bottom:.25rem}
+    .home-about p{font-size:.92rem}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .intro-flower-small{animation:none}
+    .home-intro{height:auto}
+    .home-intro-frame{position:relative}
+    .home-intro-copy{opacity:1;transform:none}
   }
 </style>
 <link rel="stylesheet" href="styles/design-system.css">
@@ -308,15 +503,47 @@
 </header>
 
 <main id="top">
-  <section class="hero wrap">
-    <p class="eyebrow">Product Designer</p>
-    <h1>
-      <span class="hero-line"><span>Hey, I'm Guille.</span></span>
-    </h1>
-    <p class="hero-sub">I'm Guille, a Product Designer with 6 years of experience across digital products, ecommerce and design systems. I work from the problem first — understanding what people need, making complexity clearer, and turning ideas into useful, scalable experiences.<br><br>Currently at TBWA in Barcelona, working with Volkswagen.</p>
-    <div class="hero-meta">
-      <div><span>Based in</span>Spain, Barcelona</div>
-      <div><span>From</span>Argentina, Buenos Aires</div>
+  <section class="home-intro" data-scroll-scene aria-label="Introduction">
+    <div class="home-intro-frame">
+      <div class="home-intro-scene">
+        <svg class="intro-orbit" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+          <circle cx="1" cy="450" r="510"></circle>
+          <circle cx="1" cy="450" r="526"></circle>
+          <circle cx="1450" cy="455" r="400"></circle>
+          <circle cx="1450" cy="455" r="416"></circle>
+        </svg>
+        <p class="eyebrow">Product Designer</p>
+        <div class="intro-flower" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="petal-gradient" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0" stop-color="#eaa2df"></stop>
+                <stop offset=".58" stop-color="#f3a0c9"></stop>
+                <stop offset="1" stop-color="#f58a36"></stop>
+              </linearGradient>
+            </defs>
+            <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z"></path>
+            <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(90 50 50)"></path>
+            <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(180 50 50)"></path>
+            <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(270 50 50)"></path>
+          </svg>
+        </div>
+        <h1 class="home-intro-title">Hey, I’m Guille</h1>
+        <div class="home-intro-copy">
+          <p>I'm Guille, a <strong>Product Designer</strong> with 6 years of experience across <span class="intro-highlight">digital products, ecommerce and design systems.</span> I work from the problem first — understanding what people need, making complexity clearer, and turning ideas into useful, scalable experiences.</p>
+          <p class="intro-current">Currently at TBWA in Barcelona, working with Volkswagen.</p>
+        </div>
+        <div class="intro-flower intro-flower-small" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z"></path>
+            <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(90 50 50)"></path>
+            <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(180 50 50)"></path>
+            <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(270 50 50)"></path>
+          </svg>
+        </div>
+        <div class="intro-ring" aria-hidden="true"></div>
+        <span class="intro-scroll-hint" aria-hidden="true">Scroll to explore ↓</span>
+      </div>
     </div>
   </section>
 
@@ -373,15 +600,10 @@
 
   </section>
 
-  <section id="about" class="wrap">
-    <div class="section-head">
-      <h2>About</h2>
-      <p>&nbsp;</p>
-    </div>
-    <div class="about-grid">
-      <p>I'm a Product Designer with 6 years of experience working across different clients, industries and digital products.</p>
-      <p>I approach design as more than an interface — I like being involved from the beginning, asking the right questions and working closely with developers to turn ideas into something real.</p>
-    </div>
+  <section id="about" class="home-about">
+    <div class="section-head"><h2>About</h2></div>
+    <p>I'm a Product Designer with 6 years of experience working across different clients, industries and digital products.</p>
+    <p>I approach design as more than an interface — I like being involved from the beginning, asking the right questions and working closely with developers to turn ideas into something real.</p>
   </section>
 </main>
 

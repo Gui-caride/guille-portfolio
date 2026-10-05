@@ -3,16 +3,16 @@
  * Experimental palette supplied for the portfolio color exploration.
  */
 :root {
-  --color-background: #ffffff;
-  --color-surface: #f7f9fb;
-  --color-text-primary: #1e3d59;
-  --color-text-secondary: #48749e;
+  --color-background: #fdfbfb;
+  --color-surface: #fdfbfb;
+  --color-text-primary: #0f1110;
+  --color-text-secondary: #0f1110;
   --color-border: #e8ebef;
   --color-accent: #cd4900;
   --color-accent-muted: #cd4900;
   --color-orange: #fa9819;
-  --color-focus: #48749e;
-  --color-blue-tint: #b6c9cf;
+  --color-focus: #0f1110;
+  --color-blue-tint: #0f1110;
   --color-baby-blue: #c6ebf7;
   --color-sky-blue: #deeeFE;
   --color-off-blue: #e8ebef;
@@ -22,10 +22,8 @@
   --gradient-warm: linear-gradient(120deg, #b6c9cf 0%, #ffbd55 48%, #fa9819 100%);
   --gradient-sunset: linear-gradient(145deg, #ff7130 0%, #cd4900 54%, #ffbd55 100%);
   --gradient-sky: radial-gradient(ellipse at 50% 15%, #c6ebf7 0%, #8db9d2 52%, #1e3d59 100%);
-  --gradient-page:
-    radial-gradient(ellipse at 90% 4%, rgb(198 235 247 / 62%), transparent 38%),
-    radial-gradient(ellipse at 8% 16%, rgb(250 152 25 / 16%), transparent 35%),
-    var(--color-background);
+  --gradient-page: var(--color-background);
+  --color-card-background: rgb(253 251 251 / 50%);
 
   --font-display: 'Rethink Sans', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -73,7 +71,7 @@ html {
 
 body {
   background: var(--gradient-page);
-  background-attachment: fixed;
+  background-attachment: scroll;
   color: var(--color-text-primary);
   font-family: var(--font-body);
 }
@@ -153,6 +151,11 @@ body > .site-header {
   font-size: 0.78rem;
 }
 
+.site-header .navlinks,
+.site-header .wordmark {
+  color: #0f1110;
+}
+
 .site-header .navlinks a {
   padding: 0.2rem 0;
   white-space: nowrap;
@@ -169,7 +172,7 @@ body > .site-header {
 .site-header.scrolled nav {
   padding: 0.65rem 0.8rem;
   border-radius: var(--radius-pill);
-  box-shadow: 0 8px 28px rgb(30 61 89 / 10%);
+  box-shadow: 0 8px 28px rgb(15 17 16 / 10%);
 }
 
 .site-header.scrolled .wordmark {
@@ -194,6 +197,8 @@ body > .site-footer {
   padding: clamp(3rem, 6vw, 5rem) 0 2rem;
   border: 0;
   border-radius: 0;
+  background: #fdfbfb;
+  color: #0f1110;
 }
 
 .site-footer .contact-head {
@@ -215,13 +220,21 @@ body > .site-footer {
 }
 
 .site-footer .contact-cta {
-  display: inline-block;
-  border: 1px solid var(--color-text-primary);
-  border-radius: var(--radius-pill);
-  padding: 0.55rem 0.9rem;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
   color: var(--color-text-primary);
   font-size: 0.9rem;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.site-footer .contact-cta svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex: 0 0 auto;
 }
 
 .site-footer .foot-bottom {
@@ -306,6 +319,7 @@ h4,
 .external-link,
 .lib-card,
 .persona-card,
+.project,
 .recommendation,
 .impact-card,
 .bring-card,
@@ -314,7 +328,13 @@ h4,
 .bm-card,
 .insight-card {
   border-color: var(--color-border);
-  background: var(--color-surface);
+  background: var(--color-card-background);
+}
+
+.hero-visual,
+.project-visual,
+.lib-card-image {
+  background-color: var(--color-card-background);
 }
 
 .project,
