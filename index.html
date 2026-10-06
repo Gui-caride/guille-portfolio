@@ -561,11 +561,11 @@
   </div>
 </header>
 
-<main id="top">
+<main id="top" class="home-main">
   <section class="home-hero" aria-label="Introduction">
     <h1 class="home-hero-title">
-      <span>HEY!</span>
-      <span>I’M GUILLE,</span>
+      <span>Hey!</span>
+      <span>I’m GUILLE,</span>
       <span>PRODUCT DESIGNER</span>
     </h1>
   </section>
@@ -576,11 +576,11 @@
       <a class="home-pill-link" href="about.html">About me <span aria-hidden="true">→</span></a>
     </div>
     <div class="home-about-copy home-reveal">
-      <p>Born in Argentina and based in Barcelona, I’m a Product Designer with 6+ years of experience shaping digital products and experiences. I started my career in Graphic Design and later specialised in UX/UI through a Master’s degree, building a multidisciplinary approach that brings together strategy, user experience, visual design and systems thinking.</p>
       <div class="home-about-facts">
         <div class="home-about-fact"><strong>Based in</strong><span>Spain, Barcelona</span></div>
         <div class="home-about-fact"><strong>6+</strong><span>Years of experience</span></div>
       </div>
+      <p>Born in Argentina and based in Barcelona, I’m a Product Designer with 6+ years of experience shaping digital products and experiences. I started my career in Graphic Design and later specialised in UX/UI through a Master’s degree, building a multidisciplinary approach that brings together strategy, user experience, visual design and systems thinking.</p>
     </div>
   </section>
 
@@ -614,16 +614,16 @@
   </section>
 
   <section class="home-tools">
-    <div class="home-side-label home-reveal"><h2>Tools I work with</h2></div>
+    <div class="home-side-label home-reveal">    <h2>Tools I worked with</h2></div>
     <div class="home-tools-grid home-reveal" aria-label="Tools and platforms">
-      <span class="home-tool">Slack</span>
-      <span class="home-tool">Microsoft</span>
-      <span class="home-tool">Webflow</span>
-      <span class="home-tool">Salesforce</span>
-      <span class="home-tool">Figma</span>
-      <span class="home-tool">Adobe</span>
-      <span class="home-tool">VS Code</span>
-      <span class="home-tool">Claude</span>
+    <span class="home-tool"><img src="img/tools/slack.png" alt="Slack"></span>
+    <span class="home-tool home-tool--wordmark"><span class="microsoft-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>Microsoft</span>
+    <span class="home-tool"><img src="img/tools/webflow.png" alt="Webflow"></span>
+    <span class="home-tool"><img src="img/tools/salesforce.png" alt="Salesforce"></span>
+    <span class="home-tool"><img src="img/tools/figma.png" alt="Figma"></span>
+    <span class="home-tool"><img src="img/tools/adobe.png" alt="Adobe"></span>
+    <span class="home-tool"><img src="img/tools/vscode.png" alt="VS Code"></span>
+    <span class="home-tool"><img src="img/tools/claude.png" alt="Claude"></span>
     </div>
   </section>
 </main>
@@ -631,12 +631,12 @@
 <footer id="contact" class="site-footer home-footer">
   <div class="wrap home-footer-layout">
     <div class="contact-head">
-      <h2>Let’s talk<br>about what<br>you’re<br>building.</h2>
+      <h2>Let's talk about<br>what you're<br>building.</h2>
       <a href="mailto:guillerminacaride@gmail.com" class="contact-cta">Get in touch <span aria-hidden="true">→</span></a>
     </div>
     <div class="home-footer-links">
-      <div><h3>Sitemap</h3><ul><li><a href="#top">Home →</a></li><li><a href="about.html">About us →</a></li><li><a href="work.html">Work →</a></li><li><a href="#contact">Contact →</a></li></ul></div>
-      <div><h3>Network</h3><ul><li><a href="https://linkedin.com/in/guillermina-caride-urruty">LinkedIn ↗</a></li><li><a href="mailto:guillerminacaride@gmail.com">Email ↗</a></li></ul></div>
+      <div><h3>Sitemap</h3><ul><li><a href="#top">Home →</a></li><li><a href="about.html">About us →</a></li><li><a href="work.html">Work →</a></li><li><a href="about.html#what-i-bring">Services →</a></li><li><a href="#contact">Contact →</a></li></ul></div>
+      <div><h3>Network</h3><ul><li><a href="https://linkedin.com/in/guillermina-caride-urruty">LinkedIn ↗</a></li><li><a href="mailto:guillerminacaride@gmail.com?subject=CV%20request">CV ↗</a></li></ul></div>
     </div>
     <div class="foot-bottom">
       <span>Guille — Product &amp; UX/UI Designer, Barcelona</span>
@@ -660,6 +660,16 @@
       el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
     });
+
+    const home = document.querySelector('.home-main');
+    const updateShadePosition = () => {
+      if (!home) return;
+      const scrollableDistance = Math.max(home.offsetHeight - window.innerHeight, 1);
+      const progress = Math.min(Math.max((window.scrollY - home.offsetTop) / scrollableDistance, 0), 1);
+      home.style.setProperty('--shade-scroll-offset', `${progress * 360}px`);
+    };
+    window.addEventListener('scroll', updateShadePosition, { passive: true });
+    updateShadePosition();
   }
 
 </script>
