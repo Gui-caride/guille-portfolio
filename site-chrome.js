@@ -47,3 +47,21 @@ document.querySelectorAll("body > header").forEach((header) => {
   window.addEventListener("scroll", updateScrollState, { passive: true });
   updateScrollState();
 });
+
+document.querySelectorAll(".site-header .navlinks a").forEach((link) => {
+  if (link.textContent.trim().toLowerCase() === "about") {
+    link.href = "about.html#about";
+  }
+});
+
+const pageMain = document.querySelector("main");
+const updateShadePosition = () => {
+  if (!pageMain || reducedMotion.matches) return;
+  const scrollableDistance = Math.max(pageMain.offsetHeight - window.innerHeight, 1);
+  const progress = Math.min(Math.max((window.scrollY - pageMain.offsetTop) / scrollableDistance, 0), 1);
+  document.body.style.setProperty("--shade-scroll-offset", `${progress * 360}px`);
+};
+
+window.addEventListener("scroll", updateShadePosition, { passive: true });
+window.addEventListener("resize", updateShadePosition);
+updateShadePosition();

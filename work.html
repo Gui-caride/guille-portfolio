@@ -235,9 +235,7 @@
       }
       const statusClass = p.status === 'Featured' ? 'status featured' : 'status';
       return `<a class="lib-card" href="${p.href}" aria-label="View ${p.title} project">
-        <div class="lib-card-image"><img src="${p.image}" alt="${p.title} project preview" loading="lazy"><span class="${statusClass}">${p.status}</span><span class="project-title">${p.title}</span><span class="project-arrow" aria-hidden="true">↗</span></div>
-        <div class="lib-card-info"><p>${p.summary}</p>
-        <div class="lib-meta">${p.role ? `<span><strong>Role:</strong> ${p.role}</span>` : ''}${p.metric ? `<span><strong>${p.metric}</strong></span>` : ''}</div></div>
+        <div class="lib-card-image"><img src="${p.image}" alt="${p.title} project preview" loading="lazy"><span class="${statusClass}">${p.status}</span><span class="project-hover-info"><span class="project-title">${p.title}</span><span class="project-category">${p.category}</span></span><span class="project-arrow" aria-hidden="true">↗</span></div>
       </a>`;
     }).join('');
 

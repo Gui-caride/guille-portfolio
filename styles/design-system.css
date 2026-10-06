@@ -406,15 +406,30 @@ body.page-index main.home-main::before {
 }
 
 body.page-index .home-hero-title span:first-child {
-  font-size: 0.55em;
+  font-size: 1em;
+  margin-left: 33%;
+}
+
+body.page-index .home-hero-title {
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
 }
 
 body.page-index .home-hero-title {
   text-transform: none;
 }
 
+body.page-index .home-hero-title span:nth-child(2) {
+  margin-left: 16%;
+  font-size: 1.4em;
+  color: #f5c16d;
+  font-weight: 700;
+}
+
 body.page-index .home-hero-title span:nth-child(3) {
-  margin-left: 10%;
+  margin-left: 38%;
+  color: #0f1110;
+  font-weight: 400;
+  animation: hero-line-in 0.95s cubic-bezier(.22, 1, .36, 1) .32s forwards;
 }
 
 body.page-index .home-about-copy {
@@ -445,13 +460,13 @@ body.page-index .home-tools-grid {
 }
 
 body.page-index .home-tool {
-  min-height: 7rem;
+  min-height: clamp(8rem, 14.5vw, 14rem);
   padding: 1rem;
 }
 
 body.page-index .home-tool img {
-  width: min(100%, 180px);
-  height: 48px;
+  width: min(100%, 220px);
+  height: 56px;
   object-fit: contain;
   border-radius: 0;
 }
@@ -621,7 +636,7 @@ body.page-about .bring-card {
   padding: 0.9rem;
   border: 0;
   border-radius: 0.75rem;
-  background: #e5e4e0;
+  background: rgb(245 193 109 / 45%);
 }
 
 body.page-about .bring-card strong {
@@ -704,12 +719,16 @@ body.page-about .about-testimonials .person a {
     max-width: 100%;
   }
 
+  body.page-index .home-hero-title span:first-child {
+    margin-left: 22%;
+  }
+
   body.page-index .home-hero-title span:nth-child(2) {
-    margin-left: 18%;
+    margin-left: 0;
   }
 
   body.page-index .home-hero-title span:nth-child(3) {
-    margin-left: 0;
+    margin-left: 28%;
   }
 
   body.page-index .home-tools-grid {
@@ -722,7 +741,7 @@ body.page-about .about-testimonials .person a {
   }
 
   body.page-index .home-tool img {
-    height: 40px;
+    height: 56px;
   }
 
   body.page-index footer.home-footer .home-footer-layout,
@@ -767,10 +786,7 @@ body.page-about .about-testimonials .person a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body.page-index main.home-main::before {
-    transform: translateX(-50%);
-    will-change: auto;
-  }
+  body[class*="page-"]::before { animation: none; }
 }
 
 .tag,
@@ -875,3 +891,175 @@ button,
     padding-inline: var(--content-gutter);
   }
 }
+
+body[class*="page-"] {
+  position: relative;
+  isolation: isolate;
+}
+
+body[class*="page-"]::before {
+  position: fixed;
+  z-index: 0;
+  top: clamp(8rem, 24vh, 20rem);
+  left: 50%;
+  width: min(88vw, 1040px);
+  aspect-ratio: 1;
+  background: url("../img/shade-bg.png") center / contain no-repeat;
+  content: "";
+  opacity: 0.42;
+  pointer-events: none;
+  transform: translate3d(-50%, var(--shade-scroll-offset, 0px), 0);
+  animation: shade-drift 18s ease-in-out infinite alternate;
+  will-change: transform, margin;
+}
+
+body[class*="page-"] > :is(header, main, footer) {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes shade-drift {
+  from { margin: 0 0 0 -1.5%; }
+  to { margin: 1.5rem 0 0 1.5%; }
+}
+
+body.page-index main.home-main::before {
+  content: none;
+}
+
+body[class*="page-"] main :is(p, blockquote, li):not(.eyebrow) {
+  color: #0f1110 !important;
+  font-size: 1.25rem !important;
+  line-height: 1.55;
+}
+
+body[class*="page-"] main :is(p, blockquote, li):not(.eyebrow) strong {
+  color: #0f1110;
+}
+
+body.page-index main section.home-statement p {
+  font-size: clamp(2.2rem, 5vw, 5rem) !important;
+}
+
+body[class*="page-"] main section:not(.home-hero):not(.about-hero):not(.work-intro) {
+  padding-block: 40px;
+  border-block: 0;
+}
+
+body[class*="page-"] main .section-head {
+  border-bottom: 0;
+}
+
+body[class*="page-"] main .hero:not(.home-hero):not(.about-hero):not(.work-intro) {
+  padding-bottom: 40px;
+  border-bottom: 0;
+}
+
+body.page-index main > .home-hero {
+  padding-block: clamp(5rem, 10vh, 7rem) 40px;
+}
+
+body.page-about main > .about-hero {
+  padding-bottom: 40px;
+  border-bottom: 0;
+}
+
+body.page-work main > .work-intro {
+  padding-bottom: 40px;
+  border-bottom: 0;
+}
+
+body.page-work main > #lib-root > .category-block {
+  padding-block: 40px;
+  border-bottom: 0;
+}
+
+body.page-about .bring-card {
+  background: rgb(245 193 109 / 45%);
+}
+
+body.page-work .lib-card-info {
+  display: none;
+}
+
+body.page-work .lib-card-image::after {
+  inset: 0;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+body.page-work .project-hover-info {
+  position: absolute;
+  z-index: 1;
+  right: 2.8rem;
+  bottom: 0.9rem;
+  left: 0.9rem;
+  display: grid;
+  gap: 0.25rem;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(0.4rem);
+  transition: opacity 250ms ease, transform 250ms ease;
+}
+
+body.page-work .project-hover-info .project-title {
+  position: static;
+  color: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+body.page-work .project-category {
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+
+body.page-work .lib-card-image .project-arrow {
+  opacity: 0;
+  transition: transform 250ms ease, opacity 250ms ease;
+}
+
+body.page-work .lib-card:hover .lib-card-image::after,
+body.page-work .lib-card:focus-visible .lib-card-image::after {
+  opacity: 0.85;
+}
+
+body.page-work .lib-card:hover .project-hover-info,
+body.page-work .lib-card:focus-visible .project-hover-info,
+body.page-work .lib-card:hover .lib-card-image .project-arrow,
+body.page-work .lib-card:focus-visible .lib-card-image .project-arrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: none) {
+  body.page-work .lib-card-image::after { opacity: 0.85; }
+  body.page-work .project-hover-info,
+  body.page-work .lib-card-image .project-arrow { opacity: 1; transform: none; }
+}
+
+@media (max-width: 600px) {
+  body.page-index .home-hero-title span:first-child { margin-left: 22%; }
+  body.page-index .home-hero-title span:nth-child(2) {
+    margin-left: 0;
+    font-size: 1.2em;
+  }
+  body.page-index .home-hero-title span:nth-child(3) { margin-left: 28%; }
+  body.page-index .home-hero-title { font-size: clamp(2.8rem, 8.5vw, 4rem); }
+  body.page-index main section.home-statement p {
+    font-size: clamp(2rem, 6.5vw, 3.1rem) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  body.page-index .home-hero-title { font-size: clamp(1.6rem, 8vw, 2.8rem); }
+  body.page-index main section.home-statement p {
+    font-size: clamp(1.4rem, 7.2vw, 1.8rem) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[class*="page-"]::before { animation: none; }
+  body.page-index .home-hero-title span:nth-child(3) { font-weight: 400; }
