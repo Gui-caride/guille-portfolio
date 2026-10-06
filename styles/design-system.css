@@ -7,7 +7,7 @@
   --color-surface: #fdfbfb;
   --color-text-primary: #0f1110;
   --color-text-secondary: #0f1110;
-  --color-border: #e8ebef;
+  --color-border: #e5e4e0;
   --color-accent: #cd4900;
   --color-accent-muted: #cd4900;
   --color-orange: #fa9819;
@@ -17,7 +17,7 @@
   --color-sky-blue: #deeeFE;
   --color-off-blue: #e8ebef;
   --color-dark-grey: #a3a3a3;
-  --color-grey: #e5e5e5;
+  --color-grey: #e5e4e0;
 
   --gradient-warm: linear-gradient(120deg, #b6c9cf 0%, #ffbd55 48%, #fa9819 100%);
   --gradient-sunset: linear-gradient(145deg, #ff7130 0%, #cd4900 54%, #ffbd55 100%);
@@ -25,7 +25,7 @@
   --gradient-page: var(--color-background);
   --color-card-background: rgb(253 251 251 / 50%);
 
-  --font-display: 'Rethink Sans', sans-serif;
+  --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
 
   --space-1: 0.25rem;
@@ -44,7 +44,7 @@
   --border-default: 1px solid var(--color-border);
   --content-max: 1180px;
   --article-max: 780px;
-  --content-gutter: clamp(1.25rem, 3vw, 2.5rem);
+  --content-gutter: clamp(1.5rem, 8.333vw, 7.5rem);
   --motion-standard: 250ms ease;
 
   /* Backwards-compatible aliases used by the existing pages. */
@@ -76,6 +76,62 @@ body {
   font-family: var(--font-body);
 }
 
+body[class*="page-"] main :is(p, blockquote, li):not(.eyebrow) {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+body[class*="page-"] main :is(p, blockquote, li):not(.eyebrow) strong {
+  color: var(--color-text-primary);
+  font-weight: 700;
+}
+
+body[class*="page-"] main h1:not(.home-hero-title) {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+}
+
+body[class*="page-"] main h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+body[class*="page-"] main h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+body[class*="page-"] main section:not(.home-hero):not(.about-hero):not(.work-intro),
+body.page-work main > #lib-root > .category-block {
+  padding-block: 30px;
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 0;
+}
+
+body.page-about main > section.about-hero {
+  padding-block: clamp(8rem, 12vw, 11rem) 30px;
+  border-bottom: 0;
+}
+
+body.page-work main > section.work-intro {
+  padding-block: clamp(3rem, 7vw, 6rem) 30px;
+  border-bottom: 0;
+}
+
+body.page-index main > section.home-statement {
+  border-block: 1px solid var(--color-border);
+}
+
 header {
   background-color: rgb(255 255 255 / 88%);
   border-bottom-color: var(--color-border);
@@ -104,7 +160,7 @@ img {
 }
 
 .wrap {
-  max-width: var(--content-max);
+  max-width: none;
   margin-inline: auto;
   padding-inline: var(--content-gutter);
 }
@@ -215,8 +271,8 @@ body > .site-footer {
 .site-footer .contact-head h2 {
   max-width: 10ch;
   margin: 0;
-  font: 800 clamp(2rem, 5vw, 3.4rem)/1.02 var(--font-display);
-  letter-spacing: -0.03em;
+  font: 400 clamp(2rem, 3.4vw, 2.8rem)/1.05 var(--font-display);
+  letter-spacing: -0.045em;
 }
 
 .site-footer .contact-cta {
@@ -283,10 +339,12 @@ body > .site-footer {
 }
 
 .article {
-  max-width: var(--article-max);
+  max-width: none;
   margin-inline: auto;
   padding-inline: var(--content-gutter);
 }
+
+
 
 header {
   border-bottom-color: var(--color-border);
@@ -410,6 +468,6 @@ button,
 @media (max-width: 700px) {
   .wrap,
   .article {
-    padding-inline: 1.25rem;
+    padding-inline: var(--content-gutter);
   }
 }

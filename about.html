@@ -6,7 +6,7 @@
 <title>About — Guille</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rethink+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rethink+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{--bg:#0c0d0a;--bg-raised:#121309;--ink:#f2f1ea;--muted:#9a9a8e;--line:#232419;--accent:#c6ff4d;--display:'Rethink Sans',sans-serif;--sans:'Inter',sans-serif;--max:1180px;--article:780px;--gap:clamp(1.25rem,3vw,2.5rem)}
   *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gap)}.article{max-width:var(--article);margin:0 auto;padding:0 var(--gap)}
@@ -131,6 +131,104 @@
     .about-visual-bar{top:64%;height:1.1rem}
     .about-principle{padding:1rem 0;text-align:left}
   }
+  .page-about main{padding-top:0}
+  .about-hero.wrap{
+    grid-template-columns:repeat(12,minmax(0,1fr));
+    align-items:start;
+    column-gap:var(--space-6);
+    max-width:none;
+    padding:clamp(8rem,12vw,11rem) var(--content-gutter) clamp(4rem,8vw,7rem);
+  }
+  .about-hero-copy{grid-column:1 / span 6}
+  .about-mark,.about-visual-orbit,.about-visual-ring,.about-visual-bar,.about-principle{display:none}
+  .about-hero h1{
+    display:grid;
+    max-width:none;
+    margin:0 0 clamp(2.5rem,6vw,5rem);
+    font-family:var(--font-body);
+    font-size:clamp(3.5rem,6.5vw,6rem);
+    font-weight:300;
+    line-height:.95;
+    letter-spacing:-.055em;
+  }
+  .about-hero h1 span:last-child{margin-left:1.15em}
+  .about-hero .hero-intro{
+    max-width:48ch;
+    margin:0 0 1.3rem;
+    font-size:clamp(.88rem,1vw,1rem);
+    line-height:1.55;
+  }
+  .about-hero-visual{
+    grid-column:9 / span 3;
+    grid-row:1;
+    min-height:0;
+    margin-top:.5rem;
+    aspect-ratio:1.05;
+    border-radius:var(--radius-image);
+    background:#b7c4cc;
+  }
+  .about-portrait{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 20%;
+    border-radius:inherit;
+  }
+  .about-sections{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--space-6)}
+  .about-sections>section{grid-column:1/-1;border-radius:0}
+  .about-sections .about-bring-section{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--space-6)}
+  .about-bring-section>.label{grid-column:1 / span 3;align-self:start}
+  .about-bring-section .bring-grid{grid-column:4 / -1;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}
+  .bring-card{
+    min-height:7.5rem;
+    padding:1.1rem;
+    border:0;
+    border-radius:var(--radius-card);
+    background:#e5e4e0;
+  }
+  .bring-card strong{font-family:var(--font-body);font-size:.78rem;font-weight:700}
+  .bring-card p{margin:0;color:#444541;font-size:.78rem;line-height:1.5}
+  .about-testimonials>.label{grid-column:1/-1}
+  .about-testimonials .recommendation{
+    display:grid;
+    grid-template-columns:repeat(12,minmax(0,1fr));
+    gap:var(--space-6);
+    margin-bottom:.75rem;
+    padding:1.25rem 0;
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-image);
+    background:transparent;
+  }
+  .about-testimonials .quote-mark{display:none}
+  .about-testimonials .recommendation blockquote{grid-column:6/-1;grid-row:1;margin:0;padding:0;color:var(--color-text-primary);font-size:.88rem;line-height:1.55}
+  .about-testimonials .person{grid-column:3 / span 3;grid-row:1;align-self:start;border:0;padding:0}
+  .about-testimonials .person strong{font-family:var(--font-body);font-size:.8rem}
+  .about-testimonials .person span,.about-testimonials .person a{font-size:.68rem}
+  .about-testimonials .person a{color:var(--color-accent)}
+  .about-sections .closing{display:block;padding-bottom:2rem}
+  .closing h2{max-width:16ch;font-family:var(--font-body);font-weight:700;letter-spacing:-.04em}
+  .closing p{max-width:58ch;color:var(--color-text-primary);font-size:.9rem;line-height:1.55}
+  .closing .cta{border:1px solid currentColor;border-radius:var(--radius-pill);padding:.55rem .9rem;font-size:.75rem}
+  @media(max-width:800px){
+    .about-hero.wrap{grid-template-columns:repeat(6,minmax(0,1fr));padding-top:7rem}
+    .about-hero-copy{grid-column:1/-1}
+    .about-hero-visual{grid-column:2 / span 4;grid-row:auto;width:100%;max-width:24rem;margin:1rem auto 0}
+    .about-bring-section>.label{grid-column:1/-1}
+    .about-bring-section .bring-grid{grid-column:1/-1;grid-template-columns:repeat(3,minmax(0,1fr))}
+    .about-testimonials .recommendation{grid-template-columns:repeat(6,minmax(0,1fr))}
+    .about-testimonials .person{grid-column:1/-1;grid-row:1}
+    .about-testimonials .recommendation blockquote{grid-column:1/-1;grid-row:2}
+  }
+  @media(max-width:560px){
+    .about-hero h1{font-size:clamp(3.2rem,15vw,4.7rem)}
+    .about-sections,.about-sections .about-bring-section{grid-template-columns:1fr}
+    .about-bring-section .bring-grid{grid-template-columns:1fr}
+    .about-sections>section,.about-bring-section>.label,.about-bring-section .bring-grid{grid-column:1}
+    .about-testimonials .recommendation{grid-template-columns:1fr;padding:1rem}
+    .about-testimonials .person,.about-testimonials .recommendation blockquote{grid-column:1}
+  }
 </style>
 <link rel="stylesheet" href="styles/design-system.css">
 </head>
@@ -139,42 +237,31 @@
 <main>
   <section class="about-hero wrap">
     <div class="about-hero-copy">
-      <svg class="about-mark" viewBox="0 0 100 100" aria-hidden="true">
-        <defs><linearGradient id="about-mark-gradient" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#eaa2df"></stop><stop offset="1" stop-color="#f58a36"></stop></linearGradient></defs>
-        <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z"></path>
-        <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(90 50 50)"></path>
-        <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(180 50 50)"></path>
-        <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(270 50 50)"></path>
-      </svg>
-      <h1>My story.</h1>
+      <h1><span>MY</span><span>STORY</span></h1>
       <p class="hero-intro">I'm a Product Designer with 6 years of experience working across different clients, industries and digital products. Working in an agency environment has given me the opportunity to work across ecommerce, product experiences, design systems and large-scale digital ecosystems. It's taught me to adapt quickly, understand unfamiliar problems and balance user needs with business and technical constraints.</p>
       <p class="hero-intro">I approach design as more than an interface. I like being involved from the beginning — understanding the problem, asking the right questions, exploring possibilities, designing the experience and working closely with developers to turn it into something real.</p>
     </div>
     <div class="about-hero-visual">
-      <div class="about-visual-orbit" aria-hidden="true"></div>
-      <div class="about-visual-ring" aria-hidden="true"></div>
       <img class="about-portrait" src="img/guille-about.png" alt="Guille smiling in sunglasses">
-      <div class="about-visual-bar" aria-hidden="true"></div>
     </div>
-    <p class="principle about-principle">Good design starts with a better question.</p>
   </section>
-  <div class="article">
-    <section><h2 class="label">What I bring</h2><div class="bring-grid"><div class="bring-card"><strong>STRATEGY</strong><p>I start by understanding the problem, the context and what we're trying to achieve before jumping into solutions.</p></div><div class="bring-card"><strong>RESEARCH &amp; UX</strong><p>I look at the full experience — user needs, journeys, behaviours and pain points — and turn complexity into clearer flows and decisions.</p></div><div class="bring-card"><strong>UI</strong><p>I care about hierarchy, interaction and the details that make a product feel clear, coherent and considered.</p></div><div class="bring-card"><strong>SYSTEMS</strong><p>I enjoy creating structure that scales, from reusable components and patterns to design systems that make products easier to evolve.</p></div><div class="bring-card"><strong>COLLABORATION</strong><p>I work closely with different disciplines and like understanding the technical reality behind what I'm designing.</p></div><div class="bring-card"><strong>IMPLEMENTATION</strong><p>I'm interested in what happens after the design file. I like staying close to development, seeing how ideas translate into the final product and learning from what gets built.</p></div></div></section>
-    <section><h2 class="label">What people I've worked with say</h2><article class="recommendation"><span class="quote-mark">“</span><blockquote>"Guille is a committed and proactive professional. During our year of working together, she demonstrated her curiosity, ability to learn, and capacity to develop great projects.
+  <div class="article about-sections">
+    <section class="about-bring-section"><h2 class="label">What I bring</h2><div class="bring-grid"><div class="bring-card"><strong>STRATEGY</strong><p>I start by understanding the problem, the context and what we're trying to achieve before jumping into solutions.</p></div><div class="bring-card"><strong>RESEARCH &amp; UX</strong><p>I look at the full experience — user needs, journeys, behaviours and pain points — and turn complexity into clearer flows and decisions.</p></div><div class="bring-card"><strong>UI</strong><p>I care about hierarchy, interaction and the details that make a product feel clear, coherent and considered.</p></div><div class="bring-card"><strong>SYSTEMS</strong><p>I enjoy creating structure that scales, from reusable components and patterns to design systems that make products easier to evolve.</p></div><div class="bring-card"><strong>COLLABORATION</strong><p>I work closely with different disciplines and like understanding the technical reality behind what I'm designing.</p></div><div class="bring-card"><strong>IMPLEMENTATION</strong><p>I'm interested in what happens after the design file. I like staying close to development, seeing how ideas translate into the final product and learning from what gets built.</p></div></div></section>
+    <section class="about-testimonials"><h2 class="label">What people I've worked with say</h2><article class="recommendation"><span class="quote-mark">“</span><blockquote>"Guille is a <strong>committed and proactive professional</strong>. During our year of working together, she <strong>demonstrated her curiosity, ability to learn, and capacity to develop great projects.</strong>
 
-She is a dynamic and cheerful person who, in her role as a designer, was able to present comprehensive strategies and not only deliver high-quality work, but also understand the results in order to make her work have a greater impact on clients.
+She is a dynamic and cheerful person who, in her role as a designer, was able to <strong>present comprehensive strategies and not only deliver high-quality work</strong>, but also <strong>understand the results in order to make her work have a greater impact on clients.</strong>
 
 Regarding her role as an analyst, she discovered a position that perfectly combines her creativity with the development of results-oriented strategies.
 
-She is an excellent professional with a great journey ahead of her, and it is a true pleasure to have her on the team."</blockquote><div class="person"><strong>Angela Maria Baracaldo Bonilla</strong><span>E-commerce Strategy &amp; Operations · Bullmetrix</span><a href="https://www.linkedin.com/in/angelabaracaldo/?skipRedirect=true" target="_blank" rel="noreferrer noopener">LinkedIn ↗</a></div></article><article class="recommendation"><span class="quote-mark">“</span><blockquote>"Guille is one of those designers who combines a strong sense of responsibility with a genuine curiosity to understand how things work. During our time working together on the ExxonMobil project, I was particularly impressed by how quickly she learned and adapted to a complex project and design system.
+She is an <strong>excellent professional with a great journey ahead of her</strong>, and it is a true pleasure to have her on the team."</blockquote><div class="person"><strong>Angela Maria Baracaldo Bonilla</strong><span>E-commerce Strategy &amp; Operations · Bullmetrix</span><a href="https://www.linkedin.com/in/angelabaracaldo/?skipRedirect=true" target="_blank" rel="noreferrer noopener">LinkedIn ↗</a></div></article><article class="recommendation"><span class="quote-mark">“</span><blockquote>"Guille is one of those designers who <strong>combines a strong sense of responsibility with a genuine curiosity to understand how things work.</strong> During our time working together on the ExxonMobil project, I was particularly impressed by how quickly she learned and adapted to a complex project and design system.
 
-She is a highly skilled designer who consistently showed that her capabilities went beyond the expectations of her role. She has a strong eye for detail and visual design, but what really stood out to me was her ability to understand the bigger picture, question decisions and contribute with ideas that went beyond her position.
+She is a <strong>highly skilled designer</strong> who consistently showed that her capabilities went beyond the expectations of her role. She has a <strong>strong eye for detail and visual design</strong>, but what really stood out to me was her ability to understand the bigger picture, question decisions and contribute with ideas that went beyond her position.
 
 Guille is also extremely committed to her work and takes real ownership of what she does. She learns very quickly, is open to feedback and adapts easily when facing new challenges. Throughout the project, I saw her grow beyond the responsibilities initially expected from her, taking on more complex problems and contributing with an increasingly strategic perspective.
 
 She does not simply execute what is asked of her. She asks the right questions, challenges assumptions and looks for different ways to approach a problem. She is able to combine creativity with structured thinking, which makes her a particularly strong designer to work with.
 
-I really enjoyed working with Guille. She is a talented, committed and fast-learning designer who has already demonstrated that she can outgrow the boundaries of her current role and take on broader responsibilities. I believe she has a lot of potential as she continues to grow toward more strategic Product Design roles."</blockquote><div class="person"><strong>Valeria Quiroga</strong><span>UX/UI Designer · ExxonMobil Standard Design System</span><a href="https://www.linkedin.com/in/valeriaquirogaseniordesigner/" target="_blank" rel="noreferrer noopener">LinkedIn ↗</a></div></article></section>
+I really enjoyed working with Guille. <strong>She is a talented, committed and fast-learning designer</strong> who has already demonstrated that she can outgrow the boundaries of her current role and take on broader responsibilities. I believe she has a lot of potential as she continues to grow toward more strategic Product Design roles."</blockquote><div class="person"><strong>Valeria Quiroga</strong><span>UX/UI Designer · ExxonMobil Standard Design System</span><a href="https://www.linkedin.com/in/valeriaquirogaseniordesigner/" target="_blank" rel="noreferrer noopener">LinkedIn ↗</a></div></article></section>
     <section class="closing"><h2>Interested in the space between strategy, UX and implementation.</h2><p>I am interested in understanding the problem, creating structure within complexity and turning ideas into products that people can actually use.</p><p>Currently looking for opportunities where I can take more ownership of the product journey and work closely with the people who build it.</p><a href="mailto:guillerminacaride@gmail.com" class="cta">Let's work together →</a></section>
   </div>
 </main>

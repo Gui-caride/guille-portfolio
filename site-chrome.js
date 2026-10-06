@@ -19,53 +19,22 @@ document.querySelectorAll('.site-footer .contact-cta[href^="mailto:"]').forEach(
   link.prepend(icon);
 });
 
-const scrollScene = document.querySelector("[data-scroll-scene]");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-if (scrollScene) {
-  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-  const interpolate = (start, end, progress) => start + (end - start) * progress;
+const revealItems = document.querySelectorAll(".home-reveal");
 
-  const updateScrollScene = () => {
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-    const sceneRange = Math.max(0, scrollScene.offsetHeight - viewportHeight);
-    const progress = reducedMotion.matches
-      ? 1
-      : clamp(-scrollScene.getBoundingClientRect().top / sceneRange, 0, 1);
-    const mobile = viewportWidth <= 600;
-    const initialTitleSize = clamp(viewportWidth * 0.11, 52, 160);
-    const compactTitleSize = clamp(viewportWidth * 0.052, 34, 66);
-    const reveal = clamp((progress - 0.28) / 0.72, 0, 1);
+if (revealItems.length && !reducedMotion.matches && "IntersectionObserver" in window) {
+  document.body.classList.add("has-scroll-reveal");
 
-    scrollScene.style.setProperty("--intro-title-size", `${interpolate(initialTitleSize, compactTitleSize, progress)}px`);
-    scrollScene.style.setProperty("--intro-title-x", `${interpolate(viewportWidth * (mobile ? 0.05 : 0.17), viewportWidth * (mobile ? 0.05 : 0.17), progress)}px`);
-    scrollScene.style.setProperty("--intro-title-y", `${interpolate(viewportHeight * (mobile ? 0.4 : 0.49), viewportHeight * (mobile ? 0.34 : 0.4), progress)}px`);
-    scrollScene.style.setProperty("--intro-copy-opacity", `${reveal}`);
-    scrollScene.style.setProperty("--intro-copy-y", `${interpolate(22, 0, reveal)}px`);
-    scrollScene.style.setProperty("--intro-hint-opacity", `${1 - reveal}`);
-    scrollScene.style.setProperty("--flower-x", `${interpolate(0, mobile ? 9 : 18, progress)}px`);
-    scrollScene.style.setProperty("--flower-y", `${interpolate(0, -12, progress)}px`);
-    scrollScene.style.setProperty("--flower-rotation", `${interpolate(-4, 8, progress)}deg`);
-    scrollScene.style.setProperty("--ring-x", `${interpolate(0, -28, progress)}px`);
-    scrollScene.style.setProperty("--ring-y", `${interpolate(0, -18, progress)}px`);
-    scrollScene.style.setProperty("--ring-rotation", `${interpolate(0, 28, progress)}deg`);
-  };
-
-  let sceneUpdateScheduled = false;
-  const scheduleSceneUpdate = () => {
-    if (sceneUpdateScheduled) return;
-    sceneUpdateScheduled = true;
-    window.requestAnimationFrame(() => {
-      updateScrollScene();
-      sceneUpdateScheduled = false;
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
     });
-  };
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
 
-  window.addEventListener("scroll", scheduleSceneUpdate, { passive: true });
-  window.addEventListener("resize", scheduleSceneUpdate);
-  reducedMotion.addEventListener("change", scheduleSceneUpdate);
-  updateScrollScene();
+  revealItems.forEach((item) => revealObserver.observe(item));
 }
 
 document.querySelectorAll("body > header").forEach((header) => {
