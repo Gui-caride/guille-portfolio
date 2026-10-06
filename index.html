@@ -6,7 +6,7 @@
 <title>Guille — Product &amp; UX/UI Designer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rethink+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rethink+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg: #0c0d0a;
@@ -131,149 +131,44 @@
   }
   .hero-meta div:last-child{ padding-left: .25rem; }
 
-  .home-intro{
+  .home-hero{
     position:relative;
-    height:190svh;
-    padding:0;
-    overflow:clip;
-    background:#fdfbfb;
-    color:#0f1110;
-  }
-  .home-intro-frame{
-    position:sticky;
-    top:0;
-    height:100svh;
-    min-height:38rem;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    min-height:clamp(34rem,78svh,58rem);
+    padding:clamp(7rem,17vh,11rem) var(--content-gutter) clamp(4rem,8vh,6rem);
     overflow:hidden;
-    isolation:isolate;
-    background:#fdfbfb;
   }
-  .home-intro-scene{
+  .home-hero-title{
     position:relative;
-    width:min(100%, 1440px);
-    height:100%;
-    margin-inline:auto;
-  }
-  .home-intro .eyebrow{
-    position:absolute;
-    z-index:2;
-    top:31%;
-    left:4%;
-    margin:0;
-    color:#0f1110;
-    font-size:.78rem;
-    letter-spacing:.045em;
-    text-transform:uppercase;
-  }
-  .home-intro-title{
-    position:absolute;
-    z-index:2;
-    top:var(--intro-title-y, 49vh);
-    left:var(--intro-title-x, 17vw);
-    margin:0;
-    max-width:none;
-    font-size:var(--intro-title-size, clamp(3.25rem, 11vw, 10rem));
-    line-height:.94;
-    letter-spacing:-.025em;
-    white-space:nowrap;
-    color:#0f1110;
-    transform:translateY(-50%);
-    transform-origin:left center;
-    will-change:top,left,font-size;
-  }
-  .home-intro-copy{
-    position:absolute;
-    z-index:2;
-    top:54%;
-    left:35.5%;
-    width:min(31rem, 39%);
-    margin:0;
-    color:#0f1110;
-    font-size:clamp(.95rem, 1.25vw, 1.15rem);
-    line-height:1.52;
-    opacity:var(--intro-copy-opacity, 0);
-    transform:translate3d(0,var(--intro-copy-y, 1.25rem),0);
-    will-change:opacity,transform;
-  }
-  .home-intro-copy p{margin:0 0 .8rem}
-  .home-intro-copy strong{font-weight:700}
-  .intro-highlight{
-    background:linear-gradient(transparent 20%, #f3b8e7 20%, #f3b8e7 88%, transparent 88%);
-    box-decoration-break:clone;
-    -webkit-box-decoration-break:clone;
-  }
-  .intro-current{font-size:.9em}
-  .intro-flower{
-    position:absolute;
     z-index:1;
-    width:clamp(6.5rem, 12vw, 10.5rem);
-    aspect-ratio:1;
-    left:4%;
-    top:49%;
-    color:#f17b32;
-    transform:translate3d(var(--flower-x,0),var(--flower-y,0),0) rotate(var(--flower-rotation,0deg));
-    will-change:transform;
-  }
-  .intro-flower svg{display:block;width:100%;height:100%;overflow:visible}
-  .intro-flower path{fill:url(#petal-gradient)}
-  .intro-flower-small{
-    width:clamp(2.8rem, 5.5vw, 4.6rem);
-    left:82%;
-    top:36%;
-    animation:flower-float 7s ease-in-out infinite;
-  }
-  .intro-ring{
-    position:absolute;
-    z-index:0;
-    width:clamp(7rem, 12vw, 11rem);
-    aspect-ratio:1;
-    left:84%;
-    top:72%;
-    border-radius:50%;
-    background:conic-gradient(from 35deg,#53c3ef,#dc9dec,#efa4da,#51bce9,#53c3ef);
-    box-shadow:inset 0 0 1.2rem rgb(255 255 255 / 35%),0 .4rem 1.5rem rgb(48 120 174 / 12%);
-    transform:translate3d(var(--ring-x,0),var(--ring-y,0),0) rotate(var(--ring-rotation,0deg));
-    will-change:transform;
-  }
-  .intro-ring::after{
-    position:absolute;
-    inset:27%;
-    border-radius:50%;
-    background:#fdfbfb;
-    content:"";
-  }
-  .intro-orbit{
-    position:absolute;
-    inset:0;
+    display:grid;
+    gap:0;
     width:100%;
-    height:100%;
-    overflow:visible;
-    pointer-events:none;
-  }
-  .intro-orbit circle{
-    fill:none;
-    stroke:#77786f;
-    stroke-width:1;
-    stroke-dasharray:3 6;
-    opacity:.55;
-    vector-effect:non-scaling-stroke;
-  }
-  .intro-scroll-hint{
-    position:absolute;
-    z-index:3;
-    right:4%;
-    bottom:3.2rem;
-    color:#77786f;
-    font-size:.72rem;
-    letter-spacing:.1em;
+    max-width:none;
+    margin:0;
+    font-family:var(--font-body, var(--sans));
+    font-size:clamp(3rem,6.1vw,6.1rem);
+    font-weight:400;
+    line-height:1.05;
+    letter-spacing:-.025em;
     text-transform:uppercase;
-    opacity:var(--intro-hint-opacity,1);
-    transition:opacity .15s linear;
   }
-  @keyframes flower-float{
-    0%,100%{translate:0 0;rotate:-5deg}
-    50%{translate:0 -12px;rotate:7deg}
+  .home-hero-title span{
+    display:block;
+    width:max-content;
+    max-width:none;
+    opacity:0;
+    transform:translate3d(-2rem,0,0);
+    animation:hero-line-in .9s cubic-bezier(.22,1,.36,1) forwards;
   }
+  .home-hero-title span:nth-child(2){transform:translate3d(2rem,0,0)}
+  .home-hero-title span:nth-child(1){animation-delay:.08s}
+  .home-hero-title span:nth-child(2){margin-left:31%;animation-delay:.2s}
+  .home-hero-title span:nth-child(3){margin-left:13%;font-weight:400;animation:hero-line-bold-in .95s cubic-bezier(.22,1,.36,1) .32s forwards}
+  @keyframes hero-line-in{to{opacity:1;transform:translate3d(0,0,0)}}
+  @keyframes hero-line-bold-in{to{opacity:1;transform:translate3d(0,0,0);font-weight:700}}
 
   /* Section shared */
   section{ padding: clamp(4rem, 8vw, 7rem) 0; }
@@ -294,108 +189,189 @@
     font-size: clamp(1.6rem, 3vw, 2.2rem);
     margin:0;
   }
-  /* Project cards */
-  .work-list{ display:flex; flex-direction:column; }
-  .project{
-    display:grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: clamp(1.5rem, 4vw, 4rem);
-    align-items:center;
-    padding: clamp(2rem, 4vw, 3rem) 0;
-    border-bottom: 1px solid var(--line);
-    border-radius: 0 0 1rem 1rem;
-  }
-  .project:first-child{ padding-top:0; }
-  .project-info .cat{
-    font-size: 0.82rem;
-    color: var(--accent-dim);
-    margin: 0 0 0.8rem;
-    font-weight: 500;
-  }
-  .project-info h3{
-    font-family: var(--serif-display);
-    font-size: clamp(1.6rem, 3vw, 2.1rem);
-    margin: 0 0 0.9rem;
-    font-weight: 700;
-  }
-  .project-info p{
-    color: var(--ink-muted);
-    max-width: 46ch;
-    margin: 0 0 1.2rem;
-    font-size: 0.98rem;
-  }
-  .badge{
-    display:inline-block;
-    font-size: 0.78rem;
-    color: var(--ink);
-    border: 1px solid var(--line);
-    padding: 0.35rem 0.7rem;
-    border-radius: 999px;
-    margin-bottom: 1.2rem;
-  }
-  .project-link{
-    font-size: 0.92rem;
-    color: var(--ink);
-    border: 1px solid var(--ink);
-    border-radius: 999px;
-    padding: .55rem .9rem;
-    display:inline-block;
-  }
-  #work .section-head .project-link{ background: var(--color-card-background); }
-  .project-visual{
-    aspect-ratio: 1/1;
-    border: 1px solid var(--line);
-    background: var(--bg-raised);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    position:relative;
-  }
-  .project-visual svg{ width:78%; height:78%; }
-  .project-visual img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .project:hover .project-visual{ border-color: var(--accent-dim); }
-  .project-visual{ transition: border-color .3s ease; }
-
-  @media (max-width: 760px){
-    .project{ grid-template-columns: 1fr; }
-    .project-visual{ order:-1; }
-  }
-
-  /* About */
-  .home-about{
-    position:relative;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    align-items:start;
-    gap:clamp(1.5rem,4vw,4rem);
-    width:min(100%,1440px);
+  .home-about,
+  .home-featured,
+  .home-tools,
+  .home-statement{
+    width:100%;
+    max-width:none;
     margin-inline:auto;
-    min-height:0;
-    padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4.5rem);
-    overflow:hidden;
-    background:#fdfbfb;
-    color:#0f1110;
+    padding:clamp(3.5rem,8vw,8rem) var(--content-gutter);
   }
-  .home-about .section-head{
-    grid-column:1/-1;
+  .home-about{
+    display:grid;
+    grid-template-columns:minmax(10rem,.65fr) minmax(0,1.35fr);
+    gap:clamp(2rem,8vw,9rem);
+    align-items:start;
+    padding-top:clamp(1rem,3vw,3rem);
+  }
+  .home-side-label{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:1.1rem;
+    padding-top:.25rem;
+  }
+  .home-side-label h2{
     margin:0;
-    padding:0 0 1rem;
-    border-bottom:1px solid var(--color-border);
-    border-radius:0;
-  }
-  .home-about .section-head h2{
-    margin:0;
     color:#0f1110;
-    font-size:clamp(1.5rem,2.5vw,2rem);
+    font-size:.88rem;
+    font-weight:700;
+    letter-spacing:-.01em;
+    text-transform:uppercase;
   }
-  .home-about p{
-    max-width:54ch;
+  .home-pill-link{
+    display:inline-flex;
+    align-items:center;
+    gap:.55rem;
+    padding:.7rem 1.1rem;
+    border:1px solid transparent;
+    border-radius:var(--radius-pill);
+    background:#e9e8e5;
+    color:#0f1110;
+    font-size:.72rem;
+    letter-spacing:.035em;
+    text-transform:uppercase;
+    transition:background .25s ease,transform .25s ease;
+  }
+  .home-pill-link:hover{background:#e2dfe0;transform:translateY(-2px)}
+  .home-pill-link span{font-size:1rem;line-height:0}
+  .home-about-copy{max-width:42rem}
+  .home-about-copy p{
     margin:0;
     color:#0f1110;
     font-size:clamp(.9rem,1vw,1rem);
-    line-height:1.5;
+    line-height:1.6;
   }
+  .home-about-facts{
+    display:flex;
+    gap:1.25rem;
+    margin-top:1.5rem;
+  }
+  .home-about-fact{
+    display:grid;
+    gap:.1rem;
+    padding-right:1.25rem;
+    border-right:1px solid #d7d5d3;
+  }
+  .home-about-fact:last-child{padding-right:0;border-right:0}
+  .home-about-fact strong{font-size:1rem;font-weight:700}
+  .home-about-fact span{font-size:.72rem;color:#555653}
+  .home-statement{
+    padding-top:clamp(3rem,8vw,7rem);
+    padding-bottom:clamp(4rem,9vw,8rem);
+    text-align:center;
+  }
+  body.page-index main section.home-statement p{
+    max-width:22ch;
+    margin:0 auto;
+    color:#0f1110;
+    font-family:var(--font-body, var(--sans));
+    font-size:clamp(2.2rem,5vw,5rem);
+    font-weight:400;
+    line-height:1.1;
+    letter-spacing:-.015em;
+    text-transform:uppercase;
+  }
+  .home-statement p span{display:block;opacity:0;transform:translate3d(0,.35em,0);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .home-statement.is-visible p span{opacity:1;transform:translate3d(0,0,0)}
+  .home-statement.is-visible p span:nth-child(2){transition-delay:.12s}
+  .home-statement.is-visible p span:nth-child(3){transition-delay:.24s}
+  .home-featured{
+    display:grid;
+    grid-template-columns:minmax(10rem,.65fr) minmax(0,1.35fr);
+    gap:clamp(2rem,8vw,9rem);
+    align-items:start;
+    padding-top:2rem;
+  }
+  .home-featured-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:.75rem;
+  }
+  .home-project-card{
+    position:relative;
+    display:block;
+    overflow:hidden;
+    aspect-ratio:1.12;
+    border-radius:var(--radius-image);
+    background:var(--color-card-background);
+    isolation:isolate;
+  }
+  .home-project-card::after{
+    position:absolute;
+    z-index:0;
+    inset:45% 0 0;
+    background:linear-gradient(transparent,rgb(15 17 16 / 48%));
+    content:"";
+    opacity:.8;
+    transition:opacity .35s ease;
+  }
+  .home-project-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:inherit;
+    transition:transform .7s cubic-bezier(.2,.7,.2,1);
+  }
+  .home-project-card:hover img,
+  .home-project-card:focus-visible img{transform:scale(1.045)}
+  .home-project-title{
+    position:absolute;
+    z-index:1;
+    right:1rem;
+    bottom:1rem;
+    left:1rem;
+    color:#fff;
+    font-size:.68rem;
+    font-weight:500;
+    letter-spacing:.045em;
+    text-transform:uppercase;
+  }
+  .home-project-plus{
+    position:absolute;
+    z-index:1;
+    right:.85rem;
+    bottom:.68rem;
+    color:#fff;
+    font-size:1.5rem;
+    line-height:1;
+    transition:transform .3s ease;
+  }
+  .home-project-card:hover .home-project-plus,
+  .home-project-card:focus-visible .home-project-plus{transform:rotate(45deg)}
+  .home-project-card--standard .home-project-title,
+  .home-project-card--standard .home-project-plus{color:#0f1110}
+  .home-project-card--standard::after{opacity:.35}
+  .home-tools{
+    display:grid;
+    grid-template-columns:minmax(10rem,.65fr) minmax(0,1.35fr);
+    gap:clamp(2rem,8vw,9rem);
+    align-items:start;
+    padding-top:clamp(2rem,4vw,4rem);
+    padding-bottom:clamp(5rem,8vw,8rem);
+  }
+  .home-tools .home-side-label h2{font-size:.68rem;font-weight:500}
+  .home-tools-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    border-top:1px solid var(--color-border);
+    border-left:1px solid var(--color-border);
+  }
+  .home-tool{
+    display:grid;
+    min-height:4.2rem;
+    place-items:center;
+    padding:.65rem .35rem;
+    border-right:1px solid var(--color-border);
+    border-bottom:1px solid var(--color-border);
+    color:#0f1110;
+    font-size:clamp(.72rem,1.1vw,1rem);
+    font-weight:650;
+    letter-spacing:-.035em;
+    transition:background .25s ease,letter-spacing .25s ease;
+  }
+  .home-tool:hover{background:#f2f0ee;letter-spacing:0}
   .about-grid{
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -455,32 +431,115 @@
     outline: 2px solid var(--accent);
     outline-offset: 3px;
   }
-  @media (max-width: 600px){
-    .hero-meta{ grid-template-columns: 1fr; gap: .9rem; }
-    .hero-meta div:first-child{
-      padding: 0 0 .9rem;
-      border-right: 0;
-      border-bottom: 1px solid var(--color-blue-tint, #b6c9cf);
+  .home-reveal{opacity:1;transform:none}
+  .has-scroll-reveal .home-reveal{
+    opacity:0;
+    transform:translate3d(0,1.4rem,0);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .has-scroll-reveal .home-reveal.is-visible{opacity:1;transform:translate3d(0,0,0)}
+  .has-scroll-reveal .home-project-card:nth-child(2){transition-delay:.08s}
+  .has-scroll-reveal .home-project-card:nth-child(3){transition-delay:.16s}
+  .has-scroll-reveal .home-project-card:nth-child(4){transition-delay:.24s}
+  .home-footer-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1.1fr) minmax(14rem,.9fr);
+    gap:2rem 5vw;
+    align-items:start;
+  }
+  footer.home-footer .home-footer-layout .contact-head{
+    display:flex;
+    align-items:flex-start;
+    flex-direction:column;
+    gap:1.5rem;
+    margin:0;
+    padding:0;
+    border:0;
+  }
+  footer.home-footer .home-footer-layout .contact-head h2{
+    max-width:none;
+    font-family:var(--font-body, var(--sans));
+    font-size:clamp(2rem,3vw,2.5rem);
+    font-weight:400;
+    line-height:1;
+    letter-spacing:-.025em;
+    text-transform:uppercase;
+  }
+  footer.home-footer .home-footer-layout .contact-cta{
+    border:0;
+    padding:.68rem 1rem;
+    border-radius:var(--radius-pill);
+    background:#e9e8e5;
+    color:#0f1110;
+    font-size:.68rem;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+  }
+  .home-footer-links{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2rem;
+    padding-top:.25rem;
+  }
+  .home-footer-links h3{
+    margin:0 0 .9rem;
+    color:#6b6b67;
+    font-size:.62rem;
+    font-weight:500;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .home-footer-links ul{display:grid;gap:.55rem;margin:0;padding:0;list-style:none}
+  .home-footer-links a{
+    color:#0f1110;
+    font-size:.72rem;
+    text-transform:uppercase;
+    transition:opacity .2s ease;
+  }
+  .home-footer-links a:hover{opacity:.55}
+  .home-footer-layout .foot-bottom{grid-column:1/-1}
+  @media (max-width: 760px){
+    .home-hero{min-height:0;padding:8rem var(--content-gutter) 4rem}
+    .home-hero-title{font-size:clamp(2.8rem,8.5vw,4rem);line-height:1}
+    .home-hero-title span:nth-child(2){margin-left:22%}
+    .home-hero-title span:nth-child(3){margin-left:8%}
+    .home-about,.home-featured,.home-tools{
+      grid-template-columns:1fr;
+      gap:1.5rem;
+      padding:3.5rem var(--content-gutter);
     }
-    .hero-meta div:last-child{ padding-left: 0; }
-    .home-intro{height:170svh}
-    .home-intro-frame{min-height:36rem}
-    .home-intro .eyebrow{top:25%;left:7%}
-    .home-intro-title{left:var(--intro-title-x,5vw);top:var(--intro-title-y,39vh);font-size:var(--intro-title-size,12vw);letter-spacing:-.025em}
-    .home-intro-copy{left:8%;top:55%;width:84%;font-size:.92rem}
-    .intro-flower:not(.intro-flower-small){left:78%;top:47%;width:3.5rem}
-    .intro-flower-small{left:78%;top:26%;width:3rem}
-    .intro-ring{left:78%;top:auto;bottom:6%;width:5.5rem}
-    .intro-scroll-hint{right:7%;bottom:1.5rem;font-size:.62rem}
-    .home-about{grid-template-columns:1fr;gap:1.5rem;padding:4rem 1.5rem 3rem}
-    .home-about .section-head{margin-bottom:.25rem}
-    .home-about p{font-size:.92rem}
+    .home-side-label{flex-direction:row;align-items:center;justify-content:space-between}
+    .home-about-copy{max-width:48rem}
+    .home-statement{padding:4.5rem var(--content-gutter)}
+    body.page-index main section.home-statement p{font-size:clamp(2rem,6.5vw,3.1rem)}
+    .home-footer-layout{grid-template-columns:1fr;gap:2.5rem}
+    .home-footer-links{max-width:24rem}
+  }
+  @media (max-width: 480px){
+    .home-hero{padding-top:7rem}
+    .home-hero-title{font-size:clamp(1.6rem,8vw,2.8rem);letter-spacing:-.035em}
+    .home-hero-title span:nth-child(2){margin-left:20%}
+    .home-hero-title span:nth-child(3){margin-left:7%}
+    body.page-index main section.home-statement p{font-size:clamp(1.4rem,7.2vw,1.8rem)}
+    .home-featured-grid{gap:.5rem}
+    .home-project-card{aspect-ratio:.9}
+    .home-project-title{right:.65rem;bottom:.7rem;left:.65rem;font-size:.57rem}
+    .home-project-plus{right:.55rem;bottom:.55rem;font-size:1.25rem}
+    .home-tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .home-tool{min-height:3.7rem}
+    .home-footer-layout .contact-head h2{font-size:clamp(2.3rem,9.5vw,3rem)}
   }
   @media (prefers-reduced-motion: reduce){
-    .intro-flower-small{animation:none}
-    .home-intro{height:auto}
-    .home-intro-frame{position:relative}
-    .home-intro-copy{opacity:1;transform:none}
+    .home-hero-title span{opacity:1;transform:none;animation:none}
+    .home-hero-title span:nth-child(2){transform:none}
+    .home-hero-title span:nth-child(3){font-weight:700;animation:none}
+    .home-statement p span{opacity:1;transform:none;transition:none}
+    .home-reveal,.has-scroll-reveal .home-reveal{
+      opacity:1;
+      transform:none;
+      transition:none;
+    }
+    .home-project-card img{transition:none}
   }
 </style>
 <link rel="stylesheet" href="styles/design-system.css">
@@ -503,121 +562,85 @@
 </header>
 
 <main id="top">
-  <section class="home-intro" data-scroll-scene aria-label="Introduction">
-    <div class="home-intro-frame">
-      <div class="home-intro-scene">
-        <svg class="intro-orbit" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
-          <circle cx="1" cy="450" r="510"></circle>
-          <circle cx="1" cy="450" r="526"></circle>
-          <circle cx="1450" cy="455" r="400"></circle>
-          <circle cx="1450" cy="455" r="416"></circle>
-        </svg>
-        <p class="eyebrow">Product Designer</p>
-        <div class="intro-flower" aria-hidden="true">
-          <svg viewBox="0 0 100 100">
-            <defs>
-              <linearGradient id="petal-gradient" x1="0" y1="1" x2="1" y2="0">
-                <stop offset="0" stop-color="#eaa2df"></stop>
-                <stop offset=".58" stop-color="#f3a0c9"></stop>
-                <stop offset="1" stop-color="#f58a36"></stop>
-              </linearGradient>
-            </defs>
-            <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z"></path>
-            <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(90 50 50)"></path>
-            <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(180 50 50)"></path>
-            <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(270 50 50)"></path>
-          </svg>
-        </div>
-        <h1 class="home-intro-title">Hey, I’m Guille</h1>
-        <div class="home-intro-copy">
-          <p>I'm Guille, a <strong>Product Designer</strong> with 6 years of experience across <span class="intro-highlight">digital products, ecommerce and design systems.</span> I work from the problem first — understanding what people need, making complexity clearer, and turning ideas into useful, scalable experiences.</p>
-          <p class="intro-current">Currently at TBWA in Barcelona, working with Volkswagen.</p>
-        </div>
-        <div class="intro-flower intro-flower-small" aria-hidden="true">
-          <svg viewBox="0 0 100 100">
-            <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z"></path>
-            <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(90 50 50)"></path>
-            <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(180 50 50)"></path>
-            <path d="M50 50C39 32 22 5 50 2C78 5 61 32 50 50Z" transform="rotate(270 50 50)"></path>
-          </svg>
-        </div>
-        <div class="intro-ring" aria-hidden="true"></div>
-        <span class="intro-scroll-hint" aria-hidden="true">Scroll to explore ↓</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="work" class="wrap">
-    <div class="section-head">
-      <h2>Selected work</h2>
-      <a href="work.html" class="project-link">View all projects →</a>
-    </div>
-
-    <div class="work-list">
-
-      <article class="project">
-        <div class="project-info">
-          <p class="cat">UX/UI · Automotive</p>
-          <h3>Volkswagen</h3>
-          <span class="badge">Ongoing — Feb 2026</span>
-          <p>A scalable landing-page system for ongoing Volkswagen campaigns — built so each campaign keeps its own approach without repeating design work.</p>
-          <p class="card-meta"><strong>Role:</strong> UX/UI designer &nbsp;·&nbsp; <strong>10</strong> templates · <strong>16</strong> pages</p>
-          <a href="volkswagen.html" class="project-link">View case study</a>
-        </div>
-        <div class="project-visual">
-          <img src="img/volkswagen/volkswagen-hero.jpeg" alt="Volkswagen campaign design preview" loading="lazy">
-        </div>
-      </article>
-
-      <article class="project">
-        <div class="project-info">
-          <p class="cat">Design Systems · Enterprise</p>
-          <h3>Standard</h3>
-          <p>A standardized set of reusable components, guidelines and patterns for ExxonMobil's internal digital platforms.</p>
-          <p class="card-meta"><strong>Role:</strong> UX/UI designer &nbsp;·&nbsp; <strong>11</strong> components · <strong>23</strong> landing pages</p>
-          <a href="standard.html" class="project-link">View case study</a>
-        </div>
-        <div class="project-visual">
-          <img src="img/standard/Standard-Design-System-hero.jpg" alt="Standard design system preview" loading="lazy">
-        </div>
-      </article>
-
-      <article class="project">
-        <div class="project-info">
-          <p class="cat">Product</p>
-          <h3>Tugo</h3>
-          <span class="badge">ELISAVA Master Awards 2025</span>
-          <p>End-to-end product design for children with chronic illnesses, like type 1 diabetes, and their families — usable at home or on the go.</p>
-          <p class="card-meta"><strong>Role:</strong> Research, UX, design system, implementation &nbsp;·&nbsp; <strong>34</strong> components</p>
-          <a href="tugo.html" class="project-link">View case study</a>
-        </div>
-        <div class="project-visual">
-          <img src="img/tugo/tugo-hero.jpg" alt="Tugo product design preview" loading="lazy">
-        </div>
-      </article>
-
-    </div>
-
+  <section class="home-hero" aria-label="Introduction">
+    <h1 class="home-hero-title">
+      <span>HEY!</span>
+      <span>I’M GUILLE,</span>
+      <span>PRODUCT DESIGNER</span>
+    </h1>
   </section>
 
   <section id="about" class="home-about">
-    <div class="section-head"><h2>About</h2></div>
-    <p>I'm a Product Designer with 6 years of experience working across different clients, industries and digital products.</p>
-    <p>I approach design as more than an interface — I like being involved from the beginning, asking the right questions and working closely with developers to turn ideas into something real.</p>
+    <div class="home-side-label home-reveal">
+      <h2>About</h2>
+      <a class="home-pill-link" href="about.html">About me <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="home-about-copy home-reveal">
+      <p>Born in Argentina and based in Barcelona, I’m a Product Designer with 6+ years of experience shaping digital products and experiences. I started my career in Graphic Design and later specialised in UX/UI through a Master’s degree, building a multidisciplinary approach that brings together strategy, user experience, visual design and systems thinking.</p>
+      <div class="home-about-facts">
+        <div class="home-about-fact"><strong>Based in</strong><span>Spain, Barcelona</span></div>
+        <div class="home-about-fact"><strong>6+</strong><span>Years of experience</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-statement home-reveal" aria-label="Design philosophy">
+    <p><span>Good design</span><span>makes the complex</span><span>feel simple.</span></p>
+  </section>
+
+  <section id="work" class="home-featured">
+    <div class="home-side-label home-reveal">
+      <h2>Featured work</h2>
+      <a class="home-pill-link" href="work.html">All work <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="home-featured-grid">
+      <a class="home-project-card home-reveal" href="volkswagen.html" aria-label="View Volkswagen case study">
+        <img src="img/volkswagen/volkswagen-hero.jpeg" alt="Volkswagen campaign design preview" loading="lazy">
+        <span class="home-project-title">Volkswagen</span><span class="home-project-plus" aria-hidden="true">+</span>
+      </a>
+      <a class="home-project-card home-project-card--standard home-reveal" href="standard.html" aria-label="View Standard design system case study">
+        <img src="img/standard/Standard-Design-System-hero.jpg" alt="Standard design system preview" loading="lazy">
+        <span class="home-project-title">Standard Design System</span><span class="home-project-plus" aria-hidden="true">+</span>
+      </a>
+      <a class="home-project-card home-reveal" href="tugo.html" aria-label="View Tugo case study">
+        <img src="img/tugo/tugo-hero.jpg" alt="Tugo product design preview" loading="lazy">
+        <span class="home-project-title">Tugo</span><span class="home-project-plus" aria-hidden="true">+</span>
+      </a>
+      <a class="home-project-card home-reveal" href="marea-verde.html" aria-label="View Marea Verde case study">
+        <img src="img/marea-verde/mare-verde-1.jpg" alt="Marea Verde ecommerce project preview" loading="lazy">
+        <span class="home-project-title">Marea Verde</span><span class="home-project-plus" aria-hidden="true">+</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="home-tools">
+    <div class="home-side-label home-reveal"><h2>Tools I work with</h2></div>
+    <div class="home-tools-grid home-reveal" aria-label="Tools and platforms">
+      <span class="home-tool">Slack</span>
+      <span class="home-tool">Microsoft</span>
+      <span class="home-tool">Webflow</span>
+      <span class="home-tool">Salesforce</span>
+      <span class="home-tool">Figma</span>
+      <span class="home-tool">Adobe</span>
+      <span class="home-tool">VS Code</span>
+      <span class="home-tool">Claude</span>
+    </div>
   </section>
 </main>
 
-<footer id="contact" class="site-footer">
-  <div class="wrap">
+<footer id="contact" class="site-footer home-footer">
+  <div class="wrap home-footer-layout">
     <div class="contact-head">
-      <h2>Let's talk about what you're building.</h2>
-      <a href="mailto:guillerminacaride@gmail.com" class="contact-cta">guillerminacaride@gmail.com</a>
+      <h2>Let’s talk<br>about what<br>you’re<br>building.</h2>
+      <a href="mailto:guillerminacaride@gmail.com" class="contact-cta">Get in touch <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="home-footer-links">
+      <div><h3>Sitemap</h3><ul><li><a href="#top">Home →</a></li><li><a href="about.html">About us →</a></li><li><a href="work.html">Work →</a></li><li><a href="#contact">Contact →</a></li></ul></div>
+      <div><h3>Network</h3><ul><li><a href="https://linkedin.com/in/guillermina-caride-urruty">LinkedIn ↗</a></li><li><a href="mailto:guillerminacaride@gmail.com">Email ↗</a></li></ul></div>
     </div>
     <div class="foot-bottom">
       <span>Guille — Product &amp; UX/UI Designer, Barcelona</span>
-      <div class="social">
-        <a href="https://linkedin.com/in/guillermina-caride-urruty">LinkedIn</a>
-      </div>
+      <div class="social"><a href="https://linkedin.com/in/guillermina-caride-urruty">LinkedIn</a></div>
     </div>
   </div>
 </footer>
