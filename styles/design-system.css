@@ -422,55 +422,15 @@ body.page-index main.home-main::before {
   will-change: transform;
 }
 
-body.page-index .home-hero-title span:first-child {
-  font-size: 1em;
-  margin-left: 33%;
-}
-
-body.page-index .home-hero-title {
-  font-size: clamp(3rem, 5.5vw, 5.5rem);
-}
-
-body.page-index .home-hero-title {
-  text-transform: none;
-}
-
-body.page-index .home-hero-title span:nth-child(2) {
-  margin-left: 16%;
-  font-size: 1.4em;
-  color: #f5c16d;
-  font-weight: 700;
-}
-
-body.page-index .home-hero-title span:nth-child(3) {
-  margin-left: 38%;
-  color: #0f1110;
-  font-weight: 400;
-  animation: hero-line-in 0.95s cubic-bezier(.22, 1, .36, 1) .32s forwards;
-}
-
 body.page-index .home-hero-title {
   display: block;
   width: min(calc(100% - clamp(0rem, 21vw, 18rem)), 48rem);
   margin-left: clamp(0rem, 21vw, 18rem);
-  font-size: clamp(2.8rem, 7.2vw, 4rem);
+  font-size: clamp(2.5rem, 6.4vw, 4rem);
   font-weight: 300;
   line-height: 1.1;
   letter-spacing: -0.045em;
-}
-
-body.page-index .home-hero-title span:first-child {
-  margin-left: 0;
-}
-
-body.page-index .home-hero-title span,
-body.page-index .home-hero-title strong {
-  display: inline;
-  width: auto;
-  max-width: 100%;
-  opacity: 1;
-  transform: none;
-  animation: none;
+  text-transform: none;
 }
 
 body.page-index .home-hero-title strong {
@@ -478,10 +438,10 @@ body.page-index .home-hero-title strong {
 }
 
 body.page-index .home-hero-intro {
-  width: min(calc(100% - clamp(0rem, 21vw, 18rem)), 25rem);
+  width: min(calc(100% - clamp(0rem, 21vw, 18rem)), 22rem);
   margin: 1.3rem 0 0 clamp(0rem, 21vw, 18rem);
   color: #0f1110;
-  font-size: 1rem;
+  font-size: 0.875rem !important;
   line-height: 1.5;
   animation: home-copy-in 800ms cubic-bezier(.22, 1, .36, 1) 180ms both;
 }
@@ -773,33 +733,12 @@ body.page-about .about-testimonials .person a {
 }
 
 @media (max-width: 600px) {
-  body.page-index .home-hero-title span:first-child {
-    margin-left: 0;
-  }
-
   body > .site-header > .wrap {
     width: calc(100% - 2rem);
   }
 
   body > .site-header.scrolled > .wrap {
     max-width: 380px;
-  }
-
-  body.page-index .home-hero-title span {
-    width: auto;
-    max-width: 100%;
-  }
-
-  body.page-index .home-hero-title span:first-child {
-    margin-left: 22%;
-  }
-
-  body.page-index .home-hero-title span:nth-child(2) {
-    margin-left: 0;
-  }
-
-  body.page-index .home-hero-title span:nth-child(3) {
-    margin-left: 28%;
   }
 
   body.page-index .home-tools-grid {
@@ -1009,6 +948,10 @@ body[class*="page-"] main :is(p, blockquote, li):not(.eyebrow) {
   line-height: 1.55;
 }
 
+body.page-index main p.home-hero-intro {
+  font-size: 0.875rem !important;
+}
+
 body[class*="page-"] main :is(p, blockquote, li):not(.eyebrow) strong {
   color: #0f1110;
 }
@@ -1032,11 +975,47 @@ body[class*="page-"] main .hero:not(.home-hero):not(.about-hero):not(.work-intro
 }
 
 body.page-index main > .home-hero {
-  padding-block: clamp(5rem, 10vh, 7rem) 40px;
+  min-height: clamp(20rem, 33svh, 36rem);
+  padding-top: clamp(7rem, 15vh, 10rem);
+  padding-bottom: 40px;
 }
 
 body > .site-header nav {
   border: 0;
+}
+
+body > .site-header {
+  padding-top: 1rem;
+}
+
+body > .site-header > .wrap,
+body > .site-header.scrolled > .wrap {
+  width: min(360px, calc(100% - 2rem));
+  max-width: 360px;
+}
+
+body > .site-header nav,
+body > .site-header.scrolled nav {
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.35rem 0.7rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: rgb(255 255 255 / 72%);
+  box-shadow: 0 6px 24px rgb(15 17 16 / 6%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  backdrop-filter: blur(18px) saturate(130%);
+}
+
+body > .site-header .wordmark,
+body > .site-header.scrolled .wordmark {
+  font-size: 0.72rem;
+}
+
+body > .site-header .navlinks,
+body > .site-header.scrolled .navlinks {
+  gap: 0.72rem;
+  font-size: 0.62rem;
 }
 
 body.page-about main > .about-hero {
@@ -1052,6 +1031,14 @@ body.page-work main > .work-intro {
 body.page-work main > #lib-root > .category-block {
   padding-block: 40px;
   border-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  body > .site-header > .wrap,
+  body > .site-header.scrolled > .wrap {
+    width: fit-content;
+    max-width: calc(100% - 1rem);
+  }
 }
 
 body.page-about .bring-card {
