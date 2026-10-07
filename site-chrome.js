@@ -48,12 +48,6 @@ document.querySelectorAll("body > header").forEach((header) => {
   updateScrollState();
 });
 
-document.querySelectorAll(".site-header .navlinks a").forEach((link) => {
-  if (link.textContent.trim().toLowerCase() === "about") {
-    link.href = "about.html#about";
-  }
-});
-
 const pageMain = document.querySelector("main");
 const updateShadePosition = () => {
   if (!pageMain || reducedMotion.matches) return;

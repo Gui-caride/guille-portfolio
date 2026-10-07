@@ -351,7 +351,14 @@
     padding-top:clamp(2rem,4vw,4rem);
     padding-bottom:clamp(5rem,8vw,8rem);
   }
-  .home-tools .home-side-label h2{font-size:.68rem;font-weight:500}
+  .home-tools .home-side-label h2{
+    color:#0f1110;
+    font-family:var(--font-body);
+    font-size:1.35rem;
+    font-weight:700;
+    letter-spacing:-.035em;
+    text-transform:uppercase;
+  }
   .home-tools-grid{
     display:grid;
     grid-template-columns:repeat(4,minmax(0,1fr));
@@ -554,7 +561,7 @@
       <a href="#top" class="wordmark">gc.</a>
       <div class="navlinks">
         <a href="work.html">Work</a>
-        <a href="about.html">About</a>
+        <a href="about.html#about">About</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
@@ -564,10 +571,9 @@
 <main id="top" class="home-main">
   <section class="home-hero" aria-label="Introduction">
     <h1 class="home-hero-title">
-      <span>I’M GUILLE,</span>
-      <span>PRODUCT</span>
-      <span>DESIGNER</span>
+      <span>Hey, I’m </span><strong>Guille!</strong>
     </h1>
+    <p class="home-hero-intro">I’m a <strong>Product Designer</strong> with 6+ years of experience shaping digital products and experiences.</p>
   </section>
 
   <section id="about" class="home-about">
