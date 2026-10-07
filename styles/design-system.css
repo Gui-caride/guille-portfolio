@@ -189,8 +189,9 @@ body > .site-header {
   padding: 0.9rem 1.1rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
-  background: rgb(255 255 255 / 90%);
-  backdrop-filter: blur(14px);
+  background: rgb(255 255 255 / 50%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  backdrop-filter: blur(18px) saturate(130%);
   transition: padding var(--motion-standard), border-radius var(--motion-standard), box-shadow var(--motion-standard);
 }
 
@@ -215,6 +216,22 @@ body > .site-header {
 .site-header .navlinks a {
   padding: 0.2rem 0;
   white-space: nowrap;
+}
+
+.site-header a {
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.site-header nav {
+  position: relative;
+  z-index: 1;
+}
+
+body[class*="page-"] main [id],
+body[class*="page-"] footer[id] {
+  scroll-margin-top: 5rem;
 }
 
 .site-header.scrolled {
@@ -430,6 +447,53 @@ body.page-index .home-hero-title span:nth-child(3) {
   color: #0f1110;
   font-weight: 400;
   animation: hero-line-in 0.95s cubic-bezier(.22, 1, .36, 1) .32s forwards;
+}
+
+body.page-index .home-hero-title {
+  display: block;
+  width: min(calc(100% - clamp(0rem, 21vw, 18rem)), 48rem);
+  margin-left: clamp(0rem, 21vw, 18rem);
+  font-size: clamp(2.8rem, 7.2vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+}
+
+body.page-index .home-hero-title span:first-child {
+  margin-left: 0;
+}
+
+body.page-index .home-hero-title span,
+body.page-index .home-hero-title strong {
+  display: inline;
+  width: auto;
+  max-width: 100%;
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+body.page-index .home-hero-title strong {
+  font-weight: 700;
+}
+
+body.page-index .home-hero-intro {
+  width: min(calc(100% - clamp(0rem, 21vw, 18rem)), 25rem);
+  margin: 1.3rem 0 0 clamp(0rem, 21vw, 18rem);
+  color: #0f1110;
+  font-size: 1rem;
+  line-height: 1.5;
+  animation: home-copy-in 800ms cubic-bezier(.22, 1, .36, 1) 180ms both;
+}
+
+body.page-index .home-hero-intro strong {
+  color: #0f1110;
+  font-weight: 700;
+}
+
+@keyframes home-copy-in {
+  from { opacity: 0; transform: translateY(0.5rem); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 body.page-index .home-about-copy {
@@ -663,17 +727,20 @@ body.page-about .about-testimonials .person {
 
 body.page-about .about-testimonials .recommendation blockquote {
   grid-column: 6 / -1;
-  font-size: 0.82rem;
+  color: #0f1110 !important;
+  font-size: 1rem !important;
   line-height: 1.55;
 }
 
 body.page-about .about-testimonials .person strong {
-  font-size: 0.72rem;
+  color: #0f1110;
+  font-size: 1rem;
 }
 
 body.page-about .about-testimonials .person span,
 body.page-about .about-testimonials .person a {
-  font-size: 0.65rem;
+  color: #0f1110;
+  font-size: 1rem;
 }
 
 @media (max-width: 800px) {
@@ -706,6 +773,10 @@ body.page-about .about-testimonials .person a {
 }
 
 @media (max-width: 600px) {
+  body.page-index .home-hero-title span:first-child {
+    margin-left: 0;
+  }
+
   body > .site-header > .wrap {
     width: calc(100% - 2rem);
   }
@@ -913,9 +984,14 @@ body[class*="page-"]::before {
   will-change: transform, margin;
 }
 
-body[class*="page-"] > :is(header, main, footer) {
+body[class*="page-"] > :is(main, footer) {
   position: relative;
   z-index: 1;
+}
+
+body[class*="page-"] > .site-header {
+  position: fixed;
+  z-index: 100;
 }
 
 @keyframes shade-drift {
@@ -957,6 +1033,10 @@ body[class*="page-"] main .hero:not(.home-hero):not(.about-hero):not(.work-intro
 
 body.page-index main > .home-hero {
   padding-block: clamp(5rem, 10vh, 7rem) 40px;
+}
+
+body > .site-header nav {
+  border: 0;
 }
 
 body.page-about main > .about-hero {
@@ -1041,20 +1121,22 @@ body.page-work .lib-card:focus-visible .lib-card-image .project-arrow {
 }
 
 @media (max-width: 600px) {
-  body.page-index .home-hero-title span:first-child { margin-left: 22%; }
-  body.page-index .home-hero-title span:nth-child(2) {
+  body.page-index .home-hero-title,
+  body.page-index .home-hero-intro {
     margin-left: 0;
-    font-size: 1.2em;
   }
-  body.page-index .home-hero-title span:nth-child(3) { margin-left: 28%; }
-  body.page-index .home-hero-title { font-size: clamp(2.8rem, 8.5vw, 4rem); }
+
+  body.page-index .home-hero-title {
+    font-size: clamp(2.5rem, 10vw, 3.4rem);
+  }
+
   body.page-index main section.home-statement p {
     font-size: clamp(2rem, 6.5vw, 3.1rem) !important;
   }
 }
 
 @media (max-width: 480px) {
-  body.page-index .home-hero-title { font-size: clamp(1.6rem, 8vw, 2.8rem); }
+  body.page-index .home-hero-title { font-size: clamp(2.3rem, 10vw, 2.8rem); }
   body.page-index main section.home-statement p {
     font-size: clamp(1.4rem, 7.2vw, 1.8rem) !important;
   }
@@ -1062,4 +1144,4 @@ body.page-work .lib-card:focus-visible .lib-card-image .project-arrow {
 
 @media (prefers-reduced-motion: reduce) {
   body[class*="page-"]::before { animation: none; }
-  body.page-index .home-hero-title span:nth-child(3) { font-weight: 400; }
+  body.page-index .home-hero-intro { animation: none; }
