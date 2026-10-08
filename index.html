@@ -135,40 +135,35 @@
     position:relative;
     display:flex;
     flex-direction:column;
-    justify-content:flex-start;
-    min-height:clamp(34rem,78svh,58rem);
-    padding:clamp(7rem,17vh,11rem) var(--content-gutter) clamp(4rem,8vh,6rem);
+    align-items:center;
+    justify-content:center;
+    min-height:clamp(25rem,56svh,39rem);
+    padding:clamp(7rem,14vh,10rem) var(--content-gutter) 3rem;
     overflow:hidden;
+    text-align:center;
   }
   .home-hero-title{
     position:relative;
     z-index:1;
-    display:grid;
-    gap:0;
-    width:100%;
+    display:block;
+    width:min(100%,58rem);
     max-width:none;
     margin:0;
     font-family:var(--font-body, var(--sans));
-    font-size:clamp(3rem,6.1vw,6.1rem);
-    font-weight:400;
-    line-height:1.05;
-    letter-spacing:-.025em;
-    text-transform:uppercase;
+    font-size:clamp(1.65rem,3.4vw,2.9rem);
+    font-weight:500;
+    line-height:1.2;
+    letter-spacing:-.02em;
   }
-  .home-hero-title span{
-    display:block;
-    width:max-content;
-    max-width:none;
-    opacity:0;
-    transform:translate3d(-2rem,0,0);
-    animation:hero-line-in .9s cubic-bezier(.22,1,.36,1) forwards;
+  .home-hero-title strong{font-weight:700}
+  .home-hero-intro{
+    max-width:38ch;
+    margin:.35rem auto 0;
+    color:var(--color-text-secondary);
+    font-size:clamp(1.15rem,2vw,1.65rem);
+    line-height:1.35;
   }
-  .home-hero-title span:nth-child(2){transform:translate3d(2rem,0,0)}
-  .home-hero-title span:nth-child(1){animation-delay:.08s}
-  .home-hero-title span:nth-child(2){margin-left:31%;animation-delay:.2s}
-  .home-hero-title span:nth-child(3){margin-left:13%;font-weight:400;animation:hero-line-bold-in .95s cubic-bezier(.22,1,.36,1) .32s forwards}
-  @keyframes hero-line-in{to{opacity:1;transform:translate3d(0,0,0)}}
-  @keyframes hero-line-bold-in{to{opacity:1;transform:translate3d(0,0,0);font-weight:700}}
+  .home-scroll-cue{display:grid;width:2rem;height:2.5rem;place-items:center;margin-top:1.2rem;font-size:1.8rem;font-weight:300;line-height:1}
 
   /* Section shared */
   section{ padding: clamp(4rem, 8vw, 7rem) 0; }
@@ -343,6 +338,33 @@
   .home-project-card--standard .home-project-title,
   .home-project-card--standard .home-project-plus{color:#0f1110}
   .home-project-card--standard::after{opacity:.35}
+  .home-services{
+    display:grid;
+    grid-template-columns:minmax(10rem,.65fr) minmax(0,1.35fr);
+    gap:clamp(2rem,8vw,9rem);
+    align-items:start;
+    padding:clamp(3rem,7vw,6rem) var(--content-gutter);
+  }
+  .home-services{scroll-margin-top:6rem}
+  .home-services-list{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+  .home-service{
+    display:grid;
+    grid-template-columns:1.5rem minmax(0,1fr);
+    gap:.75rem;
+    padding:.75rem 0;
+    border-top:1px solid var(--color-border);
+  }
+  .home-service-number{color:var(--color-accent);font-size:.7rem;font-weight:600}
+  .home-service h3{margin:0 0 .3rem;font-size:.9rem;font-weight:600}
+  .home-service p{margin:0;color:var(--color-text-secondary);font-size:.78rem;line-height:1.5}
+  .home-services-action{display:flex;justify-content:flex-end;margin-top:1rem}
   .home-tools{
     display:grid;
     grid-template-columns:minmax(10rem,.65fr) minmax(0,1.35fr);
@@ -354,9 +376,9 @@
   .home-tools .home-side-label h2{
     color:#0f1110;
     font-family:var(--font-body);
-    font-size:1.35rem;
+    font-size:.88rem;
     font-weight:700;
-    letter-spacing:-.035em;
+    letter-spacing:-.01em;
     text-transform:uppercase;
   }
   .home-tools-grid{
@@ -379,6 +401,14 @@
     transition:background .25s ease,letter-spacing .25s ease;
   }
   .home-tool:hover{background:#f2f0ee;letter-spacing:0}
+  .home-testimonials{padding:clamp(3rem,7vw,6rem) var(--content-gutter)}
+  .home-testimonials-heading{margin:0 0 1.5rem;color:var(--color-text-primary);font-size:.88rem;font-weight:700;text-transform:uppercase}
+  .home-testimonial-row{display:grid;grid-template-columns:minmax(10rem,.65fr) minmax(0,1.35fr);gap:clamp(2rem,8vw,9rem);padding:1.5rem 0;border-top:1px solid var(--color-border)}
+  .home-testimonial-author h3{margin:0 0 .2rem;font-size:.78rem;font-weight:700}
+  .home-testimonial-author p{margin:0;color:var(--color-text-secondary);font-size:.72rem;line-height:1.5}
+  .home-testimonial-author a{display:inline-block;margin-top:.5rem;border-bottom:1px solid currentColor;font-size:.68rem}
+  .home-testimonial-quote p{margin:0;color:var(--color-text-secondary);font-size:.78rem;line-height:1.55}
+  .home-testimonial-quote p+p{margin-top:.9rem}
   .about-grid{
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -506,15 +536,15 @@
   .home-footer-links a:hover{opacity:.55}
   .home-footer-layout .foot-bottom{grid-column:1/-1}
   @media (max-width: 760px){
-    .home-hero{min-height:0;padding:8rem var(--content-gutter) 4rem}
-    .home-hero-title{font-size:clamp(2.8rem,8.5vw,4rem);line-height:1}
-    .home-hero-title span:nth-child(2){margin-left:22%}
-    .home-hero-title span:nth-child(3){margin-left:8%}
-    .home-about,.home-featured,.home-tools{
+    .home-hero{min-height:0;padding:9rem var(--content-gutter) 4rem}
+    .home-hero-title{font-size:clamp(1.65rem,5vw,2.4rem)}
+    .home-about,.home-featured,.home-services,.home-tools{
       grid-template-columns:1fr;
       gap:1.5rem;
       padding:3.5rem var(--content-gutter);
     }
+    .home-testimonials{padding:3.5rem var(--content-gutter)}
+    .home-testimonial-row{grid-template-columns:1fr;gap:1rem}
     .home-side-label{flex-direction:row;align-items:center;justify-content:space-between}
     .home-about-copy{max-width:48rem}
     .home-statement{padding:4.5rem var(--content-gutter)}
@@ -523,10 +553,9 @@
     .home-footer-links{max-width:24rem}
   }
   @media (max-width: 480px){
-    .home-hero{padding-top:7rem}
-    .home-hero-title{font-size:clamp(1.6rem,8vw,2.8rem);letter-spacing:-.035em}
-    .home-hero-title span:nth-child(2){margin-left:20%}
-    .home-hero-title span:nth-child(3){margin-left:7%}
+    .home-hero{padding-top:8rem}
+    .home-hero-title{font-size:clamp(1.45rem,7vw,2rem)}
+    .home-hero-intro{font-size:1.1rem}
     body.page-index main section.home-statement p{font-size:clamp(1.4rem,7.2vw,1.8rem)}
     .home-featured-grid{gap:.5rem}
     .home-project-card{aspect-ratio:.9}
@@ -537,9 +566,6 @@
     .home-footer-layout .contact-head h2{font-size:clamp(2.3rem,9.5vw,3rem)}
   }
   @media (prefers-reduced-motion: reduce){
-    .home-hero-title span{opacity:1;transform:none;animation:none}
-    .home-hero-title span:nth-child(2){transform:none}
-    .home-hero-title span:nth-child(3){font-weight:700;animation:none}
     .home-statement p span{opacity:1;transform:none;transition:none}
     .home-reveal,.has-scroll-reveal .home-reveal{
       opacity:1;
@@ -568,72 +594,110 @@
   </div>
 </header>
 
-<main id="top" class="home-main">
-  <section class="home-hero" aria-label="Introduction">
-    <h1 class="home-hero-title">
-      <span>Hey, I’m </span><strong>Guille!</strong>
-    </h1>
-    <p class="home-hero-intro">I’m a <strong>Product Designer</strong> with 6+ years of experience shaping digital products and experiences.</p>
-  </section>
+    <main id="top" class="home-main">
+      <section class="home-hero" aria-label="Introduction">
+        <h1 class="home-hero-title">Hey, I’m <strong>Guille Caride</strong> - Product Designer,</h1>
+        <p class="home-hero-intro">I transform complex ideas into products people actually want to use.</p>
+        <a class="home-scroll-cue" href="#about" aria-label="Scroll to About">↓</a>
+      </section>
 
-  <section id="about" class="home-about">
-    <div class="home-side-label home-reveal">
-      <h2>About</h2>
-      <a class="home-pill-link" href="about.html">About me <span aria-hidden="true">→</span></a>
-    </div>
-    <div class="home-about-copy home-reveal">
-      <div class="home-about-facts">
-        <div class="home-about-fact"><strong>Based in</strong><span>Spain, Barcelona</span></div>
-        <div class="home-about-fact"><strong>6+</strong><span>Years of experience</span></div>
-      </div>
-      <p>Born in Argentina and based in Barcelona, I’m a Product Designer with 6+ years of experience shaping digital products and experiences. I started my career in Graphic Design and later specialised in UX/UI through a Master’s degree, building a multidisciplinary approach that brings together strategy, user experience, visual design and systems thinking.</p>
-    </div>
-  </section>
+      <section id="about" class="home-about">
+        <div class="home-side-label home-reveal">
+          <h2>About me</h2>
+          <p>The person behind the work</p>
+        </div>
+        <div class="home-about-copy home-reveal">
+          <p class="home-about-lead">With 6+ years of experience working across different clients, industries and digital products.</p>
+          <p class="home-about-detail">Since 2020, I’ve designed web and apps across fintech, e-commerce, and big corporations.</p>
+          <a class="home-pill-link" href="about.html">More about me <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
 
-  <section class="home-statement home-reveal" aria-label="Design philosophy">
-    <p><span>Good design</span><span>makes the complex</span><span>feel simple.</span></p>
-  </section>
+      <section id="work" class="home-featured">
+        <div class="home-side-label home-reveal">
+          <h2>Featured work</h2>
+          <a class="home-pill-link" href="work.html">More projects <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="home-featured-grid">
+          <a class="home-project-card home-reveal" href="volkswagen.html" aria-label="View Volkswagen case study">
+            <img src="img/volkswagen/volkswagen-hero.jpeg" alt="Volkswagen campaign design preview" loading="lazy">
+            <span class="home-project-title">Volkswagen</span><span class="home-project-plus" aria-hidden="true">+</span>
+          </a>
+          <a class="home-project-card home-project-card--standard home-reveal" href="standard.html" aria-label="View Standard design system case study">
+            <img src="img/standard/Standard-Design-System-hero.jpg" alt="Standard design system preview" loading="lazy">
+            <span class="home-project-title">Standard Design System</span><span class="home-project-plus" aria-hidden="true">+</span>
+          </a>
+          <a class="home-project-card home-reveal" href="tugo.html" aria-label="View Tugo case study">
+            <img src="img/tugo/tugo-hero.jpg" alt="Tugo product design preview" loading="lazy">
+            <span class="home-project-title">Tugo</span><span class="home-project-plus" aria-hidden="true">+</span>
+          </a>
+          <a class="home-project-card home-reveal" href="marea-verde.html" aria-label="View Marea Verde case study">
+            <img src="img/marea-verde/mare-verde-1.jpg" alt="Marea Verde ecommerce project preview" loading="lazy">
+            <span class="home-project-title">Marea Verde</span><span class="home-project-plus" aria-hidden="true">+</span>
+          </a>
+        </div>
+      </section>
 
-  <section id="work" class="home-featured">
-    <div class="home-side-label home-reveal">
-      <h2>Featured work</h2>
-      <a class="home-pill-link" href="work.html">All work <span aria-hidden="true">→</span></a>
-    </div>
-    <div class="home-featured-grid">
-      <a class="home-project-card home-reveal" href="volkswagen.html" aria-label="View Volkswagen case study">
-        <img src="img/volkswagen/volkswagen-hero.jpeg" alt="Volkswagen campaign design preview" loading="lazy">
-        <span class="home-project-title">Volkswagen</span><span class="home-project-plus" aria-hidden="true">+</span>
-      </a>
-      <a class="home-project-card home-project-card--standard home-reveal" href="standard.html" aria-label="View Standard design system case study">
-        <img src="img/standard/Standard-Design-System-hero.jpg" alt="Standard design system preview" loading="lazy">
-        <span class="home-project-title">Standard Design System</span><span class="home-project-plus" aria-hidden="true">+</span>
-      </a>
-      <a class="home-project-card home-reveal" href="tugo.html" aria-label="View Tugo case study">
-        <img src="img/tugo/tugo-hero.jpg" alt="Tugo product design preview" loading="lazy">
-        <span class="home-project-title">Tugo</span><span class="home-project-plus" aria-hidden="true">+</span>
-      </a>
-      <a class="home-project-card home-reveal" href="marea-verde.html" aria-label="View Marea Verde case study">
-        <img src="img/marea-verde/mare-verde-1.jpg" alt="Marea Verde ecommerce project preview" loading="lazy">
-        <span class="home-project-title">Marea Verde</span><span class="home-project-plus" aria-hidden="true">+</span>
-      </a>
-    </div>
-  </section>
+      <section id="services" class="home-services">
+        <div class="home-side-label home-reveal">
+          <h2>Services</h2>
+          <p>How can I help you</p>
+        </div>
+        <div>
+          <ol class="home-services-list">
+            <li class="home-service home-reveal"><span class="home-service-number">01</span><div><h3>UX / UI Design</h3><p>Interfaces that feel right from the very first tap.</p></div></li>
+            <li class="home-service home-reveal"><span class="home-service-number">02</span><div><h3>Mobile App Design</h3><p>End-to-end app design for iOS and Android, built to perform.</p></div></li>
+            <li class="home-service home-reveal"><span class="home-service-number">03</span><div><h3>Interaction &amp; Prototyping</h3><p>Prototypes that bring your product to life instantly.</p></div></li>
+            <li class="home-service home-reveal"><span class="home-service-number">04</span><div><h3>Design Systems</h3><p>Component libraries that keep your product consistent.</p></div></li>
+            <li class="home-service home-reveal"><span class="home-service-number">05</span><div><h3>User Research &amp; Testing</h3><p>Fast, clean sites built to convert visitors.</p></div></li>
+            <li class="home-service home-reveal"><span class="home-service-number">06</span><div><h3>Creative Strategy</h3><p>Positioning and messaging rooted in research.</p></div></li>
+          </ol>
+          <div class="home-services-action"><a class="home-pill-link" href="#contact">Contact me <span aria-hidden="true">→</span></a></div>
+        </div>
+      </section>
 
-  <section class="home-tools">
-    <div class="home-side-label home-reveal">    <h2>Tools I worked with</h2></div>
-    <div class="home-tools-grid home-reveal" aria-label="Tools and platforms">
-    <span class="home-tool"><img src="img/tools/slack.png" alt="Slack"></span>
-    <span class="home-tool home-tool--wordmark"><span class="microsoft-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>Microsoft</span>
-    <span class="home-tool"><img src="img/tools/webflow.png" alt="Webflow"></span>
-    <span class="home-tool"><img src="img/tools/salesforce.png" alt="Salesforce"></span>
-    <span class="home-tool"><img src="img/tools/figma.png" alt="Figma"></span>
-    <span class="home-tool"><img src="img/tools/adobe.png" alt="Adobe"></span>
-    <span class="home-tool"><img src="img/tools/vscode.png" alt="VS Code"></span>
-    <span class="home-tool"><img src="img/tools/claude.png" alt="Claude"></span>
-    </div>
-  </section>
-</main>
+      <section class="home-tools">
+        <div class="home-side-label home-reveal">
+          <h2>Skills</h2>
+          <p>My most used tools</p>
+        </div>
+        <div class="home-tools-grid home-reveal" aria-label="Tools and platforms">
+          <span class="home-tool"><img src="img/tools/slack.png" alt="Slack"></span>
+          <span class="home-tool home-tool--wordmark"><span class="microsoft-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>Microsoft</span>
+          <span class="home-tool"><img src="img/tools/webflow.png" alt="Webflow"></span>
+          <span class="home-tool"><img src="img/tools/salesforce.png" alt="Salesforce"></span>
+          <span class="home-tool"><img src="img/tools/figma.png" alt="Figma"></span>
+          <span class="home-tool"><img src="img/tools/adobe.png" alt="Adobe"></span>
+          <span class="home-tool"><img src="img/tools/vscode.png" alt="VS Code"></span>
+          <span class="home-tool"><img src="img/tools/claude.png" alt="Claude"></span>
+        </div>
+      </section>
 
+      <section class="home-statement home-reveal" aria-label="Design philosophy">
+        <p><span>Good design</span><span>makes the complex</span><span>feel simple.</span></p>
+      </section>
+
+      <section class="home-testimonials">
+        <h2 class="home-testimonials-heading">Testimonials</h2>
+        <article class="home-testimonial-row home-reveal">
+          <div class="home-testimonial-author"><h3>Angela Maria Baracaldo Bonilla</h3><p>E-commerce Strategy &amp; Operations · Bullmetrix</p><a href="https://www.linkedin.com/in/angelabaracaldo/?skipRedirect=true" target="_blank" rel="noreferrer noopener">LinkedIn ↗</a></div>
+          <blockquote class="home-testimonial-quote">
+            <p>“Guille is a committed and proactive professional. During our year of working together, she demonstrated her curiosity, ability to learn, and capacity to develop great projects.</p>
+            <p>She is a dynamic and cheerful person who, in her role as a designer, was able to present comprehensive strategies and not only deliver high-quality work, but also understand the results in order to make her work have a greater impact on clients.</p>
+            <p>Regarding her role as an analyst, she discovered a position that perfectly combines her creativity with the development of results-oriented strategies.</p>
+            <p>She is an excellent professional with a great journey ahead of her, and it is a true pleasure to have her on the team.”</p>
+          </blockquote>
+        </article>
+        <article class="home-testimonial-row home-reveal">
+          <div class="home-testimonial-author"><h3>Valeria Quiroga</h3><p>Product Designer · ExxonMobil</p><span>LinkedIn ↗</span></div>
+          <blockquote class="home-testimonial-quote">
+            <p>“Guille is one of those designers who combines a strong sense of responsibility with a genuine curiosity to understand how things work. During our time working together on the ExxonMobil project, I was particularly impressed by how quickly she learned and adapted to a complex project and design system.</p>
+            <p>She is a highly skilled designer who consistently showed that her capabilities went beyond the expectations of her role. She has a strong eye for detail and visual design, but what really stood out to me was her ability to understand the bigger picture, question decisions and contribute with ideas that went beyond her position.</p>
+            <p>I really enjoyed working with Guille. She is a talented, committed and fast-learning designer who has already demonstrated that she can outgrow the boundaries of her current role and take on broader responsibilities. I believe she has a lot of potential as she continues to grow toward more strategic Product Design roles.”</p>
+          </blockquote>
+        </article>
+      </section>
+    </main>
 <footer id="contact" class="site-footer home-footer">
   <div class="wrap home-footer-layout">
     <div class="contact-head">
@@ -641,7 +705,7 @@
       <a href="mailto:guillerminacaride@gmail.com" class="contact-cta">Get in touch <span aria-hidden="true">→</span></a>
     </div>
     <div class="home-footer-links">
-      <div><h3>Sitemap</h3><ul><li><a href="#top">Home →</a></li><li><a href="about.html">About us →</a></li><li><a href="work.html">Work →</a></li><li><a href="about.html#what-i-bring">Services →</a></li><li><a href="#contact">Contact →</a></li></ul></div>
+      <div><h3>Sitemap</h3><ul><li><a href="#top">Home →</a></li><li><a href="about.html">About us →</a></li><li><a href="work.html">Work →</a></li><li><a href="#services">Services →</a></li><li><a href="#contact">Contact →</a></li></ul></div>
       <div><h3>Network</h3><ul><li><a href="https://linkedin.com/in/guillermina-caride-urruty">LinkedIn ↗</a></li><li><a href="mailto:guillerminacaride@gmail.com?subject=CV%20request">CV ↗</a></li></ul></div>
     </div>
     <div class="foot-bottom">
