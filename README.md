@@ -17,7 +17,7 @@ Page-specific styles can still extend the shared primitives, but should use thes
 ## Pages
 - `index.html` — homepage, curated selection of 3 projects
 - `about.html` — About Me, capabilities and recommendations
-- `work.html` — full project library (all projects, grouped by category, data-driven from a JS array at the top of the file)
+- `work.html` — full image-first project library (data-driven from a JS array at the top of the file)
 - `tugo.html`, `standard.html`, `marea-verde.html`, `volkswagen.html`, `froya.html`, `null-wines.html`, `froken-dianas-salonger.html`, `goodlight.html` — case studies
 
 ## Adding a new project
