@@ -91,10 +91,24 @@ document.querySelectorAll(".site-header nav").forEach((navigation) => {
 
 const pageMain = document.querySelector("main");
 const updateShadePosition = () => {
-  if (!pageMain || reducedMotion.matches) return;
-  const scrollableDistance = Math.max(pageMain.offsetHeight - window.innerHeight, 1);
-  const progress = Math.min(Math.max((window.scrollY - pageMain.offsetTop) / scrollableDistance, 0), 1);
-  document.body.style.setProperty("--shade-scroll-offset", `${progress * 360}px`);
+  if (pageMain) {
+    const scrollableDistance = Math.max(pageMain.offsetHeight - window.innerHeight, 1);
+    const progress = Math.min(Math.max((window.scrollY - pageMain.offsetTop) / scrollableDistance, 0), 1);
+    if (!reducedMotion.matches) {
+      document.body.style.setProperty("--shade-scroll-offset", `${progress * 360}px`);
+    }
+
+    if (document.body.classList.contains("page-index")) {
+      const hero = document.querySelector(".home-hero");
+      if (hero) {
+        const heroProgress = Math.min(Math.max(window.scrollY / Math.max(hero.offsetHeight, 1), 0), 1);
+        hero.style.setProperty("--hero-scroll-progress", heroProgress.toFixed(3));
+        hero.style.setProperty("--hero-shade-shift", `${heroProgress * -18}vw`);
+        const titleChannel = Math.round(255 * (1 - heroProgress));
+        hero.style.setProperty("--hero-title-ink", `rgb(${titleChannel} ${titleChannel} ${titleChannel})`);
+      }
+    }
+  }
 };
 
 window.addEventListener("scroll", updateShadePosition, { passive: true });
