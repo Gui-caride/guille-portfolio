@@ -179,37 +179,37 @@
   // Living project data — add a new object here to extend the library.
   // status: "Featured" | "Supporting" | "Archive" | "Do Not Feature" (Do Not Feature is hidden)
   const projects = [
-    { id:"tugo", title:"Tugo", category:"Product", status:"Featured", image:"img/tugo/tugo-hero.jpg",
-      summary:"End-to-end product design for children with chronic illnesses and their families.",
-      role:"Research, UX, design system, implementation", metric:"34 components", href:"tugo.html" },
+    { id:"tugo", title:"Tugo", category:"Product", previewLabel:"Product Design", previewMeta:"Product Design · UX/UI · Mobile · Healthtech", status:"Featured", image:"img/tugo/tugo-hero.jpg",
+      summary:"A digital support experience helping children with chronic illnesses build independence while giving families peace of mind.",
+      role:"Research, UX, design system, implementation", metric:"34 components", previewDetails:false, href:"tugo.html" },
 
-    { id:"exxonmobil", title:"ExxonMobil Design System", category:"Design Systems", status:"Supporting", image:"img/standard/Standard-Design-System-hero.jpg",
-      summary:"Standardized components, guidelines and patterns for internal digital platforms.",
-      role:"UX/UI designer", metric:"11 components · 23 landing pages", href:"standard.html" },
+    { id:"exxonmobil", title:"ExxonMobil", category:"Design System", previewLabel:"Design System", previewMeta:"Design System · Components · Accessibility", status:"Supporting", image:"img/standard/Standard-Design-System-hero.jpg",
+      summary:"A reusable component system built to improve consistency, accessibility, and collaboration across digital platforms.",
+      role:"UX/UI designer", metric:"11 components · 23 landing pages", previewDetails:false, href:"standard.html" },
 
-    { id:"marea-verde", title:"Marea Verde", category:"Design Systems", status:"Supporting", image:"img/marea-verde/mare-verde.jpg",
-      summary:"Component system and interface covering the complete plant-buying user flow.",
-      role:"UX/UI designer", metric:"31 components · 8 screens", href:"marea-verde.html" },
+    { id:"marea-verde", title:"Marea Verde", category:"E-commerce", previewLabel:"Product Design", previewMeta:"E-commerce · Product Design · Plant care · Personalization", status:"Supporting", image:"img/marea-verde/mare-verde.jpg",
+      summary:"A plant-shopping platform connecting the buying journey with personalized guidance and ongoing plant care.",
+      role:"UX/UI designer", metric:"31 components · 8 screens", previewDetails:false, href:"marea-verde.html" },
 
-    { id:"volkswagen", title:"Volkswagen", category:"UX/UI · Automotive", status:"Featured", image:"img/volkswagen/volkswagen-hero.jpeg",
-      summary:"Scalable landing-page design system for ongoing campaigns.",
-      role:"UX/UI designer", metric:"10 templates · 16 pages", href:"volkswagen.html" },
+    { id:"volkswagen", title:"Volkswagen", category:"Design System", previewLabel:"UX/UI", previewMeta:"Design system · UX/UI · Campaigns", status:"Featured", image:"img/volkswagen/volkswagen-hero.jpeg",
+      summary:"Scalable campaign experiences that balance brand consistency with the needs of each campaign.",
+      role:"UX/UI designer", metric:"10 templates · 16 pages", previewDetails:false, href:"volkswagen.html" },
 
-    { id:"froya", title:"Frøya", category:"Ecommerce", status:"Featured", image:"img/froya/froya-hero.webp",
-      summary:"Ecommerce strategy and product-page optimisation.",
-      role:"UX/UI & ecommerce strategy", metric:"+18% sales", href:"froya.html" },
+    { id:"froya", title:"Frøya", category:"E-commerce", previewLabel:"E-commerce", previewMeta:"E-commerce · UX/UI · Ecommerce strategy · Experimentation", status:"Featured", image:"img/froya/froya-hero.webp",
+      summary:"Optimising product pages and the purchase journey through ecommerce strategy and experimentation.",
+      role:"UX/UI & ecommerce strategy", metric:"+18% sales", previewDetails:false, href:"froya.html" },
 
-    { id:"null-wines", title:"Null Wines", category:"Ecommerce", status:"Featured", image:"img/null-wines/null.jpg",
-      summary:"UX, accessibility and purchase-journey work.",
-      role:"UX/UI designer",       metric:"32%→19% purchase drop-off", href:"null-wines.html" },
+    { id:"null-wines", title:"Null Wines", category:"E-commerce", previewLabel:"E-commerce", previewMeta:"E-commerce · UX/UI · Accessibility · Search & discovery", status:"Featured", image:"img/null-wines/null.jpg",
+      summary:"Improving product discovery, accessibility, and the end-to-end purchasing experience.",
+      role:"UX/UI designer",       metric:"32%→19% purchase drop-off", previewDetails:false, href:"null-wines.html" },
 
-    { id:"froken-dianas", title:"Fröken Dianas Salonger", category:"Ecommerce", status:"Supporting", image:"img/froken-dianas-salonger/froken-dianas-solanger-hero.png",
-      summary:"Landing pages, email marketing and content — an ongoing relationship.",
-      role:"UX/UI & email strategy", metric:"Up to +36% email-driven sales", href:"froken-dianas-salonger.html" },
+    { id:"froken-dianas", title:"Fröken Dianas Salonger", category:"E-commerce", previewLabel:"E-commerce", previewMeta:"E-commerce · Email Marketing · Landing pages · Content · Ongoing", status:"Supporting", image:"img/froken-dianas-salonger/froken-dianas-solanger-hero.png",
+      summary:"Connecting landing pages, email marketing, and content to improve product discovery and customer journeys.",
+      role:"UX/UI & email strategy", metric:"Up to +36% email-driven sales", previewDetails:false, href:"froken-dianas-salonger.html" },
 
-    { id:"goodlight", title:"Goodlight", category:"Ecommerce", status:"Supporting", image:"img/goodlight/good-light.png",
-      summary:"Ecommerce experience and UI focused on discovery, navigation and product information.",
-      role:"UX/UI designer", metric:"Ecommerce experience", href:"goodlight.html" },
+    { id:"goodlight", title:"Goodlight", category:"E-commerce", previewLabel:"E-commerce", previewMeta:"E-commerce · UX/UI", status:"Supporting", image:"img/goodlight/good-light.png",
+      summary:"Creating a clearer shopping experience through intuitive navigation, structured product information, and consistent UI.",
+      role:"UX/UI designer", metric:"Ecommerce experience", previewDetails:false, href:"goodlight.html" },
   ];
 
   const root = document.getElementById('lib-root');
@@ -218,16 +218,21 @@
     .filter(project => project.status !== 'Do Not Feature' && project.href)
     .map(project => {
       const statusClass = project.status === 'Featured' ? 'status featured' : 'status';
+      const previewLabel = project.previewLabel || project.category;
+      const previewMeta = (project.previewMeta || project.category)
+        .split(' · ')
+        .filter(tag => tag.trim().toLowerCase() !== previewLabel.trim().toLowerCase())
+        .join(' · ');
       const projectDetails = [project.role, project.metric].filter(Boolean).join(' · ');
       return `<a class="lib-card" href="${project.href}" aria-label="View ${project.title} project">
         <div class="lib-card-image">
           <img src="${project.image}" alt="${project.title} project preview" loading="lazy">
-          <span class="${statusClass}">${project.status}</span>
+          <span class="${statusClass}">${project.previewLabel || project.category}</span>
           <span class="project-hover-info">
             <span class="project-title">${project.title}</span>
-            <span class="project-category">${project.category}</span>
+            <span class="project-category">${previewMeta}</span>
             <span class="project-summary">${project.summary}</span>
-            <span class="project-details">${projectDetails}</span>
+            ${project.previewDetails === false || !projectDetails ? '' : `<span class="project-details">${projectDetails}</span>`}
           </span>
           <span class="project-arrow" aria-hidden="true">↗</span>
         </div>

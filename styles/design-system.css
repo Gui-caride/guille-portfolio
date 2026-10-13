@@ -1251,8 +1251,8 @@ body > .site-header > .wrap {
 }
 
 body > .site-header.scrolled > .wrap {
-  width: min(360px, calc(100% - 2rem));
-  max-width: 360px;
+  width: min(320px, calc(100% - 2rem));
+  max-width: 320px;
 }
 
 body > .site-header nav {
@@ -1268,31 +1268,27 @@ body > .site-header nav {
   transition: padding var(--motion-standard), box-shadow var(--motion-standard), background-color var(--motion-standard);
 }
 
-body > .site-header.scrolled nav {
-  padding: 0.35rem 0.7rem;
-  border-color: transparent;
-  background: rgb(255 255 255 / 76%);
-  box-shadow: 0 6px 24px rgb(15 17 16 / 8%);
-}
-
 body > .site-header .wordmark {
-  font-size: 0.85rem;
-  transition: font-size var(--motion-standard);
-}
-
-body > .site-header.scrolled .wordmark {
-  font-size: 0.72rem;
+  font-size: 1rem;
 }
 
 body > .site-header .navlinks {
   gap: 0.9rem;
-  font-size: 0.72rem;
-  transition: gap var(--motion-standard), font-size var(--motion-standard);
+  font-size: 1rem;
 }
 
-body > .site-header.scrolled .navlinks {
-  gap: 0.72rem;
-  font-size: 0.62rem;
+@media (min-width: 761px) {
+  body > .site-header.scrolled > .wrap {
+    width: min(320px, calc(100% - 2rem));
+    max-width: 320px;
+  }
+}
+
+@media (min-width: 761px) {
+  body.page-index > .site-header.scrolled > .wrap {
+    width: min(320px, calc(100% - 2rem));
+    max-width: 320px;
+  }
 }
 
 body.page-about main > .about-hero {
@@ -1308,6 +1304,36 @@ body.page-work main > .work-intro {
 body.page-work main > #lib-root > .category-block {
   padding-block: 40px;
   border-bottom: 0;
+}
+
+@media (min-width: 761px) {
+  body > .site-header.scrolled {
+    padding: 1rem 0;
+  }
+
+  body > .site-header.scrolled > .wrap,
+  body.page-index > .site-header.scrolled > .wrap {
+    width: min(320px, calc(100% - 2rem));
+    max-width: 320px;
+  }
+
+  body > .site-header.scrolled nav {
+    min-height: 0;
+    padding: 0.7rem 1.1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    background: rgb(255 255 255 / 62%);
+    box-shadow: 0 6px 24px rgb(15 17 16 / 6%);
+  }
+
+  body > .site-header.scrolled .wordmark {
+    font-size: 1rem;
+  }
+
+  body > .site-header.scrolled .navlinks {
+    gap: 0.9rem;
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -1545,10 +1571,14 @@ body.page-index main.home-main .home-service p {
   font-size: 0.72rem !important;
 }
 
-body.page-index > .site-header > .wrap,
-body.page-index > .site-header.scrolled > .wrap {
+body.page-index > .site-header > .wrap {
   width: min(680px, calc(100% - 3rem));
   max-width: 680px;
+}
+
+body.page-index > .site-header.scrolled > .wrap {
+  width: min(320px, calc(100% - 2rem));
+  max-width: 320px;
 }
 
 body.page-index main.home-main .home-testimonial-author p,
@@ -1921,8 +1951,196 @@ body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main :is(
   line-height: 1.45;
 }
 
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article {
+  width: min(100%, 1120px);
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: var(--content-gutter);
+}
+
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.72fr) minmax(0, 1.28fr);
+  align-items: start;
+  gap: clamp(1.5rem, 5vw, 5rem);
+  padding-block: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section > .label {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  margin: 0;
+}
+
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section > .label + * {
+  grid-column: 2;
+  margin-top: 0;
+}
+
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section > .label ~ :not(.label) {
+  grid-column: 2;
+}
+
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section > .label + .process-step {
+  margin-top: 0;
+}
+
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section > .label + .process-step ~ .process-step,
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section > .label + .process-step ~ .insight-grid,
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section > .label + .process-step ~ .bm-grid {
+  grid-column: 2;
+}
+
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section > .label + .persona-card,
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section > .label + .impact-grid,
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section > .label + .stat-list,
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section > .label + .insight-grid,
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section > .label + .bm-grid {
+  grid-column: 2;
+}
+
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section > .label + .process-step ~ .process-step:last-of-type {
+  margin-bottom: 0;
+}
+
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section > :is(.focus-list, .external-links) {
+  grid-column: 2;
+}
+
+body.page-tugo main .section-kicker {
+  margin: 0 0 0.65rem !important;
+  color: #77786f !important;
+  font-size: 0.76rem !important;
+  line-height: 1.45;
+}
+
+body.page-tugo main > .article > section > .tugo-section-heading {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+body.page-tugo main > .article > section > .tugo-section-heading .label {
+  margin-bottom: 0.4rem;
+}
+
+body.page-tugo main > .article > section > .tugo-section-content {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+}
+
+body.page-tugo main .tugo-section-content > :first-child {
+  margin-top: 0;
+}
+
+body.page-tugo main .tugo-results {
+  grid-column: 2;
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body.page-tugo main .tugo-results li {
+  display: grid;
+  grid-template-columns: minmax(7rem, 0.4fr) minmax(0, 1.6fr);
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+body.page-tugo main .tugo-results li:first-child {
+  border-top: 1px solid var(--color-border);
+}
+
+body.page-tugo main .tugo-results strong {
+  color: var(--color-text-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+body.page-tugo main .tugo-results span {
+  color: #77786f;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section > .label,
+  body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section > .label + *,
+  body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main > .article > section > .label ~ :not(.label) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  body.page-tugo main .tugo-results li {
+    grid-template-columns: minmax(6rem, 0.5fr) minmax(0, 1.5fr);
+    gap: 0.75rem;
+  }
+
+  body.page-tugo main > .article > section > .tugo-section-heading,
+  body.page-tugo main > .article > section > .tugo-section-content {
+    grid-column: 1;
+  }
+
+  body.page-tugo main > .article > section > .tugo-section-heading {
+    grid-row: 1;
+  }
+
+  body.page-tugo main > .article > section > .tugo-section-content {
+    grid-row: 2;
+  }
+}
+
 @media (max-width: 600px) {
   body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main h1 {
     font-size: clamp(2.1rem, 9vw, 3rem);
   }
+}
+
+/* Case-study pages use a shared Inter type scale with no text below 16px. */
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main,
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main :is(h1, h2, h3, h4, h5, p, li, a, span, dt, dd, blockquote, figcaption, strong, em, small, label, button) {
+  font-family: var(--font-family-inter, Inter, sans-serif) !important;
+  font-size: 16px !important;
+}
+
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main :is(p, li, a, span, dt, dd, blockquote, figcaption, strong, em, small, label, button, .cat, .tag, .meta-grid div span, .persona-facts, .label-sm, .section-kicker, .tugo-results span) {
+  font-family: var(--font-family-inter, Inter, sans-serif) !important;
+  font-size: 16px !important;
+}
+
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main :is(h1, h2, h3, h4, h5, p, li, a, span, dt, dd, blockquote, figcaption, strong, em, small, label, button) {
+  font-size: 16px !important;
+}
+
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main h1 {
+  font-size: clamp(2.5rem, 4.8vw, 4rem) !important;
+  line-height: 1.06;
+}
+
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main h2.label {
+  font-size: 1.5rem !important;
+  line-height: 1.25;
+}
+
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main h3 {
+  font-size: 1.2rem !important;
+  line-height: 1.3;
+}
+
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main h4 {
+  font-size: 1.1rem !important;
+  line-height: 1.35;
+}
+
+body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main .metric {
+  font-family: var(--font-family-inter, Inter, sans-serif) !important;
+  font-size: clamp(2rem, 4vw, 2.8rem) !important;
 }
