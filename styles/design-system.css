@@ -300,6 +300,7 @@ body > .site-footer.reference-footer {
   margin-bottom: clamp(2rem, 2.8vw, 3.5rem);
   color: var(--color-text-primary);
   font-size: clamp(0.9rem, 1vw, 1.25rem);
+  line-height: 1.5;
   text-decoration: underline;
   text-underline-offset: 0.15em;
 }
@@ -327,6 +328,7 @@ body[class*="page-"] .reference-footer .footer-contact h2 {
   color: var(--color-text-primary);
   font-size: clamp(1rem, 1.1vw, 1.4rem);
   letter-spacing: 0;
+  line-height: 1.5;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -345,7 +347,10 @@ body[class*="page-"] .reference-footer .footer-contact h2 {
 .reference-footer .footer-link-group {
   display: flex;
   min-width: 0;
+  align-items: stretch;
   flex-direction: column;
+  justify-content: flex-start;
+  gap: 0;
 }
 
 .reference-footer .footer-link-group h3 {
@@ -515,8 +520,9 @@ body.page-about main > .about-hero {
 }
 
 body.page-about main > .about-hero .about-hero-visual {
+  position: relative;
   grid-column: 6 / -1;
-  grid-row: 1;
+  grid-row: 2;
   width: 100%;
   max-width: none;
   min-height: 0;
@@ -528,15 +534,22 @@ body.page-about main > .about-hero .about-hero-visual {
 
 body.page-about main > .about-hero .about-hero-copy {
   grid-column: 6 / -1;
-  grid-row: 2;
+  grid-row: 3;
   width: 100%;
   margin-top: 1rem;
+}
+
+body.page-about main > .about-hero .about-hero-identity {
+  grid-column: 6 / -1;
+  grid-row: 1;
+  margin-bottom: 0.65rem;
+  color: var(--color-text-primary);
 }
 
 body.page-about main .about-name,
 body.page-about main .about-role {
   margin: 0 !important;
-  font-size: 0.68rem !important;
+  font-size: 0.82rem !important;
   line-height: 1.45;
 }
 
@@ -546,7 +559,15 @@ body.page-about main .about-name {
 }
 
 body.page-about main .about-role {
-  color: #77786f !important;
+  color: #454946 !important;
+}
+
+body.page-about main .about-sections :is(.closing-heading, .experience-label) {
+  grid-column: 1 / span 4;
+}
+
+body.page-about main .about-sections :is(.closing-copy, .experience-list) {
+  grid-column: 5 / -1;
 }
 
 body.page-about main .about-hero .about-hero-lead {
@@ -693,9 +714,14 @@ body.page-about main .about-testimonials {
     grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 
+  body.page-about main > .about-hero .about-hero-identity,
   body.page-about main > .about-hero .about-hero-visual,
   body.page-about main > .about-hero .about-hero-copy {
     grid-column: 2 / -1;
+  }
+
+  body.page-about main .about-sections :is(.closing-heading, .closing-copy, .experience-label, .experience-list) {
+    grid-column: 1 / -1;
   }
 
   body.page-about main .about-experience .experience-label,
@@ -720,6 +746,7 @@ body.page-about main .about-testimonials {
     grid-template-columns: 1fr;
   }
 
+  body.page-about main > .about-hero .about-hero-identity,
   body.page-about main > .about-hero .about-hero-visual,
   body.page-about main > .about-hero .about-hero-copy {
     grid-column: 1;
@@ -2377,7 +2404,7 @@ body.page-about main .about-sections .about-experience .experience-list .experie
 }
 
 body.page-index::before {
-  content: none;
+  content: "";
 }
 
 body.page-index main.home-main {
