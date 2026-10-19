@@ -71,16 +71,16 @@
   @media (max-width: 700px){ .persona-card{ grid-template-columns: 1fr; } .persona-avatar{ width: 120px; } }
   .process-step{ display:grid; grid-template-columns: 70px 1fr; gap: 1.6rem; margin-bottom: 2.2rem; }
   .process-step .step-num{ font-family: var(--serif-display); font-size: 1.6rem; font-weight: 700; color: var(--ink-muted); }
-  .process-step h4{ font-family: var(--serif-display); font-size: 1.15rem; margin: 0 0 0.5rem; }
+  .process-step h3{ font-family: var(--serif-display); font-size: 1.15rem; margin: 0 0 0.5rem; }
   .process-step p{ margin:0; font-size: 0.98rem; color: var(--ink-muted); }
   .bm-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap: 1.2rem; margin-top: 1rem; }
   .bm-card{ border: 1px solid var(--line); padding: 1.2rem; }
-  .bm-card h5{ font-family: var(--serif-display); font-size: 0.98rem; margin: 0 0 .5rem; }
+  .bm-card h4{ font-family: var(--serif-display); font-size: 0.98rem; margin: 0 0 .5rem; }
   .bm-card p{ font-size: 0.9rem; margin:0; }
   @media (max-width:700px){ .bm-grid{ grid-template-columns: 1fr; } }
   .insight-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap: 1.6rem; }
   .insight-card{ border: 1px solid var(--line); padding: 1.5rem; }
-  .insight-card h4{ font-family: var(--serif-display); font-size: 1.05rem; margin: 0 0 0.7rem; }
+  .insight-card h3{ font-family: var(--serif-display); font-size: 1.05rem; margin: 0 0 0.7rem; }
   .insight-card p{ font-size: 0.92rem; margin:0; color: var(--ink-muted); }
   @media (max-width: 760px){ .insight-grid{ grid-template-columns: 1fr; } }
   .impact-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 1.8rem; }
@@ -162,74 +162,41 @@
     </section>
 
     <section>
-      <h2 class="label">Persona</h2>
-      <div class="persona-card">
-        <div class="persona-avatar">
-          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="38" r="18" stroke="#c6ff4d" stroke-width="2"/>
-            <path d="M18 88c4-20 20-30 32-30s28 10 32 30" stroke="#c6ff4d" stroke-width="2"/>
-          </svg>
-        </div>
-        <div>
-          <h3>Luis</h3>
-          <p class="persona-role">Engineer, age 31</p>
-          <p class="persona-quote">"Choosing where to live and work from anywhere is a privilege, but finding peace and balance in each space is the true goal."</p>
-          <div class="persona-facts">
-            <span><strong>Tech comfort:</strong> Moderate</span>
-            <span><strong>Gender:</strong> Male</span>
-          </div>
-          <p class="persona-col-head">Goals</p>
-          <ul class="persona-list">
-            <li>Decorate his home and balcony into a cozy space for friends</li>
-            <li>Disconnect from the digital world through a relaxing, hands-on activity</li>
-            <li>Reflect his ecological awareness and focus on well-being through his hobbies</li>
-          </ul>
-          <p class="persona-col-head">Frustrations</p>
-          <ul class="persona-list">
-            <li>Wants to decorate with plants but worries he won't know how to care for them</li>
-            <li>Feels overwhelmed by the volume of information out there</li>
-            <li>Doesn't love the idea of visiting a specialized store to get answers</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section>
       <h2 class="label">Process</h2>
       <div class="process-step">
         <span class="step-num">01</span>
         <div>
-          <h4>Benchmark</h4>
+          <h3>Benchmark</h3>
           <p>Looked at four angles across the category:</p>
           <div class="bm-grid">
-            <div class="bm-card"><h5>Educational content</h5><p>How platforms surface care guides, articles and multimedia content like videos or infographics.</p></div>
-            <div class="bm-card"><h5>Personalization</h5><p>Tools like watering calendars, plant identifiers and personalized reminders.</p></div>
-            <div class="bm-card"><h5>Information architecture</h5><p>Menu structure, label clarity, content hierarchy and how easily each guides a user to their goal.</p></div>
-            <div class="bm-card"><h5>Branding</h5><p>How visual identity and tone of voice carry a brand's value proposition through every interaction.</p></div>
+            <div class="bm-card"><h4>Educational content</h4><p>How platforms surface care guides, articles and multimedia content like videos or infographics.</p></div>
+            <div class="bm-card"><h4>Personalization</h4><p>Tools like watering calendars, plant identifiers and personalized reminders.</p></div>
+            <div class="bm-card"><h4>Information architecture</h4><p>Menu structure, label clarity, content hierarchy and how easily each guides a user to their goal.</p></div>
+            <div class="bm-card"><h4>Branding</h4><p>How visual identity and tone of voice carry a brand's value proposition through every interaction.</p></div>
           </div>
         </div>
       </div>
       <div class="process-step">
         <span class="step-num">02</span>
         <div>
-          <h4>User research</h4>
+          <h3>User research</h3>
           <p>Ran a mystery-shopper exercise, 30+ online surveys, and 5 in-depth interviews.</p>
         </div>
       </div>
       <div class="process-step">
         <span class="step-num">03</span>
         <div>
-          <h4>Insights</h4>
+          <h3>Insights</h3>
           <p>Two findings shaped the direction most:</p>
         </div>
       </div>
       <div class="insight-grid">
         <div class="insight-card">
-          <h4>Shopping in person is sensory, not just transactional</h4>
+          <h3>Shopping in person is sensory, not just transactional</h3>
           <p>People connect with plants directly — the visual appeal, the smell, choosing by feel. That process is meaningful and enjoyable in itself, beyond the purchase.</p>
         </div>
         <div class="insight-card">
-          <h4>Plant care changes how people feel</h4>
+          <h3>Plant care changes how people feel</h3>
           <p>Choosing, buying and caring for plants brings calm and well-being — a pause that lets people focus on something simpler and more natural than their routine.</p>
         </div>
       </div>
@@ -239,16 +206,16 @@
       <h2 class="label">Impact</h2>
       <div class="impact-grid cols-3">
         <div class="impact-card">
-          <div class="metric">31</div>
-          <p>Created a reusable component system to support the product experience.</p>
+          <div class="metric">31 components:</div>
+          <p>A reusable component library covering the catalogue, plant detail and plant care, built once for desktop and mobile.</p>
         </div>
         <div class="impact-card">
-          <div class="metric">8</div>
-          <p>Designed a consistent experience across the complete user flow.</p>
+          <div class="metric">8 screens:</div>
+          <p>One consistent flow from discovering a plant to caring for it after purchase.</p>
         </div>
         <div class="impact-card">
-          <div class="metric">End-to-end</div>
-          <p>Built the system around the complete user journey, creating a consistent foundation for the product.</p>
+          <div class="metric">End-to-end:</div>
+          <p>Designed around the complete journey, so the plant you buy connects to the care guidance that follows.</p>
         </div>
       </div>
     </section>
@@ -262,15 +229,27 @@
   </div>
 </main>
 
-<footer id="contact" class="site-footer">
-  <div class="wrap">
-    <div class="contact-head">
-      <h2>Let's talk about what you're building.</h2>
-      <a href="mailto:guillerminacaride@gmail.com" class="contact-cta">guillerminacaride@gmail.com</a>
+<footer id="contact" class="site-footer reference-footer">
+  <div class="wrap footer-layout">
+    <div class="footer-contact">
+      <a class="footer-email" href="mailto:guillerminacaride@gmail.com">guillerminacaride@gmail.com</a>
+      <h2>Let's talk about<br>what you're<br>building.</h2>
+      <a href="mailto:guillerminacaride@gmail.com" class="contact-cta footer-cta">Get in touch <span aria-hidden="true">→</span></a>
     </div>
-    <div class="foot-bottom">
-      <span>Guille — Product &amp; UX/UI Designer, Barcelona</span>
-      <div class="social"><a href="https://linkedin.com/in/guillermina-caride-urruty">LinkedIn</a></div>
+    <div class="footer-link-columns">
+      <nav class="footer-link-group" aria-label="Sitemap">
+        <h3>Sitemap</h3>
+        <a href="index.html#top">Home <span aria-hidden="true">→</span></a>
+        <a href="about.html#about">About us <span aria-hidden="true">→</span></a>
+        <a href="work.html">Work <span aria-hidden="true">→</span></a>
+        <a href="index.html#services">Services <span aria-hidden="true">→</span></a>
+        <a href="index.html#contact">Contact <span aria-hidden="true">→</span></a>
+      </nav>
+      <nav class="footer-link-group" aria-label="Network">
+        <h3>Network</h3>
+        <a href="https://linkedin.com/in/guillermina-caride-urruty">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a href="mailto:guillerminacaride@gmail.com?subject=CV%20request">CV <span aria-hidden="true">↗</span></a>
+      </nav>
     </div>
   </div>
 </footer>

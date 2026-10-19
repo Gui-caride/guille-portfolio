@@ -55,10 +55,10 @@
     border:0;
     border-radius:0;
   }
-  .work-intro .eyebrow,.work-intro h1,.work-intro>p:last-child{grid-column:1 / span 8}
+  .work-intro .eyebrow,.work-intro h1,.work-intro>p:last-of-type{grid-column:1 / span 8}
   .work-intro .eyebrow{margin:0;color:var(--color-text-secondary);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
   .work-intro h1{margin:0;font-family:var(--font-body);font-size:clamp(3rem,7vw,6.5rem);font-weight:400;line-height:.95;letter-spacing:-.06em}
-  .work-intro>p:last-child{max-width:54ch;margin:0;color:var(--color-text-secondary);font-size:1rem;line-height:1.55}
+  .work-intro>p:last-of-type{max-width:54ch;margin:0;color:var(--color-text-secondary);font-size:1rem;line-height:1.55}
   #lib-root{padding-top:0}
   .category-block{
     display:grid;
@@ -143,7 +143,7 @@
   .lib-card.placeholder{padding:1.2rem;border:1px solid var(--color-border);border-radius:var(--radius-image);opacity:1}
   @media(max-width:760px){
     .work-page{padding-top:4rem}
-    .work-intro .eyebrow,.work-intro h1,.work-intro>p:last-child{grid-column:1/-1}
+    .work-intro .eyebrow,.work-intro h1,.work-intro>p:last-of-type{grid-column:1/-1}
     .category-block{grid-template-columns:repeat(6,minmax(0,1fr));gap:1rem}
     .category-block h2{grid-column:1/-1}
     .lib-grid{grid-column:1/-1}
@@ -165,83 +165,102 @@
 
 <main class="work-page">
   <section class="work-intro">
-    <p class="eyebrow">Project library</p>
-    <h1>A closer look at the work.</h1>
+    <h1>A closer look at my work</h1>
     <p>From digital products and ecommerce to design systems, these projects reflect the range of challenges I've worked on with teams across different industries.</p>
+    <a class="work-scroll-cue" href="#lib-root" aria-label="Scroll to project library">↓</a>
   </section>
   <div class="wrap" id="lib-root"></div>
 </main>
 
-<footer id="contact" class="site-footer"><div class="wrap"><div class="contact-head"><h2>Let's talk about what you're building.</h2><a href="mailto:guillerminacaride@gmail.com" class="contact-cta">guillerminacaride@gmail.com</a></div><div class="foot-bottom"><span>Guille — Product &amp; UX/UI Designer, Barcelona</span><div class="social"><a href="https://linkedin.com/in/guillermina-caride-urruty">LinkedIn</a></div></div></div></footer>
+<footer id="contact" class="site-footer reference-footer">
+  <div class="wrap footer-layout">
+    <div class="footer-contact">
+      <a class="footer-email" href="mailto:guillerminacaride@gmail.com">guillerminacaride@gmail.com</a>
+      <h2>Let's talk about<br>what you're<br>building.</h2>
+      <a href="mailto:guillerminacaride@gmail.com" class="contact-cta footer-cta">Get in touch <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="footer-link-columns">
+      <nav class="footer-link-group" aria-label="Sitemap">
+        <h3>Sitemap</h3>
+        <a href="index.html#top">Home <span aria-hidden="true">→</span></a>
+        <a href="about.html#about">About us <span aria-hidden="true">→</span></a>
+        <a href="work.html">Work <span aria-hidden="true">→</span></a>
+        <a href="index.html#services">Services <span aria-hidden="true">→</span></a>
+        <a href="index.html#contact">Contact <span aria-hidden="true">→</span></a>
+      </nav>
+      <nav class="footer-link-group" aria-label="Network">
+        <h3>Network</h3>
+        <a href="https://linkedin.com/in/guillermina-caride-urruty">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a href="mailto:guillerminacaride@gmail.com?subject=CV%20request">CV <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </div>
+</footer>
 
 <script src="site-chrome.js" defer></script>
 <script>
   // Living project data — add a new object here to extend the library.
   // status: "Featured" | "Supporting" | "Archive" | "Do Not Feature" (Do Not Feature is hidden)
   const projects = [
-    { id:"tugo", title:"Tugo", category:"Product", status:"Featured", image:"img/tugo/tugo-hero.jpg",
-      summary:"End-to-end product design for children with chronic illnesses and their families.",
-      role:"Research, UX, design system, implementation", metric:"34 components", href:"tugo.html" },
+    { id:"tugo", title:"Tugo", category:"Product", previewLabel:"Product", previewMeta:"Visual design · UX/UI · ELISAVA Master Awards 2025", status:"Featured", image:"img/tugo/tugo-hero.jpg",
+      summary:"A smart support system that blends technology and emotional care for children with chronic illnesses, like type 1 diabetes, and their families — usable at home or on the go, built to grow a child’s independence while giving caregivers peace of mind.",
+      role:"Research, UX, design system, implementation", previewDetails:false, href:"tugo.html" },
 
-    { id:"exxonmobil", title:"ExxonMobil Design System", category:"Design Systems", status:"Supporting", image:"img/standard/Standard-Design-System-hero.jpg",
-      summary:"Standardized components, guidelines and patterns for internal digital platforms.",
-      role:"UX/UI designer", metric:"11 components · 23 landing pages", href:"standard.html" },
+    { id:"exxonmobil", title:"ExxonMobil Design System", category:"Design systems", previewLabel:"Design systems", previewMeta:"Product design · UX/UI · UI", status:"Supporting", image:"img/standard/Standard-Design-System-hero.jpg",
+      summary:"A standardized set of reusable components, guidelines and patterns for ExxonMobil’s internal digital platforms — built for consistency, accessibility and efficiency across applications used by teams in multiple regions.",
+      role:"UX/UI designer", metric:"20 → 50+ components", previewDetails:false, href:"standard.html" },
 
-    { id:"marea-verde", title:"Marea Verde", category:"Design Systems", status:"Supporting", image:"img/marea-verde/mare-verde.jpg",
-      summary:"Component system and interface covering the complete plant-buying user flow.",
-      role:"UX/UI designer", metric:"31 components · 8 screens", href:"marea-verde.html" },
+    { id:"marea-verde", title:"Marea Verde", category:"Ecommerce", previewLabel:"Ecommerce", previewMeta:"Visual design · Product design · UX/UI · UI", status:"Supporting", image:"img/marea-verde/mare-verde.jpg",
+      summary:"A digital platform for Marea Verde that supports the full plant-buying journey — before and after purchase — for plants, bouquets and related products, matched to each customer’s botanical questions and care needs.",
+      role:"UX/UI designer", metric:"31 components · 8 screens", previewDetails:false, href:"marea-verde.html" },
 
-    { id:"volkswagen", title:"Volkswagen", category:"UX/UI · Automotive", status:"Featured", image:"img/volkswagen/volkswagen-hero.jpeg",
-      summary:"Scalable landing-page design system for ongoing campaigns.",
-      role:"UX/UI designer", metric:"10 templates · 16 pages", href:"volkswagen.html" },
+    { id:"volkswagen", title:"Volkswagen", category:"UX/UI", previewLabel:"UX/UI", previewMeta:"UX/UI · Ongoing", status:"Featured", image:"img/volkswagen/volkswagen-hero.jpeg",
+      summary:"Ongoing UX/UI work on digital experiences and campaigns for Volkswagen — combining interaction design, creative strategy and user-focused thinking to build clear, consistent touchpoints across the customer journey.",
+      role:"UX/UI designer", metric:"15+ landing pages", previewDetails:false, href:"volkswagen.html" },
 
-    { id:"froya", title:"Frøya", category:"Ecommerce", status:"Featured", image:"img/froya/froya-hero.webp",
-      summary:"Ecommerce strategy and product-page optimisation.",
-      role:"UX/UI & ecommerce strategy", metric:"+18% sales", href:"froya.html" },
+    { id:"froya", title:"Frøya", category:"Ecommerce", previewLabel:"Ecommerce", previewMeta:"Ecommerce strategy · Experimentation · UX/UI", status:"Featured", image:"img/froya/froya-hero.webp",
+      summary:"Ecommerce strategy and product-page optimisation for Frøya Organics — going beyond visual UI to work the full journey from product discovery through checkout.",
+      role:"UX/UI & ecommerce strategy", metric:"Up to +18% sales", previewDetails:false, href:"froya.html" },
 
-    { id:"null-wines", title:"Null Wines", category:"Ecommerce", status:"Featured", image:"img/null-wines/null.jpg",
-      summary:"UX, accessibility and purchase-journey work.",
-      role:"UX/UI designer",       metric:"32%→19% purchase drop-off", href:"null-wines.html" },
+    { id:"null-wines", title:"Null Wines", category:"Ecommerce", previewLabel:"Ecommerce", previewMeta:"UX/UI · Accessibility · Search & discovery", status:"Featured", image:"img/null-wines/null.jpg",
+      summary:"UX and accessibility work across Null Wines’ landing experience, search, product discovery and purchase journey.",
+      role:"UX/UI designer",       metric:"32% → 19% purchase drop-off", previewDetails:false, href:"null-wines.html" },
 
-    { id:"froken-dianas", title:"Fröken Dianas Salonger", category:"Ecommerce", status:"Supporting", image:"img/froken-dianas-salonger/froken-dianas-solanger-hero.png",
-      summary:"Landing pages, email marketing and content — an ongoing relationship.",
-      role:"UX/UI & email strategy", metric:"Up to +36% email-driven sales", href:"froken-dianas-salonger.html" },
+    { id:"froken-dianas", title:"Fröken Dianas Salonger", category:"Ecommerce", previewLabel:"Ecommerce", previewMeta:"Landing pages · Email marketing · Content · Ongoing", status:"Supporting", image:"img/froken-dianas-salonger/froken-dianas-solanger-hero.png",
+      summary:"An ongoing engagement covering landing-page optimisation, email marketing and content — expanding the ecommerce story beyond the storefront itself.",
+      role:"UX/UI & email strategy", metric:"+36% sales", previewDetails:false, href:"froken-dianas-salonger.html" },
 
-    { id:"goodlight", title:"Goodlight", category:"Ecommerce", status:"Supporting", image:"img/goodlight/good-light.png",
-      summary:"Ecommerce experience and UI focused on discovery, navigation and product information.",
-      role:"UX/UI designer", metric:"Ecommerce experience", href:"goodlight.html" },
+    { id:"goodlight", title:"Goodlight", category:"Ecommerce", previewLabel:"Ecommerce", previewMeta:"Ecommerce experience · UX/UI · Responsive design", status:"Supporting", image:"img/goodlight/good-light.png",
+      summary:"I worked on the UX and UI of Goodlight’s ecommerce experience, focusing on how users discover products, navigate categories and understand product information. Rather than designing individual pages in isolation, I looked at the experience as a connected journey — from discovery to purchase.",
+      role:"UX/UI designer", metric:"Ecommerce experience", previewDetails:false, href:"goodlight.html" },
   ];
 
-  const categoryOrder = ["Product", "Design Systems", "UX/UI · Automotive", "Ecommerce", "Personal"];
-
   const root = document.getElementById('lib-root');
-  categoryOrder.forEach(cat => {
-    const items = projects.filter(p => p.category === cat && p.status !== "Do Not Feature");
-    const block = document.createElement('div');
-    block.className = 'category-block';
-
-    if (items.length === 0) {
-      block.innerHTML = `<h2>${cat}</h2><p class="empty-note">More to come.</p>`;
-      root.appendChild(block);
-      return;
-    }
-
-    const cards = items.map(p => {
-      if (!p.href) {
-        return `<div class="lib-card placeholder">
-          <div class="lib-top"><h3>${p.title}</h3><span class="status">${p.status}</span></div>
-          <p>${p.summary}</p>
-        </div>`;
-      }
-      const statusClass = p.status === 'Featured' ? 'status featured' : 'status';
-      return `<a class="lib-card" href="${p.href}" aria-label="View ${p.title} project">
-        <div class="lib-card-image"><img src="${p.image}" alt="${p.title} project preview" loading="lazy"><span class="${statusClass}">${p.status}</span><span class="project-hover-info"><span class="project-title">${p.title}</span><span class="project-category">${p.category}</span></span><span class="project-arrow" aria-hidden="true">↗</span></div>
+  root.classList.add('lib-grid');
+  root.innerHTML = projects
+    .filter(project => project.status !== 'Do Not Feature' && project.href)
+    .map(project => {
+      const statusClass = project.status === 'Featured' ? 'status featured' : 'status';
+      const previewLabel = project.previewLabel || project.category;
+      const previewMeta = (project.previewMeta || project.category)
+        .split(' · ')
+        .filter(tag => tag.trim().toLowerCase() !== previewLabel.trim().toLowerCase())
+        .join(' · ');
+      const projectDetails = [project.role, project.metric].filter(Boolean).join(' · ');
+      return `<a class="lib-card" href="${project.href}" aria-label="View ${project.title} project">
+        <div class="lib-card-image">
+          <img src="${project.image}" alt="${project.title} project preview" loading="lazy">
+          <span class="${statusClass}">${project.previewLabel || project.category}</span>
+          <span class="project-hover-info">
+            <span class="project-title">${project.title}</span>
+            <span class="project-category">${previewMeta}</span>
+            <span class="project-summary">${project.summary}</span>
+            ${project.previewDetails === false || !projectDetails ? '' : `<span class="project-details">${projectDetails}</span>`}
+          </span>
+          <span class="project-arrow" aria-hidden="true">↗</span>
+        </div>
       </a>`;
     }).join('');
-
-    block.innerHTML = `<h2>${cat}</h2><div class="lib-grid">${cards}</div>`;
-    root.appendChild(block);
-  });
 </script>
 
 </body>

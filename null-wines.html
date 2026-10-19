@@ -44,6 +44,10 @@
   .hero-visual{ aspect-ratio: 21/9; border: 1px solid var(--line); background: var(--bg-raised); display:flex; align-items:center; justify-content:center; margin-bottom: 5rem; }
   .hero-visual svg{ width: 30%; max-width: 240px; }
   .hero-visual img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+  .stage-gallery{max-width:var(--max);margin:0 auto 4rem;padding:0 var(--gap)}
+  .stage-gallery figure{margin:0}
+  .stage-gallery img{display:block;width:100%;height:auto;border:1px solid var(--line)}
+  .stage-gallery figcaption{margin-top:.5rem;color:var(--ink-muted);font-size:.8rem}
   section{ padding: 3.4rem 0; border-bottom: 1px solid var(--line); }
   section:last-of-type{ border-bottom:none; }
   .label{ font-family: var(--serif-display); font-weight: 700; font-size: 1.5rem; margin: 0 0 1.4rem; }
@@ -89,7 +93,7 @@
   <div class="hero wrap">
     <p class="cat">Ecommerce · UX, accessibility &amp; purchase journey</p>
     <h1>Null Wines</h1>
-    <p class="hero-desc">UX and accessibility work across Null Wines' landing experience, search, product discovery and purchase journey.</p>
+    <p class="hero-desc">UX and accessibility work across Null Wines’ landing experience, search, product discovery and purchase journey.</p>
     <div class="tags">
       <span class="tag">UX/UI</span>
       <span class="tag">Accessibility</span>
@@ -106,17 +110,24 @@
     </div>
   </div>
 
+  <div class="stage-gallery">
+    <figure>
+      <img src="Null-hero.jpg" alt="Null Wines shop page showing its alcohol-free wine collection" loading="lazy">
+      <figcaption>Null Wines ecommerce experience</figcaption>
+    </figure>
+  </div>
+
   <div class="article">
     <section>
       <h2 class="label">Overview</h2>
-      <p>The work spanned Null Wines' overall landing experience — accessibility, user journey, search, category and product sections, and the purchase journey itself. The goal was to make the site easier to use end to end, not just at the point of checkout.</p>
+      <p>The work spanned Null Wines’ overall landing experience — accessibility, user journey, search, category and product sections, and the purchase journey itself. The goal was to make the site easier to use end to end, not just at the point of checkout.</p>
     </section>
 
     <section>
       <h2 class="label">Approach</h2>
       <ul class="scope-list">
         <li><strong>Landing experience</strong><span>Reworked the overall landing structure and how it introduces the catalogue.</span></li>
-        <li><strong>Accessibility</strong><span>Addressed accessibility across key pages and interactions.</span></li>
+        <li><strong>Accessibility</strong><span>Made key pages and interactions more accessible across the landing, search and filters, and purchase journey.</span></li>
         <li><strong>Search &amp; filters</strong><span>Adapted filtering to match how users actually search for wine.</span></li>
         <li><strong>Purchase journey</strong><span>Worked through category, product and checkout sections as one connected path.</span></li>
       </ul>
@@ -126,20 +137,20 @@
       <h2 class="label">Impact</h2>
       <div class="impact-grid">
         <div class="impact-card">
-          <div class="metric">32% → 19%</div>
-          <p>Purchase drop-off decreased from 32% to 19%.</p>
+          <div class="metric">32% → 19% purchase drop-off:</div>
+          <p>Cart abandonment fell from 32% to 19% over a 3-month period.</p>
         </div>
         <div class="impact-card">
-          <div class="metric">9% → 14%</div>
-          <p>Conversion rate increased from 9% to 14%.</p>
+          <div class="metric">9% → 14% checkout conversion:</div>
+          <p>Checkout page conversion rose from 9% to 14% over the same 3-month period.</p>
         </div>
         <div class="impact-card">
-          <div class="metric">+6%</div>
-          <p>Time spent on product pages increased by 6%.</p>
+          <div class="metric">+6% entries:</div>
+          <p>6% more entries on special campaign landing pages.</p>
         </div>
         <div class="impact-card">
-          <div class="metric">Better discovery</div>
-          <p>Adapted search and filters around user needs.</p>
+          <div class="metric">Better discovery:</div>
+          <p>Search and filters adapted to how users actually search for wine, so shoppers can find the right bottle more easily.</p>
         </div>
       </div>
     </section>
@@ -153,15 +164,27 @@
   </div>
 </main>
 
-<footer id="contact" class="site-footer">
-  <div class="wrap">
-    <div class="contact-head">
-      <h2>Let's talk about what you're building.</h2>
-      <a href="mailto:guillerminacaride@gmail.com" class="contact-cta">guillerminacaride@gmail.com</a>
+<footer id="contact" class="site-footer reference-footer">
+  <div class="wrap footer-layout">
+    <div class="footer-contact">
+      <a class="footer-email" href="mailto:guillerminacaride@gmail.com">guillerminacaride@gmail.com</a>
+      <h2>Let's talk about<br>what you're<br>building.</h2>
+      <a href="mailto:guillerminacaride@gmail.com" class="contact-cta footer-cta">Get in touch <span aria-hidden="true">→</span></a>
     </div>
-    <div class="foot-bottom">
-      <span>Guille — Product &amp; UX/UI Designer, Barcelona</span>
-      <div class="social"><a href="https://linkedin.com/in/guillermina-caride-urruty">LinkedIn</a></div>
+    <div class="footer-link-columns">
+      <nav class="footer-link-group" aria-label="Sitemap">
+        <h3>Sitemap</h3>
+        <a href="index.html#top">Home <span aria-hidden="true">→</span></a>
+        <a href="about.html#about">About us <span aria-hidden="true">→</span></a>
+        <a href="work.html">Work <span aria-hidden="true">→</span></a>
+        <a href="index.html#services">Services <span aria-hidden="true">→</span></a>
+        <a href="index.html#contact">Contact <span aria-hidden="true">→</span></a>
+      </nav>
+      <nav class="footer-link-group" aria-label="Network">
+        <h3>Network</h3>
+        <a href="https://linkedin.com/in/guillermina-caride-urruty">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a href="mailto:guillerminacaride@gmail.com?subject=CV%20request">CV <span aria-hidden="true">↗</span></a>
+      </nav>
     </div>
   </div>
 </footer>
