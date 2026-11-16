@@ -1387,7 +1387,7 @@ body.page-index main.home-main::before {
   content: none;
 }
 
-body[class*="page-"]:not(.page-index) main :is(p, blockquote, li):not(.eyebrow) {
+body[class*="page-"]:not(.page-index):not(.page-about) main :is(p, blockquote, li):not(.eyebrow) {
   color: #0f1110 !important;
   font-size: 1.25rem !important;
   line-height: 1.55;
@@ -2346,15 +2346,15 @@ body[class*="page-"]:not(.page-index):not(.page-about):not(.page-work) main .imp
 }
 
 /* Readable text floor across all site pages; display titles keep their scale. */
-/* The homepage (#home) sets its own type scale in styles/home.css, with the same 16px floor. */
-body[class*="page-"]:not(.page-index) :is(p, li, a, span, dt, dd, blockquote, figcaption, strong, em, small, label, button, input, textarea, select, option, time, summary),
-body.page-index :is(header, footer) :is(p, li, a, span, dt, dd, blockquote, figcaption, strong, em, small, label, button) {
+/* Home and About (#main) set their own type scale in styles/pages.css, with the same 16px floor. */
+body[class*="page-"]:not(.page-index):not(.page-about) :is(p, li, a, span, dt, dd, blockquote, figcaption, strong, em, small, label, button, input, textarea, select, option, time, summary),
+body:is(.page-index, .page-about) header :is(p, li, a, span, dt, dd, blockquote, figcaption, strong, em, small, label, button) {
   font-family: var(--font-family-inter, Inter, sans-serif) !important;
   font-size: max(16px, 1em) !important;
 }
 
-body[class*="page-"]:not(.page-index) :is(h2, h3, h4, h5, h6),
-body.page-index :is(header, footer) :is(h2, h3, h4, h5, h6) {
+body[class*="page-"]:not(.page-index):not(.page-about) :is(h2, h3, h4, h5, h6),
+body:is(.page-index, .page-about) header :is(h2, h3, h4, h5, h6) {
   font-family: var(--font-family-inter, Inter, sans-serif) !important;
   font-size: max(16px, 1em) !important;
 }
