@@ -1,0 +1,651 @@
+/*
+ * Case study template — shared by every project page.
+ * Builds on styles/pages.css (tokens, .hm-wrap, .hm-label, .hm-btn, .hm-split, reveal).
+ * Scoped under #main.cs so legacy rules can't reach it.
+ */
+
+/* ---------- Hero ---------- */
+
+#main.cs .cs-hero {
+  padding-top: clamp(7.5rem, 15vh, 10rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+body:has(#main.cs)::before {
+  display: none;
+}
+
+#main.cs .cs-back {
+  display: flex;
+  width: fit-content;
+  gap: .4rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  color: var(--hm-muted);
+  font-size: 1rem;
+  transition: color .2s ease;
+}
+
+#main.cs .cs-back:hover {
+  color: var(--hm-ink);
+}
+
+#main.cs .cs-title {
+  margin-top: 1.25rem;
+  font-size: clamp(3rem, 8.5vw, 8rem);
+  font-weight: 500;
+  line-height: .92;
+  letter-spacing: -.06em;
+  animation: hm-fade 1s var(--hm-ease) both;
+}
+
+#main.cs .cs-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
+  gap: 2.5rem clamp(2rem, 6vw, 6rem);
+  align-items: start;
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--hm-line);
+  animation: hm-fade 1s var(--hm-ease) .12s both;
+}
+
+#main.cs .cs-intro {
+  display: grid;
+  gap: 1rem;
+}
+
+#main.cs .cs-intro p {
+  max-width: 34ch;
+  font-size: clamp(1.25rem, 1.9vw, 1.6rem);
+  line-height: 1.3;
+  letter-spacing: -.02em;
+}
+
+#main.cs .cs-intro p + p {
+  color: var(--hm-muted);
+}
+
+#main.cs .cs-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem 1.25rem;
+  margin: 0;
+}
+
+#main.cs .cs-meta div {
+  display: grid;
+  gap: .25rem;
+}
+
+#main.cs .cs-meta dt {
+  color: var(--hm-muted);
+  font-size: 1rem;
+}
+
+#main.cs .cs-meta dd {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+#main.cs .cs-hero-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  animation: hm-fade 1s var(--hm-ease) .2s both;
+}
+
+#main.cs .cs-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#main.cs .cs-tags li {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .45rem .85rem;
+  border: 1px solid var(--hm-line);
+  border-radius: 999px;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+#main.cs .cs-tags li.is-live::before {
+  width: .45rem;
+  height: .45rem;
+  border-radius: 50%;
+  background: var(--hm-accent);
+  content: "";
+}
+
+#main.cs .cs-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+}
+
+/* ---------- Cover ---------- */
+
+#main.cs .cs-cover {
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: 1.25rem;
+  background: var(--hm-surface);
+  animation: hm-fade 1.1s var(--hm-ease) .25s both;
+}
+
+#main.cs .cs-cover img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  object-fit: cover;
+}
+
+#main.cs .cs-cover--contain img {
+  object-fit: contain;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* ---------- Sections ---------- */
+
+#main.cs .cs-section {
+  padding-block: clamp(4rem, 8vw, 7rem) 0;
+}
+
+#main.cs .cs-section:last-of-type {
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+#main.cs .cs-side {
+  display: grid;
+  align-content: start;
+  gap: .75rem;
+}
+
+#main.cs .cs-side .hm-label {
+  padding-top: .5rem;
+}
+
+#main.cs .cs-kicker {
+  max-width: 28ch;
+  color: var(--hm-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+#main.cs .cs-body {
+  display: grid;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+#main.cs .cs-body > p {
+  max-width: 42rem;
+  font-size: clamp(1.1rem, 1.4vw, 1.25rem);
+  line-height: 1.6;
+}
+
+#main.cs .cs-body > p:first-child {
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+  line-height: 1.35;
+  letter-spacing: -.02em;
+}
+
+#main.cs .cs-body p strong {
+  font-weight: 600;
+}
+
+/* Callout */
+
+#main.cs .cs-callout {
+  max-width: 42rem;
+  padding: .25rem 0 .25rem 1.5rem;
+  border-left: 2px solid var(--hm-accent);
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.35;
+  letter-spacing: -.02em;
+}
+
+/* Titled rows (scope, approach, results) */
+
+#main.cs .cs-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#main.cs .cs-list li {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  gap: .5rem 2rem;
+  align-items: baseline;
+  padding-block: 1.35rem;
+  border-bottom: 1px solid var(--hm-line);
+}
+
+#main.cs .cs-list li:first-child {
+  border-top: 1px solid var(--hm-line);
+}
+
+#main.cs .cs-list h3 {
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  font-weight: 500;
+  letter-spacing: -.02em;
+}
+
+#main.cs .cs-list p {
+  color: var(--hm-muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+/* Stats */
+
+#main.cs .cs-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#main.cs .cs-stats li {
+  display: grid;
+  gap: .5rem;
+}
+
+#main.cs .cs-stats strong {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -.05em;
+}
+
+#main.cs .cs-stats span {
+  max-width: 30ch;
+  color: var(--hm-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Process steps */
+
+#main.cs .cs-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#main.cs .cs-step {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 1.5rem;
+  padding-block: 1.75rem;
+  border-top: 1px solid var(--hm-line);
+}
+
+#main.cs .cs-step:last-child {
+  border-bottom: 1px solid var(--hm-line);
+}
+
+#main.cs .cs-step-num {
+  padding-top: .3rem;
+  color: var(--hm-accent);
+  font-size: 1rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+#main.cs .cs-step-body {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+#main.cs .cs-step h3 {
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+  font-weight: 500;
+  letter-spacing: -.025em;
+}
+
+#main.cs .cs-step-body > p {
+  max-width: 40rem;
+  color: var(--hm-muted);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+/* Cards (benchmark angles) */
+
+#main.cs .cs-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: .75rem;
+  margin-top: .5rem;
+}
+
+#main.cs .cs-card {
+  display: grid;
+  align-content: start;
+  gap: .5rem;
+  padding: 1.25rem;
+  border-radius: .9rem;
+  background: var(--hm-surface);
+}
+
+#main.cs .cs-card h4 {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+#main.cs .cs-card p {
+  color: var(--hm-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Sub-blocks */
+
+#main.cs .cs-subs {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: .25rem;
+}
+
+#main.cs .cs-sub {
+  display: grid;
+  gap: .35rem;
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--hm-line);
+}
+
+#main.cs .cs-sub h4 {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+#main.cs .cs-sub p {
+  color: var(--hm-muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+/* Insights */
+
+#main.cs .cs-insights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+#main.cs .cs-insight {
+  display: grid;
+  align-content: start;
+  gap: .75rem;
+  padding: 1.5rem;
+  border: 1px solid var(--hm-line);
+  border-radius: 1rem;
+  background: #fff;
+}
+
+#main.cs .cs-insight::before {
+  color: var(--hm-accent);
+  content: "Insight";
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#main.cs .cs-insight h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -.02em;
+}
+
+#main.cs .cs-insight p {
+  color: var(--hm-muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+/* Chips: flow + focus list */
+
+#main.cs .cs-flow,
+#main.cs .cs-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#main.cs .cs-flow li,
+#main.cs .cs-chips li {
+  padding: .45rem .85rem;
+  border-radius: 999px;
+  background: var(--hm-surface);
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+#main.cs .cs-flow li:not(:last-child)::after {
+  margin-left: .6rem;
+  color: var(--hm-muted);
+  content: "→";
+}
+
+#main.cs .cs-flow li {
+  background: transparent;
+  padding-inline: 0;
+}
+
+/* Impact */
+
+#main.cs .cs-impact {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#main.cs .cs-impact li {
+  display: grid;
+  align-content: space-between;
+  gap: 2rem;
+  min-height: 12rem;
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+  border-radius: 1rem;
+  background: var(--hm-ink);
+  color: #f4f3ef;
+}
+
+#main.cs .cs-impact strong {
+  font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -.045em;
+  overflow-wrap: anywhere;
+}
+
+#main.cs .cs-impact p {
+  max-width: 36ch;
+  color: #a9aaa5;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+#main.cs .cs-impact li:only-child {
+  grid-column: 1 / -1;
+}
+
+/* Gallery */
+
+#main.cs .cs-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+#main.cs .cs-gallery figure {
+  margin: 0;
+}
+
+#main.cs .cs-gallery figure:first-child:nth-last-child(odd),
+#main.cs .cs-gallery figure:only-child {
+  grid-column: 1 / -1;
+}
+
+#main.cs .cs-gallery .cs-shot {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border-radius: 1rem;
+  background: var(--hm-surface);
+}
+
+#main.cs .cs-gallery figure:first-child:nth-last-child(odd) .cs-shot,
+#main.cs .cs-gallery figure:only-child .cs-shot {
+  aspect-ratio: 16 / 9;
+}
+
+#main.cs .cs-gallery img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  object-fit: cover;
+}
+
+#main.cs .cs-gallery figcaption {
+  margin-top: .75rem;
+  color: var(--hm-muted);
+  font-size: 1rem;
+}
+
+/* ---------- Next project ---------- */
+
+#main.cs .cs-next {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-block: clamp(3rem, 6vw, 5rem);
+  border-top: 1px solid var(--hm-line);
+}
+
+#main.cs .cs-next-link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+  gap: 2rem;
+  align-items: center;
+}
+
+#main.cs .cs-next-link .hm-label {
+  margin-bottom: 1rem;
+}
+
+#main.cs .cs-next-title {
+  display: block;
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-weight: 500;
+  line-height: .95;
+  letter-spacing: -.055em;
+  transition: color .25s ease;
+}
+
+#main.cs .cs-next-title span {
+  display: inline-block;
+  margin-left: .2em;
+  transition: transform .35s var(--hm-ease);
+}
+
+#main.cs .cs-next-link:hover .cs-next-title {
+  color: var(--hm-accent);
+}
+
+#main.cs .cs-next-link:hover .cs-next-title span {
+  transform: translateX(.15em);
+}
+
+#main.cs .cs-next-thumb {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border-radius: 1rem;
+  background: var(--hm-surface);
+}
+
+#main.cs .cs-next-thumb img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  object-fit: cover;
+  transition: transform .9s var(--hm-ease);
+}
+
+#main.cs .cs-next-link:hover .cs-next-thumb img {
+  transform: scale(1.04);
+}
+
+#main.cs .cs-next-all {
+  margin-top: 2rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  #main.cs .cs-hero-grid,
+  #main.cs .cs-next-link {
+    grid-template-columns: 1fr;
+  }
+
+  #main.cs .cs-next-thumb {
+    max-width: 22rem;
+  }
+}
+
+@media (max-width: 640px) {
+  #main.cs .cs-cover {
+    aspect-ratio: 4 / 3;
+    border-radius: 1rem;
+  }
+
+  #main.cs .cs-list li {
+    grid-template-columns: 1fr;
+  }
+
+  #main.cs .cs-step {
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  #main.cs .cs-impact,
+  #main.cs .cs-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  #main.cs .cs-impact li {
+    min-height: 0;
+  }
+
+  #main.cs .cs-gallery figure:first-child:nth-last-child(odd) .cs-shot,
+  #main.cs .cs-gallery figure:only-child .cs-shot {
+    aspect-ratio: 4 / 3;
+  }
+
+  #main.cs .cs-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+}
