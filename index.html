@@ -9,7 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/design-system.css">
-<link rel="stylesheet" href="styles/home.css">
+<link rel="stylesheet" href="styles/footer.css">
+<link rel="stylesheet" href="styles/pages.css">
 </head>
 <body>
 
@@ -26,7 +27,7 @@
   </div>
 </header>
 
-<main id="home">
+<main id="main">
 
   <!-- Hero -->
   <section id="top" class="hm-hero hm-wrap" aria-label="Introduction">
@@ -114,27 +115,36 @@
 
 </main>
 
-<footer id="contact" class="site-footer reference-footer">
-  <div class="wrap footer-layout">
-    <div class="footer-contact">
-      <a class="footer-email" href="mailto:guillerminacaride@gmail.com">guillerminacaride@gmail.com</a>
-      <h2>Let's talk about<br>what you're<br>building.</h2>
-      <a href="mailto:guillerminacaride@gmail.com" class="contact-cta footer-cta">Get in touch <span aria-hidden="true">→</span></a>
+<footer id="contact" class="gc-footer">
+  <div class="gc-footer-inner">
+    <div class="gc-footer-top">
+      <div>
+        <p class="gc-footer-status">Open to new opportunities</p>
+        <h2>Let’s talk about what you’re <span>building.</span></h2>
+      </div>
+      <div class="gc-footer-actions">
+        <a class="gc-footer-email" href="mailto:guillerminacaride@gmail.com">guillerminacaride@gmail.com <span aria-hidden="true">↗</span></a>
+        <a class="gc-footer-btn" href="mailto:guillerminacaride@gmail.com">Get in touch <span aria-hidden="true">→</span></a>
+      </div>
     </div>
-    <div class="footer-link-columns">
-      <nav class="footer-link-group" aria-label="Sitemap">
+    <div class="gc-footer-nav">
+      <p class="gc-footer-about">Product &amp; UX/UI Designer based in Barcelona, turning complexity into clear, usable experiences.</p>
+      <nav class="gc-footer-group" aria-label="Sitemap">
         <h3>Sitemap</h3>
-        <a href="index.html#top">Home <span aria-hidden="true">→</span></a>
-        <a href="about.html#about">About us <span aria-hidden="true">→</span></a>
-        <a href="work.html">Work <span aria-hidden="true">→</span></a>
-        <a href="index.html#services">Services <span aria-hidden="true">→</span></a>
-        <a href="index.html#contact">Contact <span aria-hidden="true">→</span></a>
+        <a href="index.html#top">Home</a>
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="index.html#services">Services</a>
       </nav>
-      <nav class="footer-link-group" aria-label="Network">
-        <h3>Network</h3>
-        <a href="https://linkedin.com/in/guillermina-caride-urruty">LinkedIn <span aria-hidden="true">↗</span></a>
-        <a href="mailto:guillerminacaride@gmail.com?subject=CV%20request">CV <span aria-hidden="true">↗</span></a>
+      <nav class="gc-footer-group" aria-label="Elsewhere">
+        <h3>Elsewhere</h3>
+        <a href="https://linkedin.com/in/guillermina-caride-urruty" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a href="mailto:guillerminacaride@gmail.com?subject=CV%20request">Request CV <span aria-hidden="true">↗</span></a>
       </nav>
+    </div>
+    <div class="gc-footer-bottom">
+      <p>© 2026 Guillermina Caride</p>
+      <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
     </div>
   </div>
 </footer>

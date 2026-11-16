@@ -3,293 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — Guille</title>
+<title>About — Guillermina Caride</title>
+<meta name="description" content="Guillermina Caride is a Product &amp; UX/UI Designer in Barcelona working between strategy, UX and implementation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rethink+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{--bg:#0c0d0a;--bg-raised:#121309;--ink:#f2f1ea;--muted:#9a9a8e;--line:#232419;--accent:#c6ff4d;--display:'Rethink Sans',sans-serif;--sans:'Inter',sans-serif;--max:1180px;--article:780px;--gap:clamp(1.25rem,3vw,2.5rem)}
-  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gap)}.article{max-width:var(--article);margin:0 auto;padding:0 var(--gap)}
-  header{position:sticky;top:0;z-index:5;padding:1rem 0;background:rgba(12,13,10,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}nav{display:flex;align-items:center;justify-content:space-between}.wordmark{font:700 1.15rem var(--display)}.navlinks{display:flex;gap:1.5rem;color:var(--muted);font-size:.88rem}.navlinks a:hover{color:var(--accent)}
-  .hero{padding:clamp(4rem,9vw,8rem) 0 4rem;border-bottom:1px solid var(--line)}.eyebrow{margin:0 0 1rem;color:var(--accent);font-size:.92rem}.hero h1{max-width:12ch;margin:0 0 1.5rem;font:800 clamp(3rem,8vw,6rem)/.98 var(--display);letter-spacing:-.02em}.hero-intro{max-width:54ch;color:var(--muted);font-size:1.2rem}.hero-intro strong{color:var(--ink);font-weight:600}
-  section{padding:4rem 0;border-bottom:1px solid var(--line)}section:last-of-type{border-bottom:0}.label{margin:0 0 1.5rem;font:700 clamp(1.5rem,3vw,2rem) var(--display)}.article p{margin:0 0 1.2rem;color:var(--muted);font-size:1.05rem}.article p strong{color:var(--ink)}
-  .principle{margin:2rem 0 0;padding:1.5rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font:800 clamp(1.5rem,4vw,2.6rem)/1.1 var(--display);color:var(--accent)}
-  .trait-grid,.bring-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}.trait,.bring-card{padding:1.3rem;border:1px solid var(--line);background:var(--bg-raised)}.trait strong,.bring-card strong{display:block;margin-bottom:.45rem;color:var(--ink);font:700 1rem var(--display)}.trait span,.bring-card p{color:var(--muted);font-size:.92rem}
-  .recommendation{position:relative;margin-bottom:2rem;padding:2rem;border:1px solid var(--line);background:var(--bg-raised)}.recommendation:last-child{margin-bottom:0}.quote-mark{position:absolute;top:.5rem;right:1.3rem;color:var(--accent);font:800 4rem/.8 Georgia,serif}.recommendation blockquote{margin:0 0 1.5rem;padding:0 1.5rem 0 0;color:var(--muted);font-size:1rem;white-space:pre-line}.person{border-top:1px solid var(--line);padding-top:1rem}.person strong{display:block;font:700 1rem var(--display)}.person span{display:block;color:var(--muted);font-size:.88rem}.person a{display:inline-block;margin-top:.4rem;color:var(--accent);font-size:.85rem}.draft-note{margin:0 0 1rem;color:var(--accent);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
-  .closing{padding-bottom:1rem}.closing h2{max-width:18ch;margin:0 0 1.5rem;font:800 clamp(1.8rem,4vw,3rem)/1.05 var(--display)}.cta{display:inline-block;margin-top:1rem;border-bottom:1px solid var(--accent);padding-bottom:3px;color:var(--ink)}
-  footer{margin-top:3rem;padding:3rem 0 2.4rem;border-top:1px solid var(--line)}.footer-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.85rem}.footer-row a:hover{color:var(--ink)}
-  @media(max-width:700px){.navlinks{gap:.8rem}.trait-grid,.bring-grid{grid-template-columns:1fr}.recommendation{padding:1.4rem}.recommendation blockquote{padding-right:0}}
-  .about-hero{
-    display:grid;
-    grid-template-columns:minmax(0,1fr) minmax(20rem,.9fr);
-    align-items:center;
-    column-gap:clamp(2rem,6vw,6rem);
-    row-gap:1.5rem;
-    padding-top:clamp(5rem,10vw,8rem);
-    padding-bottom:3rem;
-    border-bottom:0;
-  }
-  .about-hero-copy{position:relative;z-index:2}
-  .about-mark{display:block;width:3.4rem;height:3.4rem;margin:0 0 .5rem}
-  .about-mark path{fill:url(#about-mark-gradient)}
-  .about-hero h1{
-    max-width:none;
-    margin:0 0 1.5rem;
-    color:#0f1110;
-    font-size:clamp(3.5rem,6vw,5.7rem);
-    letter-spacing:-.045em;
-  }
-  .about-hero .hero-intro{
-    max-width:49ch;
-    margin:0 0 1rem;
-    color:#0f1110;
-    font-size:clamp(.95rem,1.05vw,1.05rem);
-    line-height:1.52;
-  }
-  .about-hero-visual{
-    position:relative;
-    min-height:clamp(29rem,43vw,39rem);
-    overflow:hidden;
-    isolation:isolate;
-  }
-  .about-visual-orbit{
-    position:absolute;
-    top:-13%;
-    right:-36%;
-    width:130%;
-    height:114%;
-    border:1px dashed rgb(15 17 16 / 38%);
-    border-radius:50%;
-    transform:rotate(-19deg);
-  }
-  .about-visual-orbit::after{
-    position:absolute;
-    inset:1rem;
-    border:1px dashed rgb(15 17 16 / 30%);
-    border-radius:50%;
-    content:"";
-  }
-  .about-visual-ring{
-    position:absolute;
-    z-index:-1;
-    right:-8%;
-    bottom:1%;
-    width:min(87%,31rem);
-    aspect-ratio:1;
-    border-radius:50%;
-    background:conic-gradient(from 30deg,#48c6ef,#c887e7,#ed9bd4,#65c5ef,#48c6ef);
-  }
-  .about-visual-ring::after{
-    position:absolute;
-    inset:29%;
-    border-radius:50%;
-    background:#fdfbfb;
-    content:"";
-  }
-  .about-portrait{
-    position:absolute;
-    z-index:1;
-    right:2%;
-    bottom:0;
-    width:94%;
-    height:96%;
-    object-fit:contain;
-    object-position:bottom center;
-    border-radius:0;
-  }
-  .about-visual-bar{
-    position:absolute;
-    z-index:2;
-    top:61%;
-    left:0;
-    width:112%;
-    height:1.5rem;
-    background:linear-gradient(90deg,#eca8df,#f28c61);
-    animation:about-bar-float 9s ease-in-out infinite alternate;
-  }
-  .about-principle{
-    grid-column:1/-1;
-    margin:0;
-    padding:1.2rem 0;
-    border:0;
-    color:transparent;
-    background:linear-gradient(90deg,#eca8df,#f28c61);
-    background-clip:text;
-    -webkit-background-clip:text;
-    text-align:center;
-    font-size:clamp(1.35rem,3vw,2.4rem);
-  }
-  @keyframes about-bar-float{
-    from{translate:-1% 0}
-    to{translate:1% 0}
-  }
-  @media(max-width:700px){
-    .about-hero{grid-template-columns:1fr;padding-top:5rem;row-gap:1rem}
-    .about-hero h1{font-size:clamp(3.25rem,14vw,5rem)}
-    .about-hero-visual{min-height:24rem;margin-top:.5rem}
-    .about-visual-ring{right:0;width:min(82%,22rem)}
-    .about-visual-bar{top:64%;height:1.1rem}
-    .about-principle{padding:1rem 0;text-align:left}
-  }
-  .page-about main{padding-top:0}
-  .about-hero.wrap{
-    grid-template-columns:repeat(12,minmax(0,1fr));
-    align-items:start;
-    column-gap:var(--space-6);
-    max-width:none;
-    padding:clamp(8rem,12vw,11rem) var(--content-gutter) clamp(4rem,8vw,7rem);
-  }
-  .about-hero-copy{grid-column:1 / span 6}
-  .about-mark,.about-visual-orbit,.about-visual-ring,.about-visual-bar,.about-principle{display:none}
-  .about-hero h1{
-    display:grid;
-    max-width:none;
-    margin:0 0 clamp(2.5rem,6vw,5rem);
-    font-family:var(--font-body);
-    font-size:clamp(3.5rem,6.5vw,6rem);
-    font-weight:300;
-    line-height:.95;
-    letter-spacing:-.055em;
-  }
-  .about-hero h1 span:last-child{margin-left:1.15em}
-  .about-hero .hero-intro{
-    max-width:48ch;
-    margin:0 0 1.3rem;
-    font-size:clamp(.88rem,1vw,1rem);
-    line-height:1.55;
-  }
-  .about-hero-visual{
-    grid-column:9 / span 3;
-    grid-row:1;
-    min-height:0;
-    margin-top:.5rem;
-    aspect-ratio:1.05;
-    border-radius:var(--radius-image);
-    background:#b7c4cc;
-  }
-  .about-portrait{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center 20%;
-    border-radius:inherit;
-  }
-  .about-sections{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--space-6)}
-  .about-sections>section{grid-column:1/-1;border-radius:0}
-  .about-sections .about-bring-section{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--space-6)}
-  .about-bring-section>.label{grid-column:1 / span 3;align-self:start}
-  .about-bring-section .bring-grid{grid-column:4 / -1;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}
-  .bring-card{
-    min-height:7.5rem;
-    padding:1.1rem;
-    border:0;
-    border-radius:var(--radius-card);
-    background:#e5e4e0;
-  }
-  .bring-card strong{font-family:var(--font-body);font-size:.78rem;font-weight:700}
-  .bring-card p{margin:0;color:#444541;font-size:.78rem;line-height:1.5}
-  .about-testimonials>.label{grid-column:1/-1}
-  .about-testimonials .recommendation{
-    display:grid;
-    grid-template-columns:repeat(12,minmax(0,1fr));
-    gap:var(--space-6);
-    margin-bottom:.75rem;
-    padding:1.25rem 0;
-    border:1px solid var(--color-border);
-    border-radius:var(--radius-image);
-    background:transparent;
-  }
-  .about-testimonials .quote-mark{display:none}
-  .about-testimonials .recommendation blockquote{grid-column:6/-1;grid-row:1;margin:0;padding:0;color:var(--color-text-primary);font-size:.88rem;line-height:1.55}
-  .about-testimonials .person{grid-column:3 / span 3;grid-row:1;align-self:start;border:0;padding:0}
-  .about-testimonials .person strong{font-family:var(--font-body);font-size:.8rem}
-  .about-testimonials .person span,.about-testimonials .person a{font-size:.68rem}
-  .about-testimonials .person a{color:var(--color-accent)}
-  .about-sections .closing{display:block;padding-bottom:2rem}
-  .closing h2{max-width:16ch;font-family:var(--font-body);font-weight:700;letter-spacing:-.04em}
-  .closing p{max-width:58ch;color:var(--color-text-primary);font-size:.9rem;line-height:1.55}
-  .closing .cta{border:1px solid currentColor;border-radius:var(--radius-pill);padding:.55rem .9rem;font-size:.75rem}
-  .about-experience{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--space-6)}
-  .about-experience>.label{grid-column:1 / span 5;align-self:start}
-  .experience-list{grid-column:6 / -1;margin:0}
-  .experience-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;align-items:baseline;gap:.5rem 1rem;padding:.9rem 0;border-bottom:1px solid var(--color-border);font-size:.82rem}
-  .experience-row dt{font-weight:600}
-  .experience-row dd{margin:0;color:var(--color-text-secondary)}
-  .experience-row .experience-date{white-space:nowrap;font-size:.74rem}
-  @media(max-width:800px){
-    .about-hero.wrap{grid-template-columns:repeat(6,minmax(0,1fr));padding-top:7rem}
-    .about-hero-copy{grid-column:1/-1}
-    .about-hero-visual{grid-column:2 / span 4;grid-row:auto;width:100%;max-width:24rem;margin:1rem auto 0}
-    .about-experience>.label,.experience-list{grid-column:1 / -1}
-    .about-bring-section>.label{grid-column:1/-1}
-    .about-bring-section .bring-grid{grid-column:1/-1;grid-template-columns:repeat(3,minmax(0,1fr))}
-    .about-testimonials .recommendation{grid-template-columns:repeat(6,minmax(0,1fr))}
-    .about-testimonials .person{grid-column:1/-1;grid-row:1}
-    .about-testimonials .recommendation blockquote{grid-column:1/-1;grid-row:2}
-  }
-  @media(max-width:560px){
-    .about-hero h1{font-size:clamp(3.2rem,15vw,4.7rem)}
-    .about-sections,.about-sections .about-bring-section{grid-template-columns:1fr}
-    .about-experience{grid-template-columns:1fr}
-    .about-bring-section .bring-grid{grid-template-columns:1fr}
-    .about-sections>section,.about-bring-section>.label,.about-bring-section .bring-grid{grid-column:1}
-    .about-testimonials .recommendation{grid-template-columns:1fr;padding:1rem}
-    .about-testimonials .person,.about-testimonials .recommendation blockquote{grid-column:1}
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/design-system.css">
+<link rel="stylesheet" href="styles/footer.css">
+<link rel="stylesheet" href="styles/pages.css">
 </head>
-<body>
-<header class="site-header"><div class="wrap"><nav><a href="index.html#top" class="wordmark">gc.</a><div class="navlinks"><a href="work.html">Work</a><a href="about.html#about">About</a><a href="index.html#contact">Contact</a></div></nav></div></header>
-<main>
-  <section class="about-hero wrap" id="about">
-    <div class="about-hero-identity">
-      <p class="about-name">GUILLERMINA CARIDE URRUTY</p>
-      <p class="about-role">Product designer</p>
-    </div>
-    <div class="about-hero-visual">
-      <img class="about-portrait" src="img/guille-about.png" alt="Guille smiling in sunglasses">
-    </div>
-    <div class="about-hero-copy">
-      <p class="about-hero-lead"><span>I’ve worked across agencies, industries, and digital products — from graphic design and UX/UI to product design and systems.</span> <span>I believe the best experiences aren’t the ones that try to do everything. They’re the ones that make the right things feel effortless.</span></p>
-      <p class="hero-intro">With 6 years of experience working across different clients, industries and digital products. Working in an agency environment has given me the opportunity to work across ecommerce, product experiences, design systems and large-scale digital ecosystems.</p>
+<body id="top">
+
+<header class="site-header"><div class="wrap"><nav><a href="index.html#top" class="wordmark">gc.</a><div class="navlinks"><a href="work.html">Work</a><a href="about.html">About</a><a href="#contact">Contact</a></div></nav></div></header>
+
+<main id="main">
+
+  <!-- Intro -->
+  <section id="about" class="ab-hero hm-wrap" aria-label="About Guillermina">
+    <p class="hm-label">About</p>
+    <h1 class="ab-title">Designing the space between strategy, UX <span>and implementation.</span></h1>
+    <div class="ab-intro">
+      <figure class="ab-portrait"><img src="img/guille-about.png" alt="Guillermina smiling in sunglasses"></figure>
+      <div class="ab-copy">
+        <p class="ab-lead">I’ve worked across agencies, industries and digital products — from graphic design and UX/UI to product design and systems. <span>I believe the best experiences aren’t the ones that try to do everything. They’re the ones that make the right things feel effortless.</span></p>
+        <p>I’m interested in understanding the problem, creating structure within complexity and turning ideas into products people can actually use. I’m currently looking for opportunities where I can take more ownership of the product journey and work closely with the people who build it.</p>
+        <dl class="ab-facts">
+          <div><dt>Based in</dt><dd>Barcelona</dd></div>
+          <div><dt>Currently</dt><dd>Product Designer, TBWA</dd></div>
+          <div><dt>Experience</dt><dd>6 years</dd></div>
+        </dl>
+        <div class="ab-actions">
+          <a class="hm-btn" href="mailto:guillerminacaride@gmail.com">Let’s work together <span class="hm-arrow" aria-hidden="true">→</span></a>
+          <a class="hm-btn hm-btn--ghost" href="mailto:guillerminacaride@gmail.com?subject=CV%20request">Request CV</a>
+        </div>
+      </div>
     </div>
   </section>
-  <div class="article about-sections">
-    <section class="closing">
-      <div class="closing-heading"><h2><span>Interested in the space between </span><span>strategy, UX and implementation.</span></h2><a href="mailto:guillerminacaride@gmail.com" class="cta">Let's work together →</a></div>
-      <div class="closing-copy"><p>I am interested in understanding the problem, creating structure within complexity and turning ideas into products that people can actually use.</p><p>Currently looking for opportunities where I can take more ownership of the product journey and work closely with the people who build it.</p></div>
-    </section>
-      <section class="about-experience"><div class="experience-label"><h2 class="label">Experience</h2><p>Where I’ve been</p></div><dl class="experience-list"><div class="experience-row"><dt>Product Designer</dt><dd class="experience-company">TBWA, Barcelona</dd><dd class="experience-date">2026 - Present</dd></div><div class="experience-row"><dt>Product Designer</dt><dd class="experience-company">Eyr Holistic, Norway</dd><dd class="experience-date">2024 - 2026</dd></div><div class="experience-row"><dt>UX/UI Designer</dt><dd class="experience-company">ExxonMobil, Argentina</dd><dd class="experience-date">2022 - 2024</dd></div><div class="experience-row"><dt>Designer</dt><dd class="experience-company">Bullmetrix, Argentina</dd><dd class="experience-date">2020 - 2022</dd></div></dl></section>
-    <section class="about-bring-section" id="what-i-bring"><h2 class="label">What I bring</h2><div class="bring-grid"><div class="bring-card"><strong>STRATEGY</strong><p>I start by understanding the problem, the context and what we're trying to achieve before jumping into solutions.</p></div><div class="bring-card"><strong>RESEARCH &amp; UX</strong><p>I look at the full experience — user needs, journeys, behaviours and pain points — and turn complexity into clearer flows and decisions.</p></div><div class="bring-card"><strong>UI</strong><p>I care about hierarchy, interaction and the details that make a product feel clear, coherent and considered.</p></div><div class="bring-card"><strong>SYSTEMS</strong><p>I enjoy creating structure that scales, from reusable components and patterns to design systems that make products easier to evolve.</p></div><div class="bring-card"><strong>COLLABORATION</strong><p>I work closely with different disciplines and like understanding the technical reality behind what I'm designing.</p></div><div class="bring-card"><strong>IMPLEMENTATION</strong><p>I'm interested in what happens after the design file. I like staying close to development, seeing how ideas translate into the final product and learning from what gets built.</p></div></div></section>
-  </div>
-</main>
-<footer id="contact" class="site-footer reference-footer">
-  <div class="wrap footer-layout">
-    <div class="footer-contact">
-      <a class="footer-email" href="mailto:guillerminacaride@gmail.com">guillerminacaride@gmail.com</a>
-      <h2>Let's talk about<br>what you're<br>building.</h2>
-      <a href="mailto:guillerminacaride@gmail.com" class="contact-cta footer-cta">Get in touch <span aria-hidden="true">→</span></a>
+
+  <!-- Experience -->
+  <section class="hm-section hm-wrap" style="padding-top:0" aria-label="Experience">
+    <div class="hm-split">
+      <p class="hm-label home-reveal">Experience</p>
+      <ol class="ab-exp-list">
+        <li class="ab-exp home-reveal"><h3>Product Designer</h3><p>TBWA, Barcelona</p><time>2026 — Present</time></li>
+        <li class="ab-exp home-reveal"><h3>Product Designer</h3><p>Eyr Holistic, Norway</p><time>2024 — 2026</time></li>
+        <li class="ab-exp home-reveal"><h3>UX/UI Designer</h3><p>ExxonMobil, Argentina</p><time>2022 — 2024</time></li>
+        <li class="ab-exp home-reveal"><h3>Designer</h3><p>Bullmetrix, Argentina</p><time>2020 — 2022</time></li>
+      </ol>
     </div>
-    <div class="footer-link-columns">
-      <nav class="footer-link-group" aria-label="Sitemap">
+  </section>
+
+  <!-- What I bring -->
+  <section id="what-i-bring" class="hm-section hm-wrap" style="padding-top:0">
+    <div class="hm-section-head home-reveal">
+      <h2>What I bring</h2>
+    </div>
+    <ol class="ab-bring">
+      <li class="home-reveal"><span class="hm-service-num">01</span><h3>Strategy</h3><p>I start by understanding the problem, the context and what we’re trying to achieve before jumping into solutions.</p></li>
+      <li class="home-reveal"><span class="hm-service-num">02</span><h3>Research &amp; UX</h3><p>I look at the full experience — user needs, journeys, behaviours and pain points — and turn complexity into clearer flows and decisions.</p></li>
+      <li class="home-reveal"><span class="hm-service-num">03</span><h3>UI</h3><p>I care about hierarchy, interaction and the details that make a product feel clear, coherent and considered.</p></li>
+      <li class="home-reveal"><span class="hm-service-num">04</span><h3>Systems</h3><p>I enjoy creating structure that scales, from reusable components and patterns to design systems that make products easier to evolve.</p></li>
+      <li class="home-reveal"><span class="hm-service-num">05</span><h3>Collaboration</h3><p>I work closely with different disciplines and like understanding the technical reality behind what I’m designing.</p></li>
+      <li class="home-reveal"><span class="hm-service-num">06</span><h3>Implementation</h3><p>I’m interested in what happens after the design file — staying close to development, seeing how ideas translate into the final product and learning from what gets built.</p></li>
+    </ol>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="hm-section hm-wrap" style="padding-top:0" aria-label="Testimonials">
+    <div class="hm-split">
+      <p class="hm-label home-reveal">Kind words</p>
+      <div class="ab-quotes">
+        <figure class="ab-quote home-reveal">
+          <blockquote>“Guille is one of those designers who combines a strong sense of responsibility with a genuine curiosity to understand how things work.”</blockquote>
+          <figcaption><strong>Valeria Quiroga</strong><span>Product Designer · ExxonMobil</span><a href="https://www.linkedin.com/in/valeriaquirogaseniordesigner" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></figcaption>
+          <details>
+            <summary>Read full recommendation</summary>
+            <div>
+              <p>During our time working together on the ExxonMobil project, I was particularly impressed by how quickly she learned and adapted to a complex project and design system.</p>
+              <p>She is a highly skilled designer who consistently showed that her capabilities went beyond the expectations of her role. She has a strong eye for detail and visual design, but what really stood out to me was her ability to <strong>understand the bigger picture, question decisions and contribute with ideas that went beyond her position.</strong></p>
+              <p>I really enjoyed working with Guille. She is a talented, committed and fast-learning designer who has already demonstrated that she can <strong>outgrow the boundaries of her current role and take on broader responsibilities.</strong> I believe she has a lot of potential as she continues to grow toward more strategic Product Design roles.</p>
+            </div>
+          </details>
+        </figure>
+        <figure class="ab-quote home-reveal">
+          <blockquote>“Guille is a committed and proactive professional. During our year of working together, she demonstrated her curiosity, ability to learn, and capacity to develop great projects.”</blockquote>
+          <figcaption><strong>Angela Maria Baracaldo Bonilla</strong><span>E-commerce Strategy &amp; Operations · Bullmetrix</span><a href="https://www.linkedin.com/in/angelabaracaldo/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></figcaption>
+          <details>
+            <summary>Read full recommendation</summary>
+            <div>
+              <p>She is a dynamic and cheerful person who, in her role as a designer, was able to <strong>present comprehensive strategies</strong> and not only deliver high-quality work, but also <strong>understand the results in order to make her work have a greater impact on clients.</strong></p>
+              <p>Regarding her role as an analyst, she discovered a position that perfectly combines her creativity with the development of <strong>results-oriented strategies.</strong></p>
+              <p>She is an excellent professional with a great journey ahead of her, and it is a true pleasure to have her on the team.</p>
+            </div>
+          </details>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact" class="gc-footer">
+  <div class="gc-footer-inner">
+    <div class="gc-footer-top">
+      <div>
+        <p class="gc-footer-status">Open to new opportunities</p>
+        <h2>Let’s talk about what you’re <span>building.</span></h2>
+      </div>
+      <div class="gc-footer-actions">
+        <a class="gc-footer-email" href="mailto:guillerminacaride@gmail.com">guillerminacaride@gmail.com <span aria-hidden="true">↗</span></a>
+        <a class="gc-footer-btn" href="mailto:guillerminacaride@gmail.com">Get in touch <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="gc-footer-nav">
+      <p class="gc-footer-about">Product &amp; UX/UI Designer based in Barcelona, turning complexity into clear, usable experiences.</p>
+      <nav class="gc-footer-group" aria-label="Sitemap">
         <h3>Sitemap</h3>
-        <a href="index.html#top">Home <span aria-hidden="true">→</span></a>
-        <a href="about.html#about">About us <span aria-hidden="true">→</span></a>
-        <a href="work.html">Work <span aria-hidden="true">→</span></a>
-        <a href="index.html#services">Services <span aria-hidden="true">→</span></a>
-        <a href="index.html#contact">Contact <span aria-hidden="true">→</span></a>
+        <a href="index.html#top">Home</a>
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="index.html#services">Services</a>
       </nav>
-      <nav class="footer-link-group" aria-label="Network">
-        <h3>Network</h3>
-        <a href="https://linkedin.com/in/guillermina-caride-urruty">LinkedIn <span aria-hidden="true">↗</span></a>
-        <a href="mailto:guillerminacaride@gmail.com?subject=CV%20request">CV <span aria-hidden="true">↗</span></a>
+      <nav class="gc-footer-group" aria-label="Elsewhere">
+        <h3>Elsewhere</h3>
+        <a href="https://linkedin.com/in/guillermina-caride-urruty" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a href="mailto:guillerminacaride@gmail.com?subject=CV%20request">Request CV <span aria-hidden="true">↗</span></a>
       </nav>
+    </div>
+    <div class="gc-footer-bottom">
+      <p>© 2026 Guillermina Caride</p>
+      <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
     </div>
   </div>
 </footer>
+
 <script src="site-chrome.js" defer></script>
 </body>
 </html>
