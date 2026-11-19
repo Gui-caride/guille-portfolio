@@ -2024,9 +2024,9 @@ body.page-work .lib-card-image .status {
   left: 0.85rem;
   padding: 0.4rem 0.7rem;
   border: 1px solid rgb(15 17 16 / 14%);
-  background: rgb(255 255 255 / 90%);
+  background: rgb(255 255 255 / 60%);
   backdrop-filter: blur(6px);
-  font-size: 0.72rem !important;
+  font-size: 10px !important;
   font-weight: 500;
   letter-spacing: 0.04em;
   opacity: 1;
@@ -2073,9 +2073,10 @@ body.page-work .work-filter[aria-pressed="true"] {
 body.page-work .lib-card-image .lib-tags {
   position: absolute;
   z-index: 1;
-  top: 0.85rem;
-  left: 0.85rem;
-  right: 0.85rem;
+  /* 6px from the card's outer edge (card image has a 1px border) */
+  top: 5px;
+  left: 5px;
+  right: 5px;
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
@@ -2149,14 +2150,12 @@ body.page-work .project-details {
   }
 
   body.page-work .lib-card-image .lib-tags {
-    top: 0.45rem;
-    left: 0.45rem;
     gap: 0.25rem;
   }
 
   body.page-work .lib-card-image .status {
-    padding: 0.3rem 0.5rem;
-    font-size: 0.62rem !important;
+    padding: 0.3rem 0.55rem;
+    font-size: 10px !important;
   }
 
   body.page-work .project-hover-info {
