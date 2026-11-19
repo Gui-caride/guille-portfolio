@@ -1999,7 +1999,7 @@ body.page-work main:not(#main) > #lib-root {
   max-width: none;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.75rem;
-  margin: clamp(2.5rem, 5vw, 4rem) auto 0;
+  margin: 1.5rem auto 0;
   padding: 0 0 clamp(6rem, 12vw, 10rem);
 }
 
@@ -2020,8 +2020,66 @@ body.page-work .lib-card-image {
 }
 
 body.page-work .lib-card-image .status {
-  font-size: 0.52rem !important;
-  opacity: 0.8;
+  top: 0.85rem;
+  left: 0.85rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid rgb(15 17 16 / 14%);
+  background: rgb(255 255 255 / 90%);
+  backdrop-filter: blur(6px);
+  font-size: 0.72rem !important;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  opacity: 1;
+}
+
+/* Work filters */
+body.page-work .work-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  width: min(calc(100% - 3rem), 80rem);
+  margin: clamp(2.5rem, 5vw, 3.5rem) auto 0;
+}
+
+body.page-work .work-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--color-border, #e5e4e0);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text-primary, #0f1110);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+body.page-work .work-filter:hover {
+  border-color: #0f1110;
+}
+
+body.page-work .work-filter[aria-pressed="true"] {
+  border-color: #0f1110;
+  background: #0f1110;
+  color: #fff;
+}
+
+body.page-work .work-filter-count {
+  color: #8f908b;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+body.page-work .work-filter[aria-pressed="true"] .work-filter-count {
+  color: rgb(255 255 255 / 60%);
+}
+
+body.page-work .lib-card[hidden] {
+  display: none;
 }
 
 body.page-work .lib-card-image::after {
@@ -2086,8 +2144,8 @@ body.page-work .project-details {
   body.page-work .lib-card-image .status {
     top: 0.45rem;
     left: 0.45rem;
-    padding: 0.28rem 0.42rem;
-    font-size: 0.46rem !important;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.62rem !important;
   }
 
   body.page-work .project-hover-info {
