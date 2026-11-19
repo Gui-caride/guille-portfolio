@@ -573,7 +573,7 @@ body.page-about::before {
   overflow: hidden;
   aspect-ratio: 1 / 1;
   border-radius: 1rem;
-  background: #c8c8c8;
+  background: #d4d4d2;
 }
 
 #main .ab-portrait img {
