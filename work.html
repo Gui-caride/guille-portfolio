@@ -150,8 +150,8 @@
   }
   @media(max-width:520px){.lib-grid{grid-template-columns:1fr}.work-intro h1{font-size:clamp(2.8rem,12vw,4rem)}}
 </style>
-<link rel="stylesheet" href="styles/design-system.css">
-<link rel="stylesheet" href="styles/footer.css">
+<link rel="stylesheet" href="styles/design-system.css?v=20261119">
+<link rel="stylesheet" href="styles/footer.css?v=20261119">
 </head>
 <body id="top">
 
@@ -208,40 +208,40 @@
   </div>
 </footer>
 
-<script src="site-chrome.js" defer></script>
+<script src="site-chrome.js?v=20261119" defer></script>
 <script>
   // Living project data — add a new object here to extend the library.
   // status: "Featured" | "Supporting" | "Archive" | "Do Not Feature" (Do Not Feature is hidden)
   const projects = [
-    { id:"tugo", title:"Tugo", category:"Product", previewLabel:"Product", previewMeta:"Visual design · UX/UI · ELISAVA Master Awards 2025", status:"Featured", image:"img/tugo/tugo-hero.jpg",
+    { id:"tugo", tags:["Product","Design system"], title:"Tugo", category:"Product", previewLabel:"Product", previewMeta:"Visual design · UX/UI · ELISAVA Master Awards 2025", status:"Featured", image:"img/tugo/tugo-hero.jpg",
       summary:"A smart support system that blends technology and emotional care for children with chronic illnesses, like type 1 diabetes, and their families — usable at home or on the go, built to grow a child’s independence while giving caregivers peace of mind.",
       role:"Research, UX, design system, implementation", previewDetails:false, href:"tugo.html" },
 
-    { id:"exxonmobil", title:"ExxonMobil Design System", category:"Design systems", previewLabel:"Design systems", previewMeta:"Product design · UX/UI · UI", status:"Supporting", image:"img/standard/Standard-Design-System-hero.jpg",
+    { id:"exxonmobil", tags:["Design system"], title:"ExxonMobil Design System", category:"Design systems", previewLabel:"Design systems", previewMeta:"Product design · UX/UI · UI", status:"Supporting", image:"img/standard/Standard-Design-System-hero.jpg",
       summary:"A standardized set of reusable components, guidelines and patterns for ExxonMobil’s internal digital platforms — built for consistency, accessibility and efficiency across applications used by teams in multiple regions.",
       role:"UX/UI designer", metric:"20 → 50+ components", previewDetails:false, href:"standard.html" },
 
-    { id:"marea-verde", title:"Marea Verde", category:"Ecommerce", previewLabel:"Ecommerce", previewMeta:"Visual design · Product design · UX/UI · UI", status:"Supporting", image:"img/marea-verde/mare-verde.jpg",
+    { id:"marea-verde", tags:["Product","Design system"], title:"Marea Verde", category:"Ecommerce", previewLabel:"Ecommerce", previewMeta:"Visual design · Product design · UX/UI · UI", status:"Supporting", image:"img/marea-verde/mare-verde.jpg",
       summary:"A digital platform for Marea Verde that supports the full plant-buying journey — before and after purchase — for plants, bouquets and related products, matched to each customer’s botanical questions and care needs.",
       role:"UX/UI designer", metric:"31 components · 8 screens", previewDetails:false, href:"marea-verde.html" },
 
-    { id:"volkswagen", title:"Volkswagen", category:"UX/UI", previewLabel:"UX/UI", previewMeta:"UX/UI · Ongoing", status:"Featured", image:"img/volkswagen/volkswagen-hero.jpeg",
+    { id:"volkswagen", tags:["Product","Design system"], title:"Volkswagen", category:"UX/UI", previewLabel:"UX/UI", previewMeta:"UX/UI · Ongoing", status:"Featured", image:"img/volkswagen/volkswagen-hero.jpeg",
       summary:"Ongoing UX/UI work on digital experiences and campaigns for Volkswagen — combining interaction design, creative strategy and user-focused thinking to build clear, consistent touchpoints across the customer journey.",
       role:"UX/UI designer", metric:"15+ landing pages", previewDetails:false, href:"volkswagen.html" },
 
-    { id:"froya", title:"Frøya", category:"Ecommerce", previewLabel:"Ecommerce", previewMeta:"Ecommerce strategy · Experimentation · UX/UI", status:"Featured", image:"img/froya/froya-hero.webp",
+    { id:"froya", tags:["Ecommerce"], title:"Frøya", category:"Ecommerce", previewLabel:"Ecommerce", previewMeta:"Ecommerce strategy · Experimentation · UX/UI", status:"Featured", image:"img/froya/froya-hero.webp",
       summary:"Ecommerce strategy and product-page optimisation for Frøya Organics — going beyond visual UI to work the full journey from product discovery through checkout.",
       role:"UX/UI & ecommerce strategy", metric:"Up to +18% sales", previewDetails:false, href:"froya.html" },
 
-    { id:"null-wines", title:"Null Wines", category:"Ecommerce", previewLabel:"Ecommerce", previewMeta:"UX/UI · Accessibility · Search & discovery", status:"Featured", image:"img/null-wines/null.jpg",
+    { id:"null-wines", tags:["Ecommerce"], title:"Null Wines", category:"Ecommerce", previewLabel:"Ecommerce", previewMeta:"UX/UI · Accessibility · Search & discovery", status:"Featured", image:"img/null-wines/null.jpg",
       summary:"UX and accessibility work across Null Wines’ landing experience, search, product discovery and purchase journey.",
       role:"UX/UI designer",       metric:"32% → 19% purchase drop-off", previewDetails:false, href:"null-wines.html" },
 
-    { id:"froken-dianas", title:"Fröken Dianas Salonger", category:"Ecommerce", previewLabel:"Ecommerce", previewMeta:"Landing pages · Email marketing · Content · Ongoing", status:"Supporting", image:"img/froken-dianas-salonger/froken-dianas-solanger-hero.png",
+    { id:"froken-dianas", tags:["Ecommerce"], title:"Fröken Dianas Salonger", category:"Ecommerce", previewLabel:"Ecommerce", previewMeta:"Landing pages · Email marketing · Content · Ongoing", status:"Supporting", image:"img/froken-dianas-salonger/froken-dianas-solanger-hero.png",
       summary:"An ongoing engagement covering landing-page optimisation, email marketing and content — expanding the ecommerce story beyond the storefront itself.",
       role:"UX/UI & email strategy", metric:"+36% sales", previewDetails:false, href:"froken-dianas-salonger.html" },
 
-    { id:"goodlight", title:"Goodlight", category:"Ecommerce", previewLabel:"Ecommerce", previewMeta:"Ecommerce experience · UX/UI · Responsive design", status:"Supporting", image:"img/goodlight/good-light.png",
+    { id:"goodlight", tags:["Ecommerce"], title:"Goodlight", category:"Ecommerce", previewLabel:"Ecommerce", previewMeta:"Ecommerce experience · UX/UI · Responsive design", status:"Supporting", image:"img/goodlight/good-light.png",
       summary:"I worked on the UX and UI of Goodlight’s ecommerce experience, focusing on how users discover products, navigate categories and understand product information. Rather than designing individual pages in isolation, I looked at the experience as a connected journey — from discovery to purchase.",
       role:"UX/UI designer", metric:"Ecommerce experience", previewDetails:false, href:"goodlight.html" },
   ];
@@ -261,7 +261,7 @@
       return `<a class="lib-card" href="${project.href}" aria-label="View ${project.title} project">
         <div class="lib-card-image">
           <img src="${project.image}" alt="${project.title} project preview" loading="lazy">
-          <span class="${statusClass}">${project.previewLabel || project.category}</span>
+          <span class="lib-tags">${(project.tags || [project.category]).map(tag => `<span class="${statusClass}">${tag}</span>`).join('')}</span>
           <span class="project-hover-info">
             <span class="project-title">${project.title}</span>
             <span class="project-category">${previewMeta}</span>
@@ -273,22 +273,21 @@
       </a>`;
     }).join('');
 
-  // Filters — built from each card's category, so new categories appear automatically.
+  // Filters — a card shows when it has the selected tag (cards can have several tags).
+  const FILTERS = ['All', 'Product', 'Ecommerce', 'Design system'];
   const filterRoot = document.getElementById('work-filters');
   const visible = projects.filter(project => project.status !== 'Do Not Feature' && project.href);
-  const categories = [...new Set(visible.map(project => project.previewLabel || project.category))];
-  const counts = Object.fromEntries(categories.map(cat => [cat, visible.filter(p => (p.previewLabel || p.category) === cat).length]));
-  filterRoot.innerHTML = [['All', visible.length], ...categories.map(cat => [cat, counts[cat]])]
-    .map(([cat, n], i) => `<button type="button" class="work-filter" data-filter="${cat}" aria-pressed="${i === 0}">${cat}<span class="work-filter-count">${n}</span></button>`)
+  filterRoot.innerHTML = FILTERS
+    .map((tag, i) => `<button type="button" class="work-filter" data-filter="${tag}" aria-pressed="${i === 0}">${tag}</button>`)
     .join('');
   const cards = [...root.querySelectorAll('.lib-card')];
-  cards.forEach((card, i) => { card.dataset.category = visible[i].previewLabel || visible[i].category; });
+  cards.forEach((card, i) => { card.dataset.tags = (visible[i].tags || [visible[i].category]).join('|'); });
   filterRoot.addEventListener('click', event => {
     const button = event.target.closest('.work-filter');
     if (!button) return;
     const filter = button.dataset.filter;
     filterRoot.querySelectorAll('.work-filter').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
-    cards.forEach(card => { card.hidden = filter !== 'All' && card.dataset.category !== filter; });
+    cards.forEach(card => { card.hidden = filter !== 'All' && !card.dataset.tags.split('|').includes(filter); });
   });
 </script>
 
