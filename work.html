@@ -168,8 +168,9 @@
   <section class="work-intro">
     <h1>A closer look at my work</h1>
     <p>From digital products and ecommerce to design systems, these projects reflect the range of challenges I've worked on with teams across different industries.</p>
-    <a class="work-scroll-cue" href="#lib-root" aria-label="Scroll to project library">↓</a>
+    <a class="work-scroll-cue" href="#work-filters" aria-label="Scroll to project library">↓</a>
   </section>
+  <div class="work-filters" id="work-filters" role="group" aria-label="Filter projects by category"></div>
   <div class="wrap" id="lib-root"></div>
 </main>
 
@@ -271,6 +272,24 @@
         </div>
       </a>`;
     }).join('');
+
+  // Filters — built from each card's category, so new categories appear automatically.
+  const filterRoot = document.getElementById('work-filters');
+  const visible = projects.filter(project => project.status !== 'Do Not Feature' && project.href);
+  const categories = [...new Set(visible.map(project => project.previewLabel || project.category))];
+  const counts = Object.fromEntries(categories.map(cat => [cat, visible.filter(p => (p.previewLabel || p.category) === cat).length]));
+  filterRoot.innerHTML = [['All', visible.length], ...categories.map(cat => [cat, counts[cat]])]
+    .map(([cat, n], i) => `<button type="button" class="work-filter" data-filter="${cat}" aria-pressed="${i === 0}">${cat}<span class="work-filter-count">${n}</span></button>`)
+    .join('');
+  const cards = [...root.querySelectorAll('.lib-card')];
+  cards.forEach((card, i) => { card.dataset.category = visible[i].previewLabel || visible[i].category; });
+  filterRoot.addEventListener('click', event => {
+    const button = event.target.closest('.work-filter');
+    if (!button) return;
+    const filter = button.dataset.filter;
+    filterRoot.querySelectorAll('.work-filter').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+    cards.forEach(card => { card.hidden = filter !== 'All' && card.dataset.category !== filter; });
+  });
 </script>
 
 </body>
