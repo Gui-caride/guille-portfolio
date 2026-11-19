@@ -454,7 +454,13 @@ body.page-about::before {
 }
 
 #main .hm-statement p span {
-  color: var(--hm-muted);
+  /* soft multi-colour gradient: blue → lavender → rose → peach */
+  background: linear-gradient(100deg, #8aa6e8 0%, #b49be6 32%, #e79cba 64%, #f0b48c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  color: transparent;
 }
 
 /* ---------- Scroll reveal (driven by site-chrome.js) ---------- */
