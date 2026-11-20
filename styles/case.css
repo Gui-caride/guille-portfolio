@@ -649,3 +649,9 @@ body:has(#main.cs)::before {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* Gallery modifiers */
+.cs-gallery .cs-fig--wide{grid-column:1 / -1}
+.cs-gallery .cs-fig--wide .cs-shot{aspect-ratio:1 / 1;max-width:720px;margin-inline:auto}
+.cs-gallery .cs-shot--square{aspect-ratio:1 / 1}
+.cs-gallery .cs-shot--square img{object-fit:contain;width:100%;height:100%}
