@@ -650,8 +650,9 @@ body:has(#main.cs)::before {
   }
 }
 
-/* Gallery modifiers */
-.cs-gallery .cs-fig--wide{grid-column:1 / -1}
-.cs-gallery .cs-fig--wide .cs-shot{aspect-ratio:1 / 1;max-width:720px;margin-inline:auto}
-.cs-gallery .cs-shot--square{aspect-ratio:1 / 1}
-.cs-gallery .cs-shot--square img{object-fit:contain;width:100%;height:100%}
+/* Gallery modifiers (ID-prefixed to win over the base gallery rules) */
+#main.cs .cs-gallery .cs-fig--full{grid-column:1 / -1}
+#main.cs .cs-gallery .cs-fig--full .cs-shot{aspect-ratio:16 / 9}
+#main.cs .cs-gallery .cs-fig--wide{grid-column:1 / -1}
+#main.cs .cs-gallery .cs-fig--wide .cs-shot{aspect-ratio:1 / 1;max-width:720px;margin-inline:auto}
+#main.cs .cs-gallery .cs-shot--square img{object-fit:contain}
